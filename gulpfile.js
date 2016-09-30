@@ -12,6 +12,7 @@ var collapse = require('bundle-collapser/plugin');
 var package = require('./package.json');
 var karma = require('gulp-karma');
 var argv = require('yargs').argv;
+var jsdoc = require('gulp-jsdoc3');
 
 var srcDir = './src/';
 var outDir = './dist/';
@@ -39,6 +40,7 @@ var testFiles = [
 gulp.task('build', buildTask);
 gulp.task('unittest', unittestTask);
 gulp.task('unittestFull', unittestFullTask);
+gulp.task('doc', docTask);
 
 function startTest() {
 	return [].concat(preTestFiles).concat([
@@ -82,4 +84,9 @@ function buildTask() {
 		.pipe(gulp.dest(outDir));
 
 	return bundled;
-} 
+}
+
+function docTask(cb) {
+	gulp.src(['README.md', './src/**/*.js'], {read: false})
+		.pipe(jsdoc(cb));
+}

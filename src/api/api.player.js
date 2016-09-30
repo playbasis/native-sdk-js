@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Player Api
+ * @namespace Playbasis.playerApi
+ */
 module.exports = function(Playbasis) {
 
 	// utilize
@@ -263,6 +267,192 @@ module.exports = function(Playbasis) {
 	_api.actionTime = function(playerId, actionName, callback)
 	{
 		http.getJson(helpers.createApiUrl(apiMethod, playerId, "action", actionName, "time"),
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	_api.lastAction = function(playerId, callback)
+	{
+		http.getJson(helpers.createApiUrl(apiMethod, playerId, "action", "time"),
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	_api.actionCount = function(playerId, actionName, callback)
+	{
+		http.getJson(helpers.createApiUrl(apiMethod, playerId, "action", actionName, "count"),
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	_api.level = function(level, callback)
+	{
+		http.getJson(helpers.createApiUrl(apiMethod, "level", level),
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	_api.levels = function(callback)
+	{
+		http.getJson(helpers.createApiUrl(apiMethod, "levels"),
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	/* Return information about all the badges that a player has earned. */
+	_api.badge = function(playerId, callback)
+	{
+		http.getJson(helpers.createApiUrl(apiMethod, playerId, "badge"),
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	_api.allBadges = function(playerId, callback)
+	{
+		http.getJson(helpers.createApiUrl(apiMethod, playerId, "badgeAll"),
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	/* Return the list of players sorted by the specified point type. */
+	_api.rank = function(rankBy, callback, options) {
+
+		var limit = 20;
+		var mode = "all-time";
+
+		if (options != null) {
+			if (options.limit != null)
+				limit = options.limit;
+
+			if (options.mode != null && 
+				(options.mode == "weekly" ||
+				 options.mode == "monthly" ||
+				 options.mode == "all-time")
+				)
+				mode = options.mode;
+		}
+
+		http.getJson(helpers.createApiUrl(apiMethod, "rank", rankBy, limit) + "&mode=" + mode,
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	/**
+	 * Return list of players sorted by each point type.
+	 * @param  {number}   limit    limit number of players returned in the list
+	 * @param  {function} callback Callback function
+	 * @param  {object}   options  Options. It can be mode="weekly", "monthly", or "all-time"
+	 * @method  ranks
+	 * @memberof Playbasis.playerApi
+	 */	
+	_api.ranks = function(limit, callback, options)
+	{
+		// default is all-time
+		var mode = "all-time";
+
+		// check if need to apply options
+		if (options != null) {
+			if (options.mode != null) {
+				mode = options.mode;
+			}
+		}
+
+		http.getJson(helpers.createApiUrl(apiMethod, "ranks", limit) + "&mode=" + mode,
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	/**
+	 * Returns information about all the goods list that a player has redeem.
+	 * @param  {string}   playerId player id
+	 * @param  {function} callback callback function
+	 * @param  {object}   options  options which can be tags={#string}, status={"all", "active", "expired", "used"}. This parameter can be ignored, or just set null.
+	 * @method goods
+	 * @memberof Playbasis.playerApi
+	 */
+	_api.goods = function(playerId, callback, options)
+	{
+		// defaults options
+		var tags = null;
+		var status = "active";
+
+		// check if need to apply options to request
+		if (options != null) {
+			if (options.tags != null) {
+				tags = options.tags;
+			}
+
+			if (options.status != null &&
+				(options.status == "active" ||
+				 options.status == "expired" ||
+				 options.status == "used" ||
+				 options.status == "all")) {
+				status = options.status;
+			}
+		}
+
+		http.getJson(helpers.createApiUrl(apiMethod, playerId, "goods") + "&" + helpers.joinIfNotNullAsUrlParam("tags", tags, "status", status),
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	/**
+	 * Return information about the specified quest that player has joined.
+	 * @param  {string}   playerId player id
+	 * @param {string} questId quest id that playered has joined, to get information from
+	 * @param  {function} callback callback function
+	 * @method  questOfPlayer
+	 * @memberof Playbasis.playerApi
+	 */
+	_api.questOfPlayer = function(playerId, questId, callback)
+	{
+		http.getJson(helpers.createApiUrl(apiMethod, "quest", questId) + "&player_id=" + playerId,
+			function(status, result) {
+				helpers.forwardApiCallback(callback, status, result);
+			}
+		);
+	};
+
+	/**
+	 * Return list of quests that player has joined.
+	 * @param  {string}   playerId player id
+	 * @param  {function} callback callback function
+	 * @param  {object}   options  (optional) options which can be {tags:#string}
+	 * @method questListOfPlayer
+	 * @memberof Playbasis.playerApi
+	 */
+	_api.questListOfPlayer = function(playerId, callback, options)
+	{
+		// default value for options
+		var tags = null;
+
+		if (options != null) {
+			if (options.tags != null) {
+				tags = options.tags;
+			}
+		}
+
+		http.getJson(helpers.createApiUrl(apiMethod, "quest") + "&" + helpers.joinIfNotNullAsUrlParam("player_id", playerId, "tags", tags),
 			function(status, result) {
 				helpers.forwardApiCallback(callback, status, result);
 			}

@@ -387,4 +387,204 @@ describe("Player Api Tests", function() {
 		});
 	});
 
+	describe("Last Action test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should get status code of 0", function(done) {
+			api.lastAction(window.mock.env.playerId, function(status, result) {
+				expect(status.code).toEqual(0);
+				done();
+			});
+		});
+	});
+
+	describe("Action count test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should get status code of 0", function(done) {
+			api.actionCount(window.mock.env.playerId, "login", function(status, result) {
+				expect(status.code).toEqual(0);
+				done();
+			});
+		});
+	});
+
+	describe("Level test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should get status code of 0, has value of 'level' the same as what specified", function(done) {
+			api.level(1, function(status, result) {
+				expect(status.code).toEqual(0);
+				expect(result.level).toEqual(1);
+				done();
+			});
+		});
+	});
+
+	describe("Levels test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should get status code of 0, has levels information of 100 elements", function(done) {
+			api.levels(function(status, result) {
+				expect(status.code).toEqual(0);
+				expect(result.length).toEqual(100);
+				done();
+			});
+		});
+	});
+
+	describe("Badge test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should get status code of 0", function(done) {
+			api.badge(window.mock.env.playerId, function(status, result) {
+				expect(status.code).toEqual(0);
+				done();
+			});
+		});
+	});
+
+	describe("Badges test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should get status code of 0, and validate some of badges' name which matched", function(done) {
+			api.allBadges(window.mock.env.playerId, function(status, result) {
+				expect(status.code).toEqual(0);
+
+				// note: someone should not remove these stuff from dashboard!
+				expect(result[0].name).toEqual("badge_comment");
+				expect(result[1].name).toEqual("badge_like");
+				expect(result[2].name).toEqual("badge_master");
+				expect(result[3].name).toEqual("badge_explorer");
+				expect(result[4].name).toEqual("badge_pro");
+				done();
+			});
+		});
+	});	
+
+	describe("Rank test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should get status code of 0, and has 2 elements", function(done) {
+			api.rank("point", function(status, result) {
+				expect(status.code).toEqual(0);
+				expect(result.length).toEqual(2);
+				expect(result[0].point).not.toBe(null);
+				expect(result[1].point).not.toBe(null);
+				done();
+			}, {limit : 2, mode : "all-time"});
+		});
+	});
+
+	describe("Ranks test", function() {
+		beforeAll(function(done) {
+			jasmine.addMatchers({
+				toBeMoreThanZero: function() {
+					return {
+						compare: function (actual, expected) {
+							return {
+								pass: actual > 0
+							};
+						}
+					};
+				}
+			});
+			done();
+		});
+
+		it("should get status code 0, and ranks by each point-based type", function(done) {
+			api.ranks(100, function(status, result) {
+				expect(status.code).toEqual(0);
+				expect(result.exp).not.toBe(null);
+				expect(result.exp.length).toBeMoreThanZero();
+				expect(result.point).not.toBe(null);
+				expect(result.point.length).toBeMoreThanZero();
+				done();
+			}, {mode: "weekly"});
+		});
+	});
+
+	describe("Goods test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should get status code 0", function(done) {
+			api.goods(window.mock.env.playerId, function(status, result) {
+				expect(status.code).toEqual(0);
+				done();
+			}, {tags: "dummy", status: "all"});
+		});
+	});
+
+	describe("Quest of Player test", function() {
+
+		var questId = "57ee78dbb350cf03048c1ea9";
+		var playerId = window.mock.env.playerId;
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should get status code 0, and positive in validating some of its fields", function(done) {
+			api.questOfPlayer(playerId, questId, function(status, result) {
+				expect(status.code).toEqual(0);
+				expect(result.quest.quest_name).toEqual("Test Quest 1");
+				expect(result.quest.tags[0]).toEqual("test");
+				done();
+			});
+		});
+	});
+
+	describe("Quest List of Player test", function() {
+
+		var playerId = window.mock.env.playerId;
+
+		beforeAll(function(done) {
+			jasmine.addMatchers({
+				toBeMoreThanZero: function() {
+					return {
+						compare: function (actual, expected) {
+							return {
+								pass: actual > 0
+							};
+						}
+					};
+				}
+			});
+			done();
+		});
+
+		it("should get status code 0, and got null at result", function(done) {
+			api.questListOfPlayer(playerId, function(status, result) {
+				expect(status.code).toEqual(0);
+				expect(result.quests).toBe(null);
+				done();
+			}, {tags: "something"});
+		});
+
+		it("should get status code 0, and validated for some of its fields", function(done) {
+			api.questListOfPlayer(playerId, function(status, result) {
+				expect(status.code).toEqual(0);
+				expect(result.quests.length).toBeMoreThanZero();
+				expect(result.quests[0].quest_name).toEqual("Test Quest 1");
+				expect(result.quests[0].quest_id).toEqual("57ee78dbb350cf03048c1ea9");
+				done();
+			}, null );
+		});
+	});
 });

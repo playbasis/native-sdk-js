@@ -68,4 +68,31 @@ describe("Helpers tests", function() {
 		helpers.forwardApiCallback(callback, helpers.createApiLevelStatusObj(1,0,"all ok"), "something");
 		expect(callback).toHaveBeenCalled();
 	});
+
+	it("should catch a throw statement", function() {
+
+		// save token before mock it
+		var saveToken = Playbasis.env.global.token;
+		// mock setting token to null
+		Playbasis.env.global.token = null;
+		// expect a throw
+		expect(function(){helpers.throwIfNoToken();}).toThrow();
+		// set back token
+		Playbasis.env.global.token = saveToken;
+	});
+
+	it("should catch a throw statement", function() {
+		expect(function(){ helpers.joinIfNotNullAsUrlParam(); }).toThrow();
+		expect(function(){ helpers.joinIfNotNullAsUrlParam("one"); }).toThrow();
+		expect(function(){ helpers.joinIfNotNullAsUrlParam("one", "two", "three"); }).toThrow();
+	});
+
+	it("should return a proper joined string param", function() {
+		expect(helpers.joinIfNotNullAsUrlParam("key1", "value1")).toEqual("key1=value1");
+		expect(helpers.joinIfNotNullAsUrlParam("key1", "value1", "key2", "value2")).toEqual("key1=value1&key2=value2");
+		expect(helpers.joinIfNotNullAsUrlParam("key1", "value1", "key2", "value2", "key3", "value3")).toEqual("key1=value1&key2=value2&key3=value3");
+		expect(helpers.joinIfNotNullAsUrlParam("key1", "value1", null, "value2")).toEqual("key1=value1");
+		expect(helpers.joinIfNotNullAsUrlParam("key1", "value1", null, "value2", "key3", "value3")).toEqual("key1=value1&key3=value3");
+		expect(helpers.joinIfNotNullAsUrlParam("key1", "value1", "key2", null, null, "value3", "key4", "value4", "key5", null, "key6", "value6")).toEqual("key1=value1&key4=value4&key6=value6");
+	});
 });

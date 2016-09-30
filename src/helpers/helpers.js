@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Playbasis Helpers
+ * @namespace Playbasis.helpers
+ */
 module.exports = function(Playbasis) {
 
 	// Global Playbasis's helpers object for utility methods and classes
@@ -145,5 +149,38 @@ module.exports = function(Playbasis) {
 	{
 		if (Playbasis.env.global.token == null || Playbasis.env.global.token == "")
 			throw "Token is not available. Check if token is already acquired prior to this call";
+	}
+
+	/**
+	 * Join each KVP with "&" only if individual is not null as url encoded param.
+	 * If it's null, then it will skip that element.
+	 * @return {string} joined string with "&" for all individual KVP if it's not null
+	 */
+	helpers.joinIfNotNullAsUrlParam = function()
+	{
+		// if number of arguments is 0, or not multiple of 2 then we throw 
+		if (arguments.length == 0 || arguments.length % 2 != 0)
+			throw "number of argument cannot be 0, and must be multiple of 2";
+
+		var result = "";
+
+		// process on two consecutives
+		for (var i=0; i<arguments.length; i+=2) {
+			var key = arguments[i];
+			var value = arguments[i+1];
+
+			// if both are not null then we add them into result string
+			if (key != null && value != null) {
+
+				// prefix "&" as it needs to check first if the current element has value or not
+				if (i != 0) {
+					result += "&";
+				}
+
+				result += encodeURIComponent(key) + "=" + encodeURIComponent(value);
+			}
+		}
+
+		return result;
 	}
 }
