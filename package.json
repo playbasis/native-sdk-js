@@ -1,0 +1,56 @@
+{
+  "name": "playbasis.js",
+  "version": "1.0.0",
+  "description": "Playbasis Javascript SDK",
+  "main": "src/playbasis.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/playbasis/native-sdk-js.git"
+  },
+  "keywords": [
+    "playbasis",
+    "js",
+    "sdk",
+    "native",
+    "javascript",
+    "pb"
+  ],
+  "author": "Wasin Thonkaew",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/playbasis/native-sdk-js/issues"
+  },
+  "homepage": "https://github.com/playbasis/native-sdk-js#readme",
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "browserify-istanbul": "^0.2.1",
+    "bundle-collapser": "^1.2.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-file": "^0.3.0",
+    "gulp-html-validator": "0.0.5",
+    "gulp-insert": "^0.5.0",
+    "gulp-karma": "0.0.5",
+    "gulp-replace": "^0.5.4",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^2.0.0",
+    "jasmine": "^2.5.2",
+    "jasmine-core": "^2.5.2",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-html-reporter": "^0.2.7",
+    "karma-jasmine": "^1.0.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0",
+    "yargs": "^5.0.0"
+  }
+}

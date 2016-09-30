@@ -1,0 +1,7 @@
+/node_modules
+/dist
+/karma_html
+
+.DS_Store
+
+test.html
