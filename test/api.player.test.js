@@ -562,4 +562,20 @@ describe("Player Api Tests", function() {
 				}, (e) => { console.log(e.message); });
 		});
 	});
+
+	describe("All Quests of Player test", function() {
+
+		var playerId = window.mock.env.playerId;
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success", function(done) {
+			api.allQuestsOfPlayer(playerId)
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
 });

@@ -318,4 +318,15 @@ module.exports = function(Playbasis) {
 
 		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "quest") + "&" + helpers.joinIfNotNullAsUrlParam("player_id", playerId, "tags", tags));
 	}
+
+	/**
+	 * Return list of all available quests of the client as well as the status of the player if joined.
+	 * @param  {[type]} playerId [description]
+	 * @return {[type]}          [description]
+	 * @memberOf Playbasis.playerApi
+	 */
+	_api.allQuestsOfPlayer = function(playerId)
+	{
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "questAll", playerId));
+	}
 }
