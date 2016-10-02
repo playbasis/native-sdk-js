@@ -485,7 +485,7 @@ describe("Player Api Tests", function() {
 			done();
 		});
 
-		it("should get status code 0, and ranks by each point-based type", function(done) {
+		it("should return success, and ranks by each point-based type", function(done) {
 			api.ranks(100, {mode: "weekly"})
 				.then((result) => {
 					done();
@@ -498,7 +498,7 @@ describe("Player Api Tests", function() {
 			done();
 		});
 
-		it("should get status code 0", function(done) {
+		it("should return success", function(done) {
 			api.goods(window.mock.env.playerId, {tags: "dummy", status: "all"})
 				.then((result) => {
 					done();
@@ -515,7 +515,7 @@ describe("Player Api Tests", function() {
 			done();
 		});
 
-		it("should get status code 0, and positive in validating some of its fields", function(done) {
+		it("should return success, and positive in validating some of its fields", function(done) {
 			api.questOfPlayer(playerId, questId)
 				.then((result) => {
 					expect(result.response.quest.quest_name).toEqual("Test Quest 1");
@@ -544,7 +544,7 @@ describe("Player Api Tests", function() {
 			done();
 		});
 
-		it("should get status code 0, and got null at result", function(done) {
+		it("should return success, and got null at result", function(done) {
 			api.questListOfPlayer(playerId, {tags: "something-odd-and-should-not-be-there"})
 				.then((result) => {
 					expect(result.response.quests).toBe(null);
@@ -552,7 +552,7 @@ describe("Player Api Tests", function() {
 				}, (e) => { console.log(e.message); }); 
 		});
 
-		it("should get status code 0, and validated for some of its fields", function(done) {
+		it("should return success, and validated for some of its fields", function(done) {
 			api.questListOfPlayer(playerId)
 				.then((result) => {
 					expect(result.response.quests.length).toBeMoreThanZero();

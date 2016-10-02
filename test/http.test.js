@@ -1,5 +1,4 @@
-// Test http/http.js
-describe("http/http.js tests", function() {
+describe("Http tests", function() {
 
 	var http;
 	var mock;
