@@ -2,7 +2,7 @@ module.exports = function(config) {
 	config.set({
 		browsers: ['Chrome', 'Firefox'],
 		frameworks: ['browserify', 'jasmine'],
-		reporters: ['progress', 'html'],
+		reporters: ['spec'],
 
 		preprocessors: {
 			'src/**/*.js': ['browserify']

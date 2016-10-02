@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Playbasis Auth API
+ * @namespace Playbasis.authApi
+ */
 module.exports = function(Playbasis) {
 
 	// utilize
@@ -12,30 +16,39 @@ module.exports = function(Playbasis) {
 	// global object
 	var _api = Playbasis.authApi = {}
 
-	_api.auth = function(callback) 
+	/**
+	 * Authenticate the application to get token
+	 * @return {object}            Promise object
+	 * @memberOf Playbasis.authApi
+	 */
+	_api.auth = function() 
 	{
-		http.postJson(helpers.createApiUrl(apiMethod), {api_key : Playbasis.env.global.apiKey, api_secret : Playbasis.env.global.apiSecret}, function(status, result) {
-			// just intercept and save token value before forwarding callback
-			if (status.code == 200 && result.success == true) {
-				Playbasis.env.global.token = result.response.token;
-			}
+		return new Playbasis.Promise( (resolve, reject) => {
+			http.postJsonAsync(helpers.createApiUrl(apiMethod), {api_key : Playbasis.env.global.apiKey, api_secret : Playbasis.env.global.apiSecret})
+				.then((result) => {
+					// intercept token first, then return promise object back to user
+					Playbasis.env.global.token = result.response.token;
 
-			// forward callback
-			helpers.forwardApiCallback(callback, status, result);
+					resolve(result);
+				}, (e) => { reject(e); });
 		});
 	};
 
-	_api.renew = function(callback)
+	/**
+	 * Renew token
+	 * @return {object}            Promise object
+	 * @memberOf Playbasis.authApi
+	 */
+	_api.renew = function()
 	{
-		http.postJson(helpers.createApiUrl(apiMethod + "/renew"), {api_key : Playbasis.env.global.apiKey, api_secret : Playbasis.env.global.apiSecret}, function(status, result) {
-			// intercept and save token value before forwarding callback
-			if (status.code == 200 && result.success == true) {
-				// update token
-				Playbasis.env.global.token = result.response.token;
-			}
-			
-			// forward callback
-			helpers.forwardApiCallback(callback, status, result);
+		return new Playbasis.Promise( (resolve, reject) => {
+			http.postJsonAsync(helpers.createApiUrl(apiMethod + "/renew"), {api_key : Playbasis.env.global.apiKey, api_secret : Playbasis.env.global.apiSecret})
+				.then((result) => {
+					// intercept token first, then return promise object back to user
+					Playbasis.env.global.token = result.response.token;
+
+					resolve(result);
+				}, (e) => { reject(e); });
 		});
 	};
 }

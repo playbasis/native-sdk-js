@@ -4,7 +4,7 @@ module.exports = function() {
 
 	// occupy the global variable of Playbasis, then create a simple base class
 	var Playbasis = function() {
-		var me = this; 
+		var me = this;
 
 		return me;
 	};
@@ -30,6 +30,10 @@ module.exports = function() {
 		}
 	};
 
+	// utilize bluebird for promise
+	Playbasis.Promise = require("bluebird");
+
+	// set internal playbasis object
 	Playbasis.Playbasis = new Playbasis();
 
 	return Playbasis;

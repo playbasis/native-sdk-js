@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Player Api
+ * Player Player API
  * @namespace Playbasis.playerApi
  */
 module.exports = function(Playbasis) {
@@ -16,84 +16,53 @@ module.exports = function(Playbasis) {
 	// global object
 	var _api = Playbasis.playerApi = {}
 
-	_api.playerPublicInfo = function(playerId, callback) 
+	_api.playerPublicInfo = function(playerId) 
 	{	
-		http.getJson(helpers.createApiUrl(apiMethod, playerId), 
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId));
 	};
 
-	_api.playerInfo = function(playerId, callback)
+	_api.playerInfo = function(playerId)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, playerId), {token : Playbasis.env.global.token},
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId), {token : Playbasis.env.global.token});
 	};
 
-	_api.listPlayer = function(playerIdArray, callback)
+	_api.listPlayer = function(playerIdArray)
 	{
-		helpers.throwIfNoToken();
-
 		var playerIds = playerIdArray.join(",");
 
-		http.postJson(helpers.createApiUrl(apiMethod, "list"), {token : Playbasis.env.global.token, list_player_id : playerIds},
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "list"), {token : Playbasis.env.global.token, list_player_id : playerIds});
 	}
 
-	_api.playerDetailedPublicInfo = function(playerId, callback)
+	_api.playerDetailedPublicInfo = function(playerId)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "data", "all"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "data", "all"));
 	};
 
-	_api.playerDetailedInfo = function(playerId, callback)
+	_api.playerDetailedInfo = function(playerId)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, playerId, "data", "all"), {token : Playbasis.env.global.token},
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "data", "all"), {token : Playbasis.env.global.token});
 	};
 
-	_api.listCustomFieldsOfPlayer = function(playerId, callback)
+	_api.listCustomFieldsOfPlayer = function(playerId)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "custom"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "custom"));
 	};
 
-	_api.setCustomFieldOfPlayer = function(playerId, key, value, callback)
+	_api.setCustomFieldOfPlayer = function(playerId, key, value)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, playerId, "custom"), {token : Playbasis.env.global.token, key : key, value : value}, 
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "custom"), {token : Playbasis.env.global.token, key : key, value : value});
 	};
 
-	// options is the less of information used to register player
-	_api.register = function(playerId, email, callback, options)
+	/**
+	 * Register player
+	 * @param  {string} playerId player id
+	 * @param  {string} email    email to register player with
+	 * @param  {string} options  (optional) option as object, consult Playbasis's API explorer for all possible key-value options
+	 * @return {object}          Promise object
+	 * @memberOf Playbasis.playerApi
+	 */
+	_api.register = function(playerId, email, options)
 	{
-		helpers.throwIfNoToken();
-
 		// create post object with required info
 		var obj = {token : Playbasis.env.global.token, username : playerId, email : email};
 
@@ -109,17 +78,11 @@ module.exports = function(Playbasis) {
 			}
 		}
 
-		http.postJson(helpers.createApiUrl(apiMethod, playerId, "register"), obj,
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "register"), obj);
 	};
 
-	_api.update = function(playerId, updates, callback)
+	_api.update = function(playerId, updates)
 	{
-		helpers.throwIfNoToken();
-
 		// create post object with required info
 		var obj = {token : Playbasis.env.global.token};
 
@@ -133,203 +96,124 @@ module.exports = function(Playbasis) {
 			}
 		}
 
-		http.postJson(helpers.createApiUrl(apiMethod, playerId, "update"), obj,
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "update"), obj);
 	};
 
-	_api.verifyPlayerEmail = function(playerId, callback)
+	_api.verifyPlayerEmail = function(playerId)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, playerId, "email", "verify"), {token : Playbasis.env.global.token},
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "email", "verify"), {token : Playbasis.env.global.token});
 	};
 
-	_api.delete = function(playerId, callback)
+	_api.delete = function(playerId)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, playerId, "delete"), {token : Playbasis.env.global.token}, 
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "delete"), {token : Playbasis.env.global.token});
 	};
 
-	_api.login = function(playerId, callback)
+	_api.login = function(playerId)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, playerId, "login"), {token : Playbasis.env.global.token},
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "login"), {token : Playbasis.env.global.token});
 	};
 
-	_api.requestOTP = function(playerId, callback)
+	_api.requestOTP = function(playerId)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, "auth", playerId, "requestOTPCode"), {token : Playbasis.env.global.token},
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "auth", playerId, "requestOTPCode"), {token : Playbasis.env.global.token});
 	};
 
-	_api.requestOTPforSetupPhone = function(playerId, phoneNumber, callback)
+	_api.requestOTPforSetupPhone = function(playerId, phoneNumber)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, "auth", playerId, "setupPhone"), {token : Playbasis.env.global.token, phone_number : phoneNumber},
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "auth", playerId, "setupPhone"), {token : Playbasis.env.global.token, phone_number : phoneNumber});
 	};
 
-	_api.performOTPVerification = function(playerId, OTPcode, callback)
+	_api.performOTPVerification = function(playerId, OTPcode)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, "auth", playerId, "verifyOTPCode"), {token : Playbasis.env.global.token, code : OTPcode},
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "auth", playerId, "verifyOTPCode"), {token : Playbasis.env.global.token, code : OTPcode});
 	};
 
-	_api.logout = function(playerId, callback)
+	_api.logout = function(playerId)
 	{
-		helpers.throwIfNoToken();
-
-		http.postJson(helpers.createApiUrl(apiMethod, playerId, "logout"), {token : Playbasis.env.global.token}, 
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "logout"), {token : Playbasis.env.global.token});
 	};
 
-	_api.listActivePlayerSessions = function(playerId, callback)
+	_api.listActivePlayerSessions = function(playerId)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "sessions"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "sessions"));
 	};
 
-	_api.findPlayerBySession = function(sessionId, callback)
+	_api.findPlayerBySession = function(sessionId)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, "session", sessionId),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "session", sessionId));
 	};
 
-	_api.points = function(playerId, callback)
+	_api.points = function(playerId)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "points"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "points"));
 	};
 
-	_api.point = function(playerId, pointName, callback)
+	_api.point = function(playerId, pointName)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "point", pointName),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "point", pointName));
 	};
 
-	_api.pointHistory = function(playerId, callback, options)
+	/**
+	 * Returns history points of player
+	 * @param  {string} playerId player id
+	 * @param  {object} options  (optional) options as object. It can include { point_name: "point" | "exp" | ..., offset: #number, limit: #number, order: "desc" | "asc" }
+	 * @return {object}          promise object
+	 */
+	_api.pointHistory = function(playerId, options)
 	{
+		// will get empty stirng if options is null
 		var paramsString = helpers.joinParams(options);
 
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "point_history") + "&" + paramsString,
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "point_history") + "&" + paramsString);
 	};
 
-	_api.actionTime = function(playerId, actionName, callback)
+	_api.actionTime = function(playerId, actionName)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "action", actionName, "time"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "action", actionName, "time"));
 	};
 
-	_api.lastAction = function(playerId, callback)
+	_api.lastAction = function(playerId)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "action", "time"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "action", "time"));
 	};
 
-	_api.actionCount = function(playerId, actionName, callback)
+	_api.actionCount = function(playerId, actionName)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "action", actionName, "count"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "action", actionName, "count"));
 	};
 
-	_api.level = function(level, callback)
+	_api.level = function(level)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, "level", level),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "level", level));
 	};
 
-	_api.levels = function(callback)
+	_api.levels = function()
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, "levels"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "levels"));
 	};
 
 	/* Return information about all the badges that a player has earned. */
-	_api.badge = function(playerId, callback)
+	_api.badge = function(playerId)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "badge"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "badge"));
 	};
 
-	_api.allBadges = function(playerId, callback)
+	_api.allBadges = function(playerId)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "badgeAll"),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "badgeAll"));
 	};
 
 	/* Return the list of players sorted by the specified point type. */
-	_api.rank = function(rankBy, callback, options) {
+	/**
+	 * Return the list of players sorted by the specified point type.
+	 * @param  {string} rankBy  point-based name to rank by ("exp" | "point", etc)
+	 * @param  {object} options (optional) options as object { limit: #number, mode: "all-time" | "weekly" | "monthly" }.
+	 * @return {object}         Promise object
+	 * @method  rank
+	 * @memberof Playbasis.playerApi
+	 */
+	_api.rank = function(rankBy, options) {
 
 		var limit = 20;
 		var mode = "all-time";
@@ -346,22 +230,17 @@ module.exports = function(Playbasis) {
 				mode = options.mode;
 		}
 
-		http.getJson(helpers.createApiUrl(apiMethod, "rank", rankBy, limit) + "&mode=" + mode,
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "rank", rankBy, limit) + "&mode=" + mode);
 	};
 
 	/**
 	 * Return list of players sorted by each point type.
 	 * @param  {number}   limit    limit number of players returned in the list
-	 * @param  {function} callback Callback function
-	 * @param  {object}   options  Options. It can be mode="weekly", "monthly", or "all-time"
+	 * @param  {object}   options  (optional) option as object. It can include { mode: "all-time" | "weekly" | "monthly" }.
 	 * @method  ranks
 	 * @memberof Playbasis.playerApi
 	 */	
-	_api.ranks = function(limit, callback, options)
+	_api.ranks = function(limit, options)
 	{
 		// default is all-time
 		var mode = "all-time";
@@ -373,22 +252,17 @@ module.exports = function(Playbasis) {
 			}
 		}
 
-		http.getJson(helpers.createApiUrl(apiMethod, "ranks", limit) + "&mode=" + mode,
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "ranks", limit) + "&mode=" + mode);
 	};
 
 	/**
 	 * Returns information about all the goods list that a player has redeem.
 	 * @param  {string}   playerId player id
-	 * @param  {function} callback callback function
-	 * @param  {object}   options  options which can be tags={#string}, status={"all", "active", "expired", "used"}. This parameter can be ignored, or just set null.
+	 * @param  {object}   options  (optional) options as object. It can include { tags: #string, status: "all" | "active" | "expired" | "used" }.
 	 * @method goods
 	 * @memberof Playbasis.playerApi
 	 */
-	_api.goods = function(playerId, callback, options)
+	_api.goods = function(playerId, options)
 	{
 		// defaults options
 		var tags = null;
@@ -409,39 +283,29 @@ module.exports = function(Playbasis) {
 			}
 		}
 
-		http.getJson(helpers.createApiUrl(apiMethod, playerId, "goods") + "&" + helpers.joinIfNotNullAsUrlParam("tags", tags, "status", status),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "goods") + "&" + helpers.joinIfNotNullAsUrlParam("tags", tags, "status", status));
 	};
 
 	/**
 	 * Return information about the specified quest that player has joined.
 	 * @param  {string}   playerId player id
 	 * @param {string} questId quest id that playered has joined, to get information from
-	 * @param  {function} callback callback function
 	 * @method  questOfPlayer
 	 * @memberof Playbasis.playerApi
 	 */
-	_api.questOfPlayer = function(playerId, questId, callback)
+	_api.questOfPlayer = function(playerId, questId)
 	{
-		http.getJson(helpers.createApiUrl(apiMethod, "quest", questId) + "&player_id=" + playerId,
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "quest", questId) + "&player_id=" + playerId);
 	};
 
 	/**
 	 * Return list of quests that player has joined.
 	 * @param  {string}   playerId player id
-	 * @param  {function} callback callback function
-	 * @param  {object}   options  (optional) options which can be {tags:#string}
+	 * @param  {object}   options  (optional) options as object. It can include { tags: #string }.
 	 * @method questListOfPlayer
 	 * @memberof Playbasis.playerApi
 	 */
-	_api.questListOfPlayer = function(playerId, callback, options)
+	_api.questListOfPlayer = function(playerId, options)
 	{
 		// default value for options
 		var tags = null;
@@ -452,10 +316,6 @@ module.exports = function(Playbasis) {
 			}
 		}
 
-		http.getJson(helpers.createApiUrl(apiMethod, "quest") + "&" + helpers.joinIfNotNullAsUrlParam("player_id", playerId, "tags", tags),
-			function(status, result) {
-				helpers.forwardApiCallback(callback, status, result);
-			}
-		);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "quest") + "&" + helpers.joinIfNotNullAsUrlParam("player_id", playerId, "tags", tags));
 	}
 }

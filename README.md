@@ -1,16 +1,11 @@
 ## Playbasis Native JS SDK
 
-Playbasis.js aims to be a dependency-free library allows developers to connect and integrate their web-based application to [Playbasis API](http://doc.playbasis.com/pbapp).
+Playbasis.js allows developers to connect and utilize [Playbasis API](http://doc.playbasis.com/pbapp) with Javascript with Promise support.
 
 ## Development Environment
 
 Run `npm install` to install all development dependencies.
 Then you can run `gulp unittest` to see the result of testing.
-
-## Contribution Guideline
-
-As Playbasis.js aims to have minimal dependecies, take a moment to consider if such dependencies are needed before including.
-Every change should possibly has test case. Whenever finish making change, run `gulp unittest` to see the result before moving on.
 
 ## Building and Testing
 

@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Playbasis Http Module
+ * @namespace Playbasis.http
+ */
 module.exports = function(Playbasis) {
 
 	// use helpers
@@ -8,133 +12,164 @@ module.exports = function(Playbasis) {
 	// Global Playbasis's helpers object for utility methods and classes
 	var http = Playbasis.http = {};
 
-	http.get = function(url, callback)
+	/**
+	 * Make a GET request
+	 * @param  {string} url target url to send request to
+	 * @return {object}     Promise object
+	 */
+	http.getJsonAsync = function(url) 
 	{
-		var xmlHttp = new XMLHttpRequest();
-		if (callback != null)
-		{
-			xmlHttp.onreadystatechange = function() {
-				if (xmlHttp.readyState == XMLHttpRequest.DONE) {
-					callback(helpers.createHttpLevelStatusObj(xmlHttp.status, xmlHttp.statusText), xmlHttp.responseText);
+		return new Playbasis.Promise( (resolve, reject) => {
+			// load proper library
+			// load from reference if it's already loaded
+			const lib = url.startsWith('https') ? require('https') : require('http');
+			// make a GET request
+			const request = lib.get(url, (response) => {
+				// handle http errors
+				if (response.statusCode != 200) {
+					reject(new Error("Failed to load page, status code: " + response.statusCode));
+					return;	// execution ends, return it now
 				}
-			}
-		}
-		xmlHttp.open("GET", url, true);
-		xmlHttp.send(null);
-	};
 
-	http.geth = function(url, headersKvp, callback)
-	{
-		var xmlHttp = new XMLHttpRequest();
-		if (callback != null)
-		{
-			xmlHttp.onreadystatechange = function() {
-				if (xmlHttp.readyState == XMLHttpRequest.DONE) {
-					callback(helpers.createHttpLevelStatusObj(xmlHttp.status, xmlHttp.statusText), xmlHttp.responseText);
-				}
-			}
-		}
-		xmlHttp.open("GET", url, true);
-		if (headersKvp != null) {
-			for (var key in headersKvp) {
-				xmlHttp.setRequestHeader(key, headersKvp[key]);
-			}
-		}
-		xmlHttp.send(null);
-	};
+				// on every content chunk, push it to the data array
+				response.on('data', (d) => {
 
-	http.getJson = function(url, callback)
-	{
-		var xmlHttp = new XMLHttpRequest();
-		if (callback != null)
-		{
-			xmlHttp.onreadystatechange = function() {
-				if (xmlHttp.readyState == XMLHttpRequest.DONE) {
-					callback(helpers.createHttpLevelStatusObj(xmlHttp.status, xmlHttp.statusText), helpers.jsonStrToObj(xmlHttp.responseText));
-				}
-			}
-		}
-		xmlHttp.open("GET", url, true);
-		xmlHttp.send(null);
-	};
+					// check if data is null
+					if (d == null) {
+						reject(new Error("Failed on api response. Response is null"));
+						return; // execution ends, return it now
+					}
 
-	http.getJsonh = function(url, headersKvp, callback)
-	{
-		var xmlHttp = new XMLHttpRequest();
-		if (callback != null)
-		{
-			xmlHttp.onreadystatechange = function() {
-				if (xmlHttp.readyState == XMLHttpRequest.DONE) {
-					callback(helpers.createHttpLevelStatusObj(xmlHttp.status, xmlHttp.statusText), helpers.jsonStrToObj(xmlHttp.responseText));
-				}
-			}
-		}
-		xmlHttp.open("GET", url, true);
-		if (headersKvp != null) {
-			for (var key in headersKvp) {
-				xmlHttp.setRequestHeader(key, headersKvp[key]);
-			}
-		}
-		xmlHttp.send(null);
-	};
+					// parse into json, and validate for error-free
+					let json = null;
+					try {
+						// parse data resposne to json
+						json = JSON.parse(d);
+					}
+					catch(e) {
+						reject(new Error("Failed on parsing JSON response message. Error: " + e.message));
+						return; // execution ends, return it now
+					}
 
-	http.post = function(url, postDataKvp, callback)
-	{
-		var xmlHttp = new XMLHttpRequest();
-		if (callback != null) {
-			xmlHttp.onreadystatechange = function() {
-				if (xmlHttp.readyState == XMLHttpRequest.DONE) {
-					callback(helpers.createHttpLevelStatusObj(xmlHttp.status, xmlHttp.statusText), xmlHttp.responseText);
-				}
-			}
-		}
-		xmlHttp.open("POST", url, true);
-		xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-		var encodedDataParams = "";
-		if (postDataKvp != null) {
-			var keys = Object.keys(postDataKvp);
-			var count = keys.length;
-
-			for (var i=0; i<count; i++)
-			{
-				encodedDataParams += encodeURIComponent(keys[i]) + "=" + encodeURIComponent(postDataKvp[keys[i]]);
-
-				if (i < count)
-					encodedDataParams += "&";
-			}
-		}
-
-		xmlHttp.send(encodedDataParams);
+					// check api level error
+					let errorCode = parseInt(json.error_code);
+					if (errorCode == 0) {
+						// all ok
+						resolve(json);
+					}
+					else {
+						// reject with error code as error
+						reject(new Error("Failed on response message. Error code: " + errorCode + " with " + json.message));
+					}
+				});
+			});
+			request.on('error', (e) => reject(e));
+		});
 	}
 
-	http.postJson = function(url, postDataKvp, callback)
+	/**
+	 * Make a POST request
+	 * @param {string} urlPath url target to send request to
+	 * @return {object}     Promise object
+	 */
+	http.postJsonAsync = function(url, postDataKvp) 
 	{
-		var xmlHttp = new XMLHttpRequest();
-		if (callback != null) {
-			xmlHttp.onreadystatechange = function() {
-				if (xmlHttp.readyState == XMLHttpRequest.DONE) {
-					callback(helpers.createHttpLevelStatusObj(xmlHttp.status, xmlHttp.statusText), helpers.jsonStrToObj(xmlHttp.responseText));
+		return new Playbasis.Promise( (resolve, reject) => {
+			// load proper library
+			// load from reference if it's already loaded
+			var lib = null;
+			var isHttps = true;
+			if (url.startsWith('https')) {
+				lib = require('https');
+				isHttps = true;
+			}
+			else {
+				lib = require('http');
+				isHttps = false;
+			}
+
+			// form query string of post data
+			var encodedDataParams = "";
+			if (postDataKvp != null) {
+				var keys = Object.keys(postDataKvp);
+				var count = keys.length;
+
+				for (var i=0; i<count; i++)
+				{
+					encodedDataParams += encodeURIComponent(keys[i]) + "=" + encodeURIComponent(postDataKvp[keys[i]]);
+
+					if (i < count-1)
+						encodedDataParams += "&";
 				}
 			}
-		}
-		xmlHttp.open("POST", url, true);
-		xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-		var encodedDataParams = "";
-		if (postDataKvp != null) {
-			var keys = Object.keys(postDataKvp);
-			var count = keys.length;
+			// cut out prefixed protocal
+			var noPrefixUrl = isHttps ? url.substring(8) : url.substring(7);
+			// get base url, and the less
+			const firstSlashPos = noPrefixUrl.indexOf("/");
+			const baseUrl = noPrefixUrl.substring(0, firstSlashPos);
+			const pathUrl = "/" + noPrefixUrl.substring(firstSlashPos+1);
 
-			for (var i=0; i<count; i++)
-			{
-				encodedDataParams += encodeURIComponent(keys[i]) + "=" + encodeURIComponent(postDataKvp[keys[i]]);
+			// form options for reqeust
+			// we also need to calculate byte-lenth of post data to send too
+			var postOptions = {
+				hostname: baseUrl,	// cut out protocal string, and get only host name string
+				path: pathUrl,
+				port: isHttps ? 443 : 80,
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+					'Content-Length': Buffer.byteLength(encodedDataParams)
+				}
+			};
 
-				if (i < count-1)
-					encodedDataParams += "&";
-			}
-		}
+			// make a POST request
+			const request = lib.request(postOptions, (response) => {
+				// handle http errors
+				if (response.statusCode != 200) {
+					reject(new Error("Failed to load page, status code: " + response.statusCode));
+					return;	// execution ends, return it now
+				}
 
-		xmlHttp.send(encodedDataParams);
+				response.setEncoding('utf8');
+
+				// on every content chunk, push it to the data array
+				response.on('data', (d) => {
+
+					// check if data is null
+					if (d == null) {
+						reject(new Error("Failed on api response. Response is null"));
+						return; // execution ends, return it now
+					}
+
+					// parse into json, and validate for error-free
+					let json = null;
+					try {
+						// parse data resposne to json
+						json = JSON.parse(d);
+					}
+					catch(e) {
+						reject(new Error("Failed on parsing JSON response message. Error: " + e.message));
+						return; // execution ends, return it now
+					}
+
+					// check api level error
+					let errorCode = parseInt(json.error_code);
+					if (errorCode == 0) {
+						// all ok
+						resolve(json);
+					}
+					else {
+						// reject with error code as error
+						reject(new Error("Failed on response message. Error code: " + errorCode + " with " + json.message));
+					}
+				});
+			});
+			request.on('error', (e) => reject(e));
+
+			// write post data
+			request.write(encodedDataParams);
+			request.end();
+		});
 	}
 }

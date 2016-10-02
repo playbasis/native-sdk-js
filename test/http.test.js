@@ -3,76 +3,70 @@ describe("http/http.js tests", function() {
 
 	var http;
 	var mock;
+	var spy;	// global spy used to probe whether callback function is called; for success callback
 
 	beforeAll(function(done) {
 		http = window.Playbasis.http;
 		mock = window.mock;
+		spy = {
+			probe: function() {
+				// do nothing
+			}
+		};
+
+		spyOn(spy, "probe");
 		done();
 	});
 
-	describe("http.get test", function() {
+	describe("http.getJsonAsync test", function() {
+
 		beforeAll(function(done) {
 			done();
 		});
 
-		it("should get status of 200, and returned text not null", function(done) {
-			http.get("https://api.pbapp.net/Player/jontestuser?api_key=" + mock.env.apiKey,
-				function(status, text) {
-					expect(status.code).toEqual(200);
-					expect(text).not.toBe(null);
+		it("success callback should be called", function(done) {
+			http.getJsonAsync("https://api.pbapp.net/Player/jontestuser?api_key=" + mock.env.apiKey)
+				.then((result) => { 
+					spy.probe(result);
+					expect(spy.probe).toHaveBeenCalled();
 					done();
-				}
-			);
+
+					spy.probe.calls.reset();
+				}, (e) => { console.log("error caught: " + e.message); });
 		});
 	});
 
-	describe("http.getJson test", function() {
+	describe("http.postJsonAsync test", function() {
 		beforeAll(function(done) {
 			done();
 		});
 
-		it("should get status of 200, and returned json object not be bull", function(done) {
-			http.getJson("https://api.pbapp.net/Player/jontestuser?api_key=" + mock.env.apiKey,
-				function(status, jsonObj) {
-					expect(status.code).toEqual(200);
-					expect(jsonObj.success).toEqual(true);
-					expect(jsonObj.response.player.username).toEqual("jontestuser");
+		it("should have called success callback", function(done) {
+			http.postJsonAsync("https://api.pbapp.net/Auth?api_key=" + mock.env.apiKey, { api_key : mock.env.apiKey, api_secret : mock.env.apiSecret })
+				.then((result) => {
+					spy.probe(result);
+					expect(spy.probe).toHaveBeenCalled();
 					done();
-				}
-			);
+					spy.probe.calls.reset();
+				}, (e) => { console.log("error caught: " + e.message); });
 		});
 	});
 
-	describe("http.post test", function() {
+	describe("http.postJsonAsync Promise Chain test", function() {
 		beforeAll(function(done) {
 			done();
 		});
 
-		it("should get status of 200, returned non-null json result string, be able to parse json string with proper token result", function(done) {
-			http.post("https://api.pbapp.net/Auth?api_key=" + mock.env.apiKey, { api_key : mock.env.apiKey, api_secret : mock.env.apiSecret }, function(status, result) {
-				expect(status.code).toEqual(200);
-				expect(result).not.toBe(null);
-
-				var obj = JSON.parse(result);
-				expect(obj).not.toBe(null);
-				expect(obj.response.token).not.toBe(null);
+		it("should have called success callback, intercepted access token, then reached final flow", function(done) {
+			var chain = http.postJsonAsync("https://api.pbapp.net/Auth?api_key=" + mock.env.apiKey, { api_key : mock.env.apiKey, api_secret : mock.env.apiSecret })
+				.then((result) => {
+					spy.probe(result);
+					expect(spy.probe).toHaveBeenCalled();
+				}, (e) => { console.log("error caught: " + e.message); });
+			chain.then((result) => {
 				done();
-			})
-		});
-	});
-
-	describe("http.postJson test", function() {
-		beforeAll(function(done) {
-			done();
-		});
-
-		it("should get status of 200, and returned non-null json result object", function(done) {
-			http.postJson("https://api.pbapp.net/Auth?api_key=" + mock.env.apiKey, { api_key : mock.env.apiKey, api_secret : mock.env.apiSecret }, function(status, result) {
-				expect(status.code).toEqual(200);
-				expect(result).not.toBe(null);
-				expect(result.response.token).not.toBe(null);
-				done();
-			})
+				spy.probe.calls.reset();
+			});
 		});
 	});
 
