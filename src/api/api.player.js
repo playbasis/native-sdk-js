@@ -329,4 +329,64 @@ module.exports = function(Playbasis) {
 	{
 		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "questAll", playerId));
 	}
+
+	/**
+	 * Return quest reward history of player.
+	 * @param  {string} playerId player id
+	 * @param  {object} options  (optional) options as object. It can include { offset: #number, limit: #number }
+	 * @return {object}          promise object
+	 * @memberOf Playbasis.playerApi
+	 */
+	_api.questRewardHistory = function(playerId, options)
+	{
+		// set default values for options
+		var offset = 0;
+		var limit = 50;
+
+		if (options != null) {
+			if (options.offset != null) {
+				offset = options.offset;
+			}
+
+			if (options.limit != null) {
+				limit = options.limit;
+			}
+		}
+
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "quest_reward_history") + "&" + helpers.joinIfNotNullAsUrlParam("offset", offset, "limit", limit));
+	}
+
+	/**
+	 * Deduct a reward from player
+	 * @param  {string} playerId player id
+	 * @param  {string} reward   reward name to deduct from player
+	 * @param  {number} amount   amount of reward to deduct
+	 * @param  {object} options  (optional) options as object. It can include { force: 0 = not force if player has not enough reward to deduct | 1 = force to do the deduct (and player's reward becomes zero) }. 
+	 * @return {object}          promise object
+	 * @memberOf Playbasis.playerApi
+	 */
+	_api.deductReward = function(playerId, reward, amount, options)
+	{
+		// set default values of options
+		var force = 0;
+
+		if (options != null) {
+			if (options.force != null) {
+				force = options.force;
+			}
+		}
+
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "deduct"), { token: Playbasis.env.global.token, reward: reward, amount: amount, force: force});
+	}
+
+	/**
+	 * Return generated referral code of player.
+	 * @param  {string} playerId player id
+	 * @return {object}          promise object
+	 * @memberOf Playbasis.playerApi
+	 */
+	_api.playerReferralCode = function(playerId)
+	{
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "code"));
+	}
 }

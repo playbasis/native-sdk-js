@@ -578,4 +578,54 @@ describe("Player Api Tests", function() {
 				}, (e) => { console.log(e.message); });
 		});
 	});
+
+	describe("Quest Reward History test", function() {
+
+		var playerId = window.mock.env.playerId;
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success", function(done) {
+			api.questRewardHistory(playerId, {offset: 0, limit: 5})
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
+	describe("Deduct Reward test", function() {
+
+		var playerId = window.mock.env.playerId;
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success on deduct with amount 0, its 'old_value' and 'new_value' should equal, and 'value_deducted' is 0", function(done) {
+			api.deductReward(playerId, "point", 0)
+				.then((result) => {
+					expect(result.response.old_value).toEqual(result.response.new_value);
+					expect(result.response.value_deducted).toEqual(0);
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
+	describe("Player Referral Code test", function() {
+
+		var playerId = window.mock.env.playerId;
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success", function(done) {
+			api.playerReferralCode(playerId)
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
 });
