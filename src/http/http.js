@@ -96,10 +96,20 @@ module.exports = function(Playbasis) {
 
 				for (var i=0; i<count; i++)
 				{
-					encodedDataParams += encodeURIComponent(keys[i]) + "=" + encodeURIComponent(postDataKvp[keys[i]]);
+					// get key and value
+					var key = keys[i];
+					var value = postDataKvp[keys[i]];
 
-					if (i < count-1)
-						encodedDataParams += "&";
+					// if both are not null then we add them into result string
+					if (key != null && value != null) {
+
+						// prefix "&" as it needs to check first if the current element has value or not
+						if (i != 0) {
+							encodedDataParams += "&";
+						}
+
+						encodedDataParams += encodeURIComponent(key) + "=" + encodeURIComponent(value);
+					}
 				}
 			}
 

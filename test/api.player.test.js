@@ -1,4 +1,4 @@
-describe("Player Api Tests", function() {
+describe("Player API Tests", function() {
 
 	var api;
 	var mock;

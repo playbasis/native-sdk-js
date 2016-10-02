@@ -1,4 +1,4 @@
-describe("Auth Api Tests", function() {
+describe("Auth API Tests", function() {
 
 	var api;
 
