@@ -59,4 +59,74 @@ describe("Goods API Tests", function() {
 				}, (e) => {console.log(e.message); });
 		});
 	});
+
+	describe("Goods Group Available test", function() {
+
+		var playerId = window.mock.env.playerId;
+		var goodsGroupId = "57f26e4cb350cf9f4b8b9a72";	// actually it's 'goods_id'
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success", function(done) {
+			api.goodsGroupAvailable(playerId, goodsGroupId)
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
+	describe("Sponsored Goods List Info test", function() {
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success", function(done) {
+			api.sponsoredGoodsListInfo()
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});	
+
+	describe("Sponsored Goods Info test", function() {
+
+		var goodsId = "57f26e4cb350cf9f4b8b9a72";	// actually it's 'goods_id'
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success", function(done) {
+			api.sponsoredGoodsInfo(goodsId)
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
+	describe("Sponsored Goods Group Available test", function() {
+
+		var playerId = window.mock.env.playerId;
+		var goodsId = "57f26e4cb350cf9f4b8b9a72";	// actually it's 'goods_id'
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success", function(done) {
+			api.sponsoredGoodsGroupAvailable(playerId, goodsId)
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
+	/**
+	 * TODO: Add test cases for
+	 * - Coupon code verification
+	 * - Coupon code verification with redeem
+	 */
 });
