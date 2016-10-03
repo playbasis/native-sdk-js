@@ -4,14 +4,6 @@ module.exports = function(Playbasis) {
 
 	Playbasis.const = {};
 
-	Playbasis.const.statusType = {
-		// http error
-		Http : 0,
-
-		// error according to Playbasis api
-		PlaybasisApi : 1
-	}
-
 	Playbasis.const.status = {
 		/** Invalid token key */
 	    InvalidToken : 900,
@@ -126,11 +118,5 @@ module.exports = function(Playbasis) {
 	    
 	    /** Question has already been completed by player */
 	    QuizQuestionAlreadyCompleted : 1004,
-	    
-	    /** Unknown */
-	    Unknown : 9999,
-
-	    /** Ok */
-	    Ok : 0
 	}
 };

@@ -16,6 +16,8 @@ module.exports = function(Playbasis) {
 	 * Make a GET request
 	 * @param  {string} url target url to send request to
 	 * @return {object}     Promise object
+	 * @method  getJsonAsync
+	 * @memberOf Playbasis.http
 	 */
 	http.getJsonAsync = function(url) 
 	{
@@ -71,6 +73,8 @@ module.exports = function(Playbasis) {
 	 * Make a POST request
 	 * @param {string} urlPath url target to send request to
 	 * @return {object}     Promise object
+	 * @method  postJsonAsync
+	 * @memberOf Playbasis.http
 	 */
 	http.postJsonAsync = function(url, postDataKvp) 
 	{

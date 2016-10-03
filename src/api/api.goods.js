@@ -19,7 +19,9 @@ module.exports = function(Playbasis) {
 	/**
 	 * Returns information about all available goods for the current site.
 	 * @param  {Object} options (optional) options as object. It can include { player_id: #string, tags: #string = delimit by comma }.
-	 * @return {Object}         promise object
+	 * @return {Object}         Promise object
+	 * @method  goodsListInfo
+	 * @memberOf Playbasis.goodsApi
 	 */
 	api.goodsListInfo = function(options)
 	{
@@ -33,7 +35,9 @@ module.exports = function(Playbasis) {
 	 * Returns information about the goods with the specified id.
 	 * @param  {String} goodsId goods id
 	 * @param  {Object} options (optional) options as object. It can include { player_id: #string }
-	 * @return {Object}         promise object
+	 * @return {Object}         Promise object
+	 * @method  goodsInfo
+	 * @memberOf Playbasis.goodsApi
 	 */
 	api.goodsInfo = function(goodsId, options)
 	{

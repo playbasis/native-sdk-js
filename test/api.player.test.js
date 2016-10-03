@@ -197,6 +197,22 @@ describe("Player API Tests", function() {
 		});
 	});
 
+	describe("Reset Player Password test", function() {
+		var playerId = window.mock.env.playerId;
+		var existingEmail = "test-original-copy@gmail.com";
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success", function(done) {
+			api.resetPlayerPassword(existingEmail)
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
 	describe("Verify player email test", function() {
 		beforeAll(function(done) {
 			done();

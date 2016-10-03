@@ -14,6 +14,7 @@ module.exports = function(Playbasis) {
 	 * It will iterate for all keys of its object, and process each pair of KVP making into final querystring.
 	 * @param  {object} paramKvp options object
 	 * @return {string}          query string
+	 * @method  joinParams
 	 * @memberOf Playbasis.helpers
 	 */
 	helpers.joinParams = function(paramKvp)
@@ -40,6 +41,7 @@ module.exports = function(Playbasis) {
 	 * Join variable url param together as query string.
 	 * @param {...param} param url param as part of url
 	 * @return {string} query string
+	 * @method joinIfNotNullAsUrlParam
 	 * @memberOf Playbasis.helpers
 	 */
 	helpers.joinIfNotNullAsUrlParam = function(param)
@@ -74,6 +76,7 @@ module.exports = function(Playbasis) {
 	 * Join variable url param together as query string, then prefix it with "&" if there's at least one non-null key-value pair.
 	 * @param {...param} param url param as part of url
 	 * @return {string} query string
+	 * @method appendAndJoinIfNotNullAsUrlParam
 	 * @memberOf Playbasis.helpers
 	 */
 	helpers.appendAndJoinIfNotNullAsUrlParam = function(param)
@@ -105,6 +108,7 @@ module.exports = function(Playbasis) {
 	 * @param {Array} defaultValues Array containing all default values string
 	 * @param {Object} inputObj Input optional object parameter, inside there're key-value pairs according to key and values of final query string
 	 * @return {String} query string
+	 * @method  appendAndJoinIfNotNullAsUrlParam2
 	 * @memberOf Playbasis.helpers
 	 */
 	helpers.appendAndJoinIfNotNullAsUrlParam2 = function(keys, defaultValues, inputObj)
@@ -133,19 +137,23 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Create object with keys and values from specified object.
+	 * If 'keysLimit' is specified then it will only copy for those matching keys only, and ignore the less.
 	 * It will ignore and skip key-value pair whose either key or value is null.
 	 * It specified object is null, then it will create an empty object.
 	 * @param  {Object} obj target object to get keys and values from in order to create a new object
+	 * @param {Array} keysLimit (optional) keys as array to limit the copying process from target object
 	 * @return {Object}     new object created with non-null keys and values from specified object
+	 * @method  createObjectFromTarget
 	 * @memberOf Playbasis.helpers
 	 */
-	helpers.createObjectFromTarget = function(obj)
+	helpers.createObjectFromTarget = function(obj, keysLimit)
 	{
+		var retObj = {};
+
 		// if specified object is null then return empty object
 		if (obj == null)
-			return {};
+			return retObj;
 
-		var retObj = {};
 		var keys = Object.keys(obj);
 
 		for (var i=0; i<keys.length; i++) {
@@ -154,7 +162,16 @@ module.exports = function(Playbasis) {
 
 			// if key and value is not null then add it into new object
 			if (key != null && value != null) {
-				retObj[key] = value;
+				// check if key is within our want
+				if (keysLimit != null) {
+					if (keysLimit.indexOf(key) != -1) {
+						retObj[key] = value;
+					}
+				}
+				// if 'keys' is not present, then proceed copying
+				else {
+					retObj[key] = value;
+				}
 			}
 		}
 
@@ -168,6 +185,8 @@ module.exports = function(Playbasis) {
 	 * @param  {Object} objA object A to combine
 	 * @param  {Object} objB object B to combine
 	 * @return {Object}      Combined object A and B but skipped key-value pair whose either key or value is null
+	 * @method  combinedObjects
+	 * @memberOf Playbasis.helpers
 	 */
 	helpers.combineObjects = function(objA, objB)
 	{
@@ -209,6 +228,8 @@ module.exports = function(Playbasis) {
 	 * @param  {string} method method url for target API
 	 * @param {...param} param url param as part of url
 	 * @return {string}        url ready to be used to make a qurey for Playbasis's API modules
+	 * @method  createApiUrl
+	 * @memberOf Playbasis.helpers
 	 */
 	helpers.createApiUrl = function(method, param)
 	{

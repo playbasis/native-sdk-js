@@ -19,6 +19,7 @@ module.exports = function(Playbasis) {
 	/**
 	 * Authenticate the application to get token
 	 * @return {object}            Promise object
+	 * @method auth
 	 * @memberOf Playbasis.authApi
 	 */
 	_api.auth = function() 
@@ -37,6 +38,7 @@ module.exports = function(Playbasis) {
 	/**
 	 * Renew token
 	 * @return {object}            Promise object
+	 * @method renew
 	 * @memberOf Playbasis.authApi
 	 */
 	_api.renew = function()

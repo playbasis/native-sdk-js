@@ -38,7 +38,10 @@ describe("Helpers tests", function() {
 		expect(helpers.createObjectFromTarget(options)).toEqual({newKey: "key1"});
 
 		var options2 = {newKey: "key1", newKey2: null};
-		expect(helpers.createObjectFromTarget(options)).toEqual({newKey: "key1"});
+		expect(helpers.createObjectFromTarget(options2)).toEqual({newKey: "key1"});
+
+		var options3 = {newKey: "key1", newKey2: "key2", newKey3: "key3"};
+		expect(helpers.createObjectFromTarget(options3, ["newKey2"])).toEqual({newKey2: "key2"});
 	});
 
 	it("should create a proper combined object", function() {
