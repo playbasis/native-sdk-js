@@ -162,10 +162,16 @@ module.exports = function(Playbasis) {
 	 */
 	_api.pointHistory = function(playerId, options)
 	{
-		// will get empty stirng if options is null
-		var paramsString = helpers.joinParams(options);
+		// set default values
+		var pointName = null;
+		var offset = 0;
+		var limit = 20;
+		var order = "desc";
 
-		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "point_history") + "&" + paramsString);
+		var keys = ["point_name", "offset", "limit", "order"];
+		var dvalues = [null, 0, 20, "desc"];
+
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "point_history") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
 	};
 
 	_api.actionTime = function(playerId, actionName)
@@ -207,30 +213,19 @@ module.exports = function(Playbasis) {
 	/* Return the list of players sorted by the specified point type. */
 	/**
 	 * Return the list of players sorted by the specified point type.
-	 * @param  {string} rankBy  point-based name to rank by ("exp" | "point", etc)
-	 * @param  {object} options (optional) options as object { limit: #number, mode: "all-time" | "weekly" | "monthly" }.
-	 * @return {object}         Promise object
+	 * @param  {String} rankBy  point-based name to rank by ("exp" | "point", etc)
+	 * @param  {Number} limit amount of items to return
+	 * @param  {Object} options (optional) options as object { mode: "all-time" | "weekly" | "monthly" }.
+	 * @return {Object}         Promise object
 	 * @method  rank
 	 * @memberof Playbasis.playerApi
 	 */
-	_api.rank = function(rankBy, options) {
+	_api.rank = function(rankBy, limit, options) 
+	{
+		var keys = ["mode"];
+		var dvalues = ["all-time"];
 
-		var limit = 20;
-		var mode = "all-time";
-
-		if (options != null) {
-			if (options.limit != null)
-				limit = options.limit;
-
-			if (options.mode != null && 
-				(options.mode == "weekly" ||
-				 options.mode == "monthly" ||
-				 options.mode == "all-time")
-				)
-				mode = options.mode;
-		}
-
-		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "rank", rankBy, limit) + "&mode=" + mode);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "rank", rankBy, limit) + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
 	};
 
 	/**
@@ -242,17 +237,10 @@ module.exports = function(Playbasis) {
 	 */	
 	_api.ranks = function(limit, options)
 	{
-		// default is all-time
-		var mode = "all-time";
+		var keys = ["mode"];
+		var dvalues = ["all-tiome"];
 
-		// check if need to apply options
-		if (options != null) {
-			if (options.mode != null) {
-				mode = options.mode;
-			}
-		}
-
-		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "ranks", limit) + "&mode=" + mode);
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "ranks", limit) + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
 	};
 
 	/**
@@ -264,26 +252,10 @@ module.exports = function(Playbasis) {
 	 */
 	_api.goods = function(playerId, options)
 	{
-		// defaults options
-		var tags = null;
-		var status = "active";
+		var keys = ["tags", "status"];
+		var dvalues = [null, "active"];
 
-		// check if need to apply options to request
-		if (options != null) {
-			if (options.tags != null) {
-				tags = options.tags;
-			}
-
-			if (options.status != null &&
-				(options.status == "active" ||
-				 options.status == "expired" ||
-				 options.status == "used" ||
-				 options.status == "all")) {
-				status = options.status;
-			}
-		}
-
-		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "goods") + "&" + helpers.joinIfNotNullAsUrlParam("tags", tags, "status", status));
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "goods") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
 	};
 
 	/**
@@ -300,23 +272,17 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Return list of quests that player has joined.
-	 * @param  {string}   playerId player id
-	 * @param  {object}   options  (optional) options as object. It can include { tags: #string }.
+	 * @param  {String}   playerId player id
+	 * @param  {Object}   options  (optional) options as object. It can include { tags: #string }.
 	 * @method questListOfPlayer
 	 * @memberof Playbasis.playerApi
 	 */
 	_api.questListOfPlayer = function(playerId, options)
 	{
-		// default value for options
-		var tags = null;
+		var keys = ["player_id", "tags"];
+		var dvalues = [playerId, null];
 
-		if (options != null) {
-			if (options.tags != null) {
-				tags = options.tags;
-			}
-		}
-
-		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "quest") + "&" + helpers.joinIfNotNullAsUrlParam("player_id", playerId, "tags", tags));
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "quest") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
 	}
 
 	/**
@@ -339,21 +305,10 @@ module.exports = function(Playbasis) {
 	 */
 	_api.questRewardHistory = function(playerId, options)
 	{
-		// set default values for options
-		var offset = 0;
-		var limit = 50;
+		var keys = ["offset", "limit"];
+		var dvalues = [0, 50];
 
-		if (options != null) {
-			if (options.offset != null) {
-				offset = options.offset;
-			}
-
-			if (options.limit != null) {
-				limit = options.limit;
-			}
-		}
-
-		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "quest_reward_history") + "&" + helpers.joinIfNotNullAsUrlParam("offset", offset, "limit", limit));
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "quest_reward_history") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
 	}
 
 	/**
@@ -367,16 +322,11 @@ module.exports = function(Playbasis) {
 	 */
 	_api.deductReward = function(playerId, reward, amount, options)
 	{
-		// set default values of options
-		var force = 0;
+		var postObj = { token: Playbasis.env.global.token, reward: reward, amount: amount };
+		var optionObj = helpers.createObjectFromTarget(options);
+		var combinedObj = helpers.combineObjects(postObj, optionObj);
 
-		if (options != null) {
-			if (options.force != null) {
-				force = options.force;
-			}
-		}
-
-		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "deduct"), { token: Playbasis.env.global.token, reward: reward, amount: amount, force: force});
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "deduct"), combinedObj);
 	}
 
 	/**

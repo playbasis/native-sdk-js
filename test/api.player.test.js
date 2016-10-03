@@ -470,7 +470,7 @@ describe("Player API Tests", function() {
 		});
 
 		it("should return success, and has 2 elements", function(done) {
-			api.rank("point", {limit : 2, mode : "all-time"})
+			api.rank("point", 2, {mode : "all-time"})
 				.then((result) => {
 					expect(result.response.length).toEqual(2);
 					expect(result.response[0].point).not.toBe(null);

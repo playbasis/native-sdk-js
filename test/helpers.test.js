@@ -32,4 +32,18 @@ describe("Helpers tests", function() {
 		expect(helpers.joinIfNotNullAsUrlParam("key1", "value1", null, "value2", "key3", "value3")).toEqual("key1=value1&key3=value3");
 		expect(helpers.joinIfNotNullAsUrlParam("key1", "value1", "key2", null, null, "value3", "key4", "value4", "key5", null, "key6", "value6")).toEqual("key1=value1&key4=value4&key6=value6");
 	});
+
+	it("should create a proper new object", function() {
+		var options = {newKey: "key1"};
+		expect(helpers.createObjectFromTarget(options)).toEqual({newKey: "key1"});
+
+		var options2 = {newKey: "key1", newKey2: null};
+		expect(helpers.createObjectFromTarget(options)).toEqual({newKey: "key1"});
+	});
+
+	it("should create a proper combined object", function() {
+		var objA = {token: "test"};
+		var objB = {newKey: "key"};
+		expect(helpers.combineObjects(objA, objB)).toEqual({token: "test", newKey: "key"});
+	});
 });
