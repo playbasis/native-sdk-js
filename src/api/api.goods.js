@@ -101,8 +101,6 @@ module.exports = function(Playbasis) {
 		var keys = ["player_id", "group", "amount"];
 		var dvalues = [playerId, group, null];
 
-		console.log(helpers.createApiUrl(apiMethod, "couponVerify") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
-
 		return http.getJsonAsync(helpers.createApiUrl("Redeem", "sponsorGroup") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
 	}
 
