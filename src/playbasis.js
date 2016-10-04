@@ -23,5 +23,6 @@ require('./api/api.merchant.js')(Playbasis);
 require('./api/api.engine.js')(Playbasis);
 require('./api/api.quest.js')(Playbasis);
 require('./api/api.redeem.js')(Playbasis);
+require('./api/api.communication.js')(Playbasis);
 
 window.Playbasis = module.exports = Playbasis;
