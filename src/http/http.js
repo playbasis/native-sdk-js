@@ -29,7 +29,12 @@ module.exports = function(Playbasis) {
 			const request = lib.get(url, (response) => {
 				// handle http errors
 				if (response.statusCode != 200) {
-					reject(new Error("Failed to load page, status code: " + response.statusCode));
+					// create error object
+					var error = new Error("Failed to load page, status code: " + response.statusCode)
+					// piggy back error code
+					error.code = response.statusCode;
+					error.isApiLevel = false;
+					reject(error);
 					return;	// execution ends, return it now
 				}
 
@@ -61,7 +66,11 @@ module.exports = function(Playbasis) {
 					}
 					else {
 						// reject with error code as error
-						reject(new Error("Failed on response message. Error code: " + errorCode + " with " + json.message));
+						var error = new Error("Failed on response message. Error code: " + errorCode + " with " + json.message);
+						// piggy back error code
+						error.code = errorCode;
+						error.isApiLevel = true;
+						reject(error);
 					}
 				});
 			});
@@ -141,7 +150,12 @@ module.exports = function(Playbasis) {
 			const request = lib.request(postOptions, (response) => {
 				// handle http errors
 				if (response.statusCode != 200) {
-					reject(new Error("Failed to load page, status code: " + response.statusCode));
+					// create error object
+					var error = new Error("Failed to load page, status code: " + response.statusCode)
+					// piggy back error code
+					error.code = response.statusCode;
+					error.isApiLevel = false;
+					reject(error);
 					return;	// execution ends, return it now
 				}
 
@@ -175,7 +189,11 @@ module.exports = function(Playbasis) {
 					}
 					else {
 						// reject with error code as error
-						reject(new Error("Failed on response message. Error code: " + errorCode + " with " + json.message));
+						var error = new Error("Failed on response message. Error code: " + errorCode + " with " + json.message);
+						// piggy back error code
+						error.code = errorCode;
+						error.isApiLevel = true;
+						reject(error);
 					}
 				});
 			});

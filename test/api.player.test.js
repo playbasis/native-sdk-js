@@ -528,7 +528,24 @@ describe("Player API Tests", function() {
 		var playerId = window.mock.env.playerId;
 
 		beforeAll(function(done) {
-			done();
+			// join quest (if not yet)
+			Playbasis.questApi.joinQuest(questId, playerId)
+				.then((result) => {
+					done();
+				}, (e) => { 
+					// if quest is already joined
+					if (e.code == 701) {
+						done();
+					}
+				});
+		});
+
+		afterAll(function(done) {
+			// unjoin quest
+			Playbasis.questApi.cancelQuest(questId, playerId)
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
 		});
 
 		it("should return success, and positive in validating some of its fields", function(done) {
@@ -543,6 +560,7 @@ describe("Player API Tests", function() {
 
 	describe("Quest List of Player test", function() {
 
+		var questId = "57ee78dbb350cf03048c1ea9";	// target testing against questId
 		var playerId = window.mock.env.playerId;
 
 		beforeAll(function(done) {
@@ -557,7 +575,25 @@ describe("Player API Tests", function() {
 					};
 				}
 			});
-			done();
+
+			// join quest (if not yet)
+			Playbasis.questApi.joinQuest(questId, playerId)
+				.then((result) => {
+					done();
+				}, (e) => { 
+					// if quest is already joined
+					if (e.code == 701) {
+						done();
+					}
+				});
+		});
+
+		afterAll(function(done) {
+			// unjoin quest
+			Playbasis.questApi.cancelQuest(questId, playerId)
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
 		});
 
 		it("should return success, and got null at result", function(done) {
@@ -573,7 +609,7 @@ describe("Player API Tests", function() {
 				.then((result) => {
 					expect(result.response.quests.length).toBeMoreThanZero();
 					expect(result.response.quests[0].quest_name).toEqual("Test Quest 1");
-					expect(result.response.quests[0].quest_id).toEqual("57ee78dbb350cf03048c1ea9");
+					expect(result.response.quests[0].quest_id).toEqual(questId);
 					done();
 				}, (e) => { console.log(e.message); });
 		});
