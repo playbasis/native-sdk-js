@@ -14,7 +14,7 @@ module.exports = function(Playbasis) {
 	var apiMethod = "Player";
 
 	// global Object
-	var _api = Playbasis.playerApi = {}
+	var _api = Playbasis.playerApi = {};
 
 	/**
 	 * Get public information about player.

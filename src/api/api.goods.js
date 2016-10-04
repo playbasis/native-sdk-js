@@ -14,7 +14,7 @@ module.exports = function(Playbasis) {
 	var apiMethod = "Goods";
 
 	// global object
-	var api = Playbasis.goodsApi = {}
+	var api = Playbasis.goodsApi = {};
 
 	/**
 	 * Returns information about all available goods for the current site.

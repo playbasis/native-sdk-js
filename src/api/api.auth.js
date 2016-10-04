@@ -14,7 +14,7 @@ module.exports = function(Playbasis) {
 	var apiMethod = "Auth";
 
 	// global object
-	var _api = Playbasis.authApi = {}
+	var _api = Playbasis.authApi = {};
 
 	/**
 	 * Authenticate the application to get token

@@ -11,7 +11,7 @@ module.exports = function(Playbasis) {
 	var helpers = Playbasis.helpers;
 
 	// global object
-	var api = Playbasis.badgeApi = {}
+	var api = Playbasis.badgeApi = {};
 
 	/**
 	 * Returns information about all available badges from the current site.
