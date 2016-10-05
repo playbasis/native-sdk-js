@@ -26,5 +26,6 @@ require('./api/api.redeem.js')(Playbasis);
 require('./api/api.communication.js')(Playbasis);
 require('./api/api.livefeed.js')(Playbasis);
 require('./api/api.service.js')(Playbasis);
+require('./api/api.storeOrganize.js')(Playbasis);
 
 window.Playbasis = module.exports = Playbasis;

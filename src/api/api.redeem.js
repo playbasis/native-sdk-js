@@ -36,10 +36,10 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Redeem Goods from given group.
-	 * @param  {[type]} playerId [description]
-	 * @param  {[type]} group    [description]
-	 * @param  {[type]} options  [description]
-	 * @return {[type]}          [description]
+	 * @param  {String} playerId player id
+	 * @param  {String} group    goods group
+	 * @param  {Object} options  (optional) options as object. It can include { amount: #number = amount of goods to give to player }
+	 * @return {Object}          Promise object
 	 * @method  redeemGoodsGroup
 	 * @memberOf Playbasis.redeemApi
 	 */

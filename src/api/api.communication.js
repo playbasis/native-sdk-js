@@ -102,7 +102,7 @@ module.exports = function(Playbasis) {
 	 * @param  {String} playerId   player id
 	 * @param  {String} message    message. Either 'message' or 'templateId' is required.
 	 * @param  {String} templateId message template id. Either 'message' or 'templateId' is required.
-	 * @return {[type]}            [description]
+	 * @return {Object}            Promise object
 	 */
 	api.sendSMS = function(playerId, message, templateId)
 	{
@@ -115,9 +115,9 @@ module.exports = function(Playbasis) {
 	 * Send coupon to player via SMS.
 	 * @param  {String} playerId   player id
 	 * @param  {String} refId      reference transaction id for redemption
-	 * @param  {String} message    SMS message
-	 * @param  {String} templateId [description]
-	 * @return {[type]}            [description]
+	 * @param  {String} message    SMS message. Either 'message' or 'templateId' is required.
+	 * @param  {String} templateId template id. Either 'message' or 'templateId' is required.
+	 * @return {Object}            Promise object
 	 */
 	api.sendSMSCoupon = function(playerId, refId, message, templateId)
 	{
