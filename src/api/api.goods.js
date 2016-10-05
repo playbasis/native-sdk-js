@@ -18,7 +18,12 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Returns information about all available goods for the current site.
-	 * @param  {Object} options (optional) options as object. It can include { player_id: #string, tags: #string = delimit by comma }.
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `player_id`: *String* = player id,  
+	 * `tags`: *String* = delimit by comma  
+	 * }.
 	 * @return {Object}         Promise object
 	 * @method  goodsListInfo
 	 * @memberOf Playbasis.goodsApi
@@ -34,7 +39,11 @@ module.exports = function(Playbasis) {
 	/**
 	 * Returns information about the goods with the specified id.
 	 * @param  {String} goodsId goods id
-	 * @param  {Object} options (optional) options as object. It can include { player_id: #string }
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `player_id`: *String*  
+	 * }
 	 * @return {Object}         Promise object
 	 * @method  goodsInfo
 	 * @memberOf Playbasis.goodsApi
@@ -51,7 +60,11 @@ module.exports = function(Playbasis) {
 	 * Find number of available Goods given group.
 	 * @param  {String} playerId player id
 	 * @param  {String} group    goods group
-	 * @param  {Object} options  (optional) options as object. It can include { amount: #number = amount of the goods to redeem }
+	 * @param  {Object} options  (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `amount`: *Number* = amount of the goods to redeem  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method  goodsGroupAvailable
 	 * @memberOf  Playbasis.goodsApi
@@ -91,7 +104,11 @@ module.exports = function(Playbasis) {
 	 * Find number of available sponsored Goods given group.
 	 * @param  {String} playerId player id
 	 * @param  {String} group    goods group
-	 * @param  {Object} options  (optional) options as object. It can include { amount: #number = amount of goods to redeem }
+	 * @param  {Object} options  (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `amount`: *Number* = amount of goods to redeem  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method  sponsoredGoodsGroupAvailable
 	 * @memberOf Playbasis.sponsoredGoodsGroupAvailable
@@ -108,7 +125,11 @@ module.exports = function(Playbasis) {
 	 * Verify coupon code available.
 	 * @param  {String} goodsId    goods id
 	 * @param  {String} couponCode coupon code of goods to verify
-	 * @param  {Object} options    (optional) options as object. It can include { player_id: #string = player id }
+	 * @param  {Object} options    (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `player_id`: *String* = player id  
+	 * }
 	 * @return {Object}            Promise object
 	 * @method  verifyCoupon
 	 * @memberOf  Playbasis.verfiyCoupon

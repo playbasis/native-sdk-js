@@ -18,7 +18,16 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Return recent activities.
-	 * @param  {Object} options (optional) options as object. It can include { player_id: #string = required when 'mode'='player', offset: #number = index of record to start, limit: #number = amount of records returned, last_read_activity_id: #string = last activity id that you have read, mode: #string = "all" | "player", event_type: #string = event type i.e. "reward", "redeem", "action", "level" }
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `player_id`: *String* = required when 'mode'='player',  
+	 * `offset`: *Number* = index of record to start,  
+	 * `limit`: *Number* = amount of records returned,  
+	 * `last_read_activity_id`: *String* = last activity id that you have read,  
+	 * `mode`: *String* = "all" | "player",  
+	 * `event_type`: *String* = event type i.e. "reward", "redeem", "action", "level"  
+	 * }
 	 * @return {Object}         Promise object
 	 * @method  recentActivities
 	 * @memberOf Playbasis.livefeedApi

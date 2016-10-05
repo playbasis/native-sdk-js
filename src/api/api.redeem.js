@@ -20,7 +20,11 @@ module.exports = function(Playbasis) {
 	 * Redeem goods for player.
 	 * @param  {String} goodsId  goods id
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (optional) options as object. It can include { amount: #number = amount of goods to give to player }
+	 * @param  {Object} options  (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `amount`: *Number* = amount of goods to give to player  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method redeem
 	 * @memberof Playbasis.redeemApi
@@ -38,7 +42,11 @@ module.exports = function(Playbasis) {
 	 * Redeem Goods from given group.
 	 * @param  {String} playerId player id
 	 * @param  {String} group    goods group
-	 * @param  {Object} options  (optional) options as object. It can include { amount: #number = amount of goods to give to player }
+	 * @param  {Object} options  (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `amount`: *Number* = amount of goods to give to player  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method  redeemGoodsGroup
 	 * @memberOf Playbasis.redeemApi
@@ -72,7 +80,11 @@ module.exports = function(Playbasis) {
 	 * Redeem sponsored Goods for player.
 	 * @param  {String} goodsId  goods id
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (optional) options as object. It can include { amount: #number = amount of goods to give to player }
+	 * @param  {Object} options  (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `amount`: *Number* = amount of goods to give to player  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method  redeemSponsor
 	 * @memberOf  Playbasis.redeemApi
@@ -90,7 +102,11 @@ module.exports = function(Playbasis) {
 	 * Redeem sponsored goods given goods group.
 	 * @param  {String} playerId player id
 	 * @param  {String} group    goods group
-	 * @param  {Object} options  (optional) options as object. It can include { amount: #number = amount of goods to give to player }
+	 * @param  {Object} options  (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `amount`: *Number* = amount of goods to give to player  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method redeemSponsoredGoodsGroup
 	 * @memberOf Playbasis.redeemApi

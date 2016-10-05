@@ -55,7 +55,11 @@ module.exports = function(Playbasis) {
 	/**
 	 * List recent email sent to player
 	 * @param  {String} playerId player id
-	 * @param  {Object} options (optional) options as object. It can inclue { since: #string = 'datetime' format supported by any English textual datetimee description }
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can inclue  
+	 * {  
+	 * `since`: *String* = 'datetime' format supported by any English textual datetimee description  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method  listRecentSentEmail
 	 * @memberOf Playbasis.communicationApi
@@ -82,7 +86,11 @@ module.exports = function(Playbasis) {
 	/**
 	 * Get processed email template.
 	 * @param  {String} templateId email template id
-	 * @param  {Object} options    (optional) options as object. It can include { player_id: #string }
+	 * @param  {Object} options    (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `player_id`: *String*  
+	 * }
 	 * @return {Object}            Promise object
 	 * @method  getProcessedEmailTemplate
 	 * @memberOf Playbasis.communicationApi
@@ -129,7 +137,11 @@ module.exports = function(Playbasis) {
 	/**
 	 * List recent SMS sent to player
 	 * @param  {String} playerId player id
-	 * @param  {Object} options (optional) options as object. It can inclue { since: #string = 'datetime' format supported by any English textual datetimee description }
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can inclue  
+	 * {  
+	 * `since`: *String* = 'datetime' format supported by any English textual datetimee description  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method  listRecentSMSSent
 	 * @memberOf Playbasis.communicationApi
@@ -156,7 +168,11 @@ module.exports = function(Playbasis) {
 	/**
 	 * Get processes SMS template
 	 * @param  {String} templateId template id
-	 * @param  {Object} options    (optional) options as object. It can include { player_id: #string }
+	 * @param  {Object} options    (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `player_id`: *String*  
+	 * }
 	 * @return {Object}            Promise object
 	 * @method  getProcessedSMSTemplate
 	 * @memberOf Playbasis.communicationApi
@@ -239,7 +255,11 @@ module.exports = function(Playbasis) {
 	/**
 	 * List recent push notification sent to player
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (optional) options as object. It can inclue { since: #string = 'datetime' format supported by any English textual datetimee description }
+	 * @param  {Object} options  (**optional**) options as object.  
+	 * It can inclue  
+	 * {  
+	 * `since`: *String* = 'datetime' format supported by any English textual datetimee description  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method  listRecentPushNotificationSent
 	 * @memberOf Playbasis.communicationApi
@@ -266,7 +286,11 @@ module.exports = function(Playbasis) {
 	/**
 	 * Get processed push notification template
 	 * @param  {String} templateId push notification template id
-	 * @param  {Object} options    (optional) options as object. It can include { player_id: #string }
+	 * @param  {Object} options    (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `player_id`: *String*  
+	 * }
 	 * @return {Object}            Promise object
 	 * @method  getProcessedPushNotificationTemplate
 	 * @memberOf Playbasis.communicationApi

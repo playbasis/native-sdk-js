@@ -18,7 +18,13 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Return recent points
-	 * @param  {Object} options (optional) options as object. It can include { point_name: #string = name of point-based reward to query, offset: #number = offset of return records; default is 0, limit: #number = number of returned records; default is 20 }
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `point_name`: *String* = name of point-based reward to query,  
+	 * `offset`: *Number* = offset of return records. default is 0,  
+	 * `limit`: *Number* = number of returned records; default is 20  
+	 * }
 	 * @return {Object}         Promise object
 	 * @method  recentPoint
 	 * @memberOf Playbasis.serviceApi

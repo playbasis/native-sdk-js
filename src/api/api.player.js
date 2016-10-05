@@ -107,7 +107,23 @@ module.exports = function(Playbasis) {
 	 * Register player
 	 * @param  {String} playerId player id
 	 * @param  {String} email    email to register player with
-	 * @param  {String} options  (optional) option as Object, consult Playbasis's API explorer for all possible key-value options
+	 * @param  {String} options  (**optional**) option as Object.  
+	 * It can include  
+	 * {  
+	 * `image`: *String* = url to the player profile image,  
+	 * `phone_number`: *String* = phone number in format +66xxyyyzzzz,  
+	 * `facebook_id`: *String* = facebook id of player,  
+	 * `twitter_id`: *String* = twitter id of player,  
+	 * `password`: *String* = password,  
+	 * `first_name`: *String* = first name of player,  
+	 * `last_name`: *String = last name of player,  
+	 * `gender`: *Number = 1 for Male | 2 for Female,  
+	 * `birth_date`: *String* = date of birth in the format YYYY-MM-DD (ex. 1982-09-29),  
+	 * `code`: *String* = referral code of another player for invitation system,  
+	 * `anonymous`: *Number* = 0 | 1,  
+	 * `device_id`: *String* = device id to verify with SMS verification process,  
+	 * `approve_status`: *String* = "approved" | "rejected" | "pending",  
+	 * }
 	 * @return {Object}          Promise Object
 	 * @method  register
 	 * @memberof Playbasis.playerApi
@@ -135,7 +151,25 @@ module.exports = function(Playbasis) {
 	/**
 	 * Update player information
 	 * @param  {String} playerId player id
-	 * @param  {Object} updates  update values as Object. It can include { username: #String, email: #String, image: #String, phone_number: #String, exp: #number, level: #number, facebook_id: #String, twitter_id: #String, password: #String, first_name: #String, last_name: #String, gender: #number = 1 for male | 2 for female, birth_date: #String = in format YYYY-MM-DD, device_id: #String, approve_status: #String = "approved" | "rejected" | "pending" }
+	 * @param  {Object} updates  update values as Object.  
+	 * It can include  
+	 * {  
+	 * `username`: *String* = username,  
+	 * `email`: *String* = email,  
+	 * `image`: *String* = image url of player,  
+	 * `phone_number`: *String* = phone number in format +66xxyyzzz,  
+	 * `exp`: *Number* = experience point,  
+	 * `level`: *Number* = level,  
+	 * `facebook_id`: *String* = facebook id of player,  
+	 * `twitter_id`: *String* = twitter id of player,  
+	 * `password`: *String* = password of player,  
+	 * `first_name`: *String* = first name of player,  
+	 * `last_name`: *String* = last name of player,  
+	 * `gender`: *Number* = 1 for Male | 2 for Female,  
+	 * `birth_date`: *String* = birth date in format YYYY-MM-DD (ex. 1982-09-29),  
+	 * `device_id`: *String* = device id to verfiy with SMS verification process,  
+	 * `approve_status`: *String* = "approved" | "rejected" | "pending"  
+	 * }
 	 * @return {Object}          Promise Object
 	 * @method  update
 	 * @memberof Playbasis.playerApi
@@ -302,7 +336,14 @@ module.exports = function(Playbasis) {
 	/**
 	 * Returns history points of player
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (optional) options as Object. It can include { point_name: "point" | "exp" | ..., offset: #number, limit: #number, order: "desc" | "asc" }
+	 * @param  {Object} options  (**optional**) options as Object.  
+	 * It can include  
+	 * {  
+	 * `point_name`: *String* = "point" | "exp" | ...,  
+	 * `offset`: *Number* = offset of returned records,  
+	 * `limit`: *Number* = number of returned records to return,  
+	 * `order`: *String* = "desc" | "asc"  
+	 * }
 	 * @return {Object}          Promise Object
 	 * @method  pointHistory
 	 * @memberof Playbasis.playerApi
@@ -411,7 +452,10 @@ module.exports = function(Playbasis) {
 	 * Return the list of players sorted by the specified point type.
 	 * @param  {String} rankBy  point-based name to rank by ("exp" | "point", etc)
 	 * @param  {Number} limit amount of items to return
-	 * @param  {Object} options (optional) options as Object { mode: "all-time" | "weekly" | "monthly" }.
+	 * @param  {Object} options (**optional**) options as Object. It can include  
+	 * {  
+	 * `mode`: *String* = "all-time" | "weekly" | "monthly"  
+	 * }.
 	 * @return {Object}         Promise Object
 	 * @method  rank
 	 * @memberof Playbasis.playerApi
@@ -427,7 +471,10 @@ module.exports = function(Playbasis) {
 	/**
 	 * Return list of players sorted by each point type.
 	 * @param  {Number}   limit    limit number of players returned in the list
-	 * @param  {Object}   options  (optional) option as Object. It can include { mode: "all-time" | "weekly" | "monthly" }.
+	 * @param  {Object}   options  (**optional**) option as Object. It can include  
+	 * {  
+	 * `mode`: *String* = "all-time" | "weekly" | "monthly"  
+	 * }.
 	 * @method  ranks
 	 * @memberof Playbasis.playerApi
 	 */	
@@ -442,7 +489,12 @@ module.exports = function(Playbasis) {
 	/**
 	 * Returns information about all the goods list that a player has redeem.
 	 * @param  {String}   playerId player id
-	 * @param  {Object}   options  (optional) options as Object. It can include { tags: #String, status: "all" | "active" | "expired" | "used" }.
+	 * @param  {Object}   options  (**optional**) options as Object.  
+	 * It can include  
+	 * {  
+	 * `tags`: *String* = tag to query separated by comma,  
+	 * `status`: *String* = "all" | "active" | "expired" | "used"  
+	 * }.
 	 * @method goods
 	 * @memberof Playbasis.playerApi
 	 */
@@ -469,7 +521,11 @@ module.exports = function(Playbasis) {
 	/**
 	 * Return list of quests that player has joined.
 	 * @param  {String}   playerId player id
-	 * @param  {Object}   options  (optional) options as Object. It can include { tags: #String }.
+	 * @param  {Object}   options  (**optional**) options as Object.  
+	 * It can include  
+	 * {  
+	 * `tags`: *String* = tag to query separated by comma  
+	 * }.
 	 * @method questListOfPlayer
 	 * @memberof Playbasis.playerApi
 	 */
@@ -496,7 +552,12 @@ module.exports = function(Playbasis) {
 	/**
 	 * Return quest reward history of player.
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (optional) options as Object. It can include { offset: #number, limit: #number }
+	 * @param  {Object} options  (**optional**) options as Object.  
+	 * It can include  
+	 * {  
+	 * `offset`: *Number*,  
+	 * `limit`: *Number*  
+	 * }
 	 * @return {Object}          Promise Object
 	 * @method questRewardHistory
 	 * @memberof Playbasis.playerApi
@@ -514,7 +575,11 @@ module.exports = function(Playbasis) {
 	 * @param  {String} playerId player id
 	 * @param  {String} reward   reward name to deduct from player
 	 * @param  {Number} amount   amount of reward to deduct
-	 * @param  {Object} options  (optional) options as Object. It can include { force: 0 = not force if player has not enough reward to deduct | 1 = force to do the deduct (and player's reward becomes zero) }. 
+	 * @param  {Object} options  (**optional**) options as Object.  
+	 * It can include  
+	 * {  
+	 * `force`: *Number* = 0 for not force if player has not enough reward to deduct | 1 = force to do the deduct (and player's reward becomes zero)  
+	 * }. 
 	 * @return {Object}          Promise Object
 	 * @method  deductReward
 	 * @memberof Playbasis.playerApi

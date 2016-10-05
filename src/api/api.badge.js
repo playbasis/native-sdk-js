@@ -15,7 +15,11 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Returns information about all available badges from the current site.
-	 * @param  {Object} options (optional) options as object. It can include { tags: #string = tag string which can be multiple items joined via comma}
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `tags`: *String* = tag string which can be multiple items joined via comma  
+	 * }
 	 * @return {Object}         Promise object
 	 * @method badgesInfo
 	 * @memberOf  Playbasis.badgeApi

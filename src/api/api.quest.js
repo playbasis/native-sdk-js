@@ -18,7 +18,11 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Return information about all quest for the current site.
-	 * @param  {Object} options (optional) options as object. It can include { tags: #string }
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `tags`: *String* = tag to query separated by comma  
+	 * }
 	 * @return {Object}         Promise object
 	 * @method  questListInfo
 	 * @memberOf Playbasis.questApi
@@ -129,7 +133,11 @@ module.exports = function(Playbasis) {
 	 * Reset progress of quests for player.
 	 * If options is null, then it will reset all progress for all quests that player has joined.
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (optional) options as object. It can include { quest_id: #string = quest id to reset progress }
+	 * @param  {Object} options  (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `quest_id`: *String* = quest id to reset progress  
+	 * }
 	 * @return {Object}          Promise object
 	 * @method  resetQuest
 	 * @memberOf Playbasis.questApi
@@ -146,7 +154,15 @@ module.exports = function(Playbasis) {
 	/**
 	 * Return quest leaderboard
 	 * @param  {String} questId quest id
-	 * @param  {Object} options (optional) options as object. It can include { completion_element_id: #string = quest complete element id, player_id: #string = player id, offset: #number = number of records starting, limit: #number = amount of results to return, status: #string = "finish" | "join" = status of quest; default is all }
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `completion_element_id`: *String* = quest complete element id,  
+	 * `player_id`: *String* = player id,  
+	 * `offset`: *Number* = number of records starting,  
+	 * `limit`: *Number* = amount of results to return,  
+	 * `status`: *String* = status of quest which can be "finish" | "join", default is "all"  
+	 * }
 	 * @return {Object}         Promise object
 	 * @method  questLeaderboard
 	 * @memberOf Playbasis.questLeaderboard
