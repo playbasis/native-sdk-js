@@ -128,7 +128,9 @@ module.exports = function(Playbasis) {
 	 * `key`: *String* = custom keys separated by comma  
 	 * `value`: *String* = custom values separated by comma  
 	 * }
-	 * @return {[type]}         [description]
+	 * @return {Object}         Promise object
+	 * @method  updateContent
+	 * @memberOf Playbasis.contentApi
 	 */
 	api.updateContent = function(nodeId, updates)
 	{
