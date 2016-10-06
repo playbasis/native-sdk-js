@@ -151,7 +151,7 @@ describe("Store Organize API Tests", function() {
 		// ensure both adding to node, and setting role to player
 		beforeAll(function(done) {
 			// we need to ensure player is already in the node
-			api.addPlayerToNode(nodeId, mock.env.playerId)
+			var chain = api.addPlayerToNode(nodeId, mock.env.playerId)
 				.then((result) => {
 					done();
 					// now try to set role to player first
@@ -160,15 +160,20 @@ describe("Store Organize API Tests", function() {
 					// player already exists with current node, then we accept it as success
 					if (e.code == 2402) {
 						done();
+						return null;	// return to suppress 'handler created but not returned'
 					}
 					else {
 						console.log(e.message); 
+						return null;	// return to suppress 'handler created but not returned'
 					}
 				})
-				.then((result) => {
+			
+			if (chain != null) {
+				chain.then((result) => {
 					// successfully set role to player
 					done();
 				}, (e) => { console.log(e.message); });
+			}
 		});
 
 		it("should return success", function(done) {
