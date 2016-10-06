@@ -14,6 +14,46 @@ It will produce Playbasis.js, and Playbasis.min.js to use with your own project.
 
 To test, run `gulp unittest`.
 
+## How to Use
+
+Create a distribution of library file included a minified version by executing `gulp build`.
+It will create `Playbasis.js` and `Playbasis.min.js` in `./dist` folder.
+Include it in your source code via `<script src="dist/Playbasis.min.js"></script>`.
+
+Create Playbasis's environment first before calling APIs via the following call
+
+```
+Playbasis.builder
+		.setApiKey("<YOUR-API-KEY-HERE>")
+		.setApiSecret("<YOUR-API-SECRET-HERE>")
+		.build();
+```
+
+Then you're free to call other apis.
+
+Get player's public information.
+
+```
+Playbasis.playerApi.playerPublicInfo("jon")
+	.then((result) => {
+		console.log(result);
+	}, (e) => {
+		console.log(e.code + ": " + e.message);
+	});
+```
+
+Execute rule engine `click` action for player id `jon`. This rule is set up via Playbasis Dashboard to give dynamic reward upon executing the call.
+By specify `reward`, and `quantity` we can customize reward and its amount to give to player.
+
+```
+Playbasis.engineApi.rule("click", "jon", {reward: "point", quantity: 20})
+	.then((result) => {
+		console.log(result);
+	}, (e) => {
+		console.log(e.code + ": " + e.message);
+	});
+```
+
 ## License
 
 Playbasis.js is available under the [MIT license](https://github.com/playbasis/native-sdk-js/blob/master/LICENSE.md).
