@@ -87,6 +87,51 @@ describe("Content API Tests", function() {
 		});
 	});
 
+	describe("Update Content test", function() {
+
+		var nodeId = "001"; // pre-existing content
+		var summary;
+		var summaryNew = "Welcome to node 1 - updated";
+
+		// get summary field from content first
+		// thus we can change it back later
+		beforeAll(function(done) {
+			api.retrieveContent(nodeId)
+				.then((result) => {
+					expect(result.response.result).not.toBe(null);
+					expect(result.response.result.length == 1).toBe(true);
+					expect(result.response.result[0].node_id).toEqual(nodeId);
+
+					// save summary
+					summary = result.response.result[0].summary;
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+
+		// update summary field back to original
+		afterAll(function(done) {
+			api.updateContent(nodeId, {summary: summary})
+				.then((result) => { 
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+
+		it("should return success and validate updated field", function(done) {
+			api.updateContent(nodeId, {summary: summaryNew})
+				.then((result) => {
+					return api.retrieveContent(nodeId);
+				})
+				.then((result) => {
+					expect(result.response.result).not.toBe(null);
+					expect(result.response.result.length == 1).toBe(true);
+					expect(result.response.result[0].node_id).toEqual(nodeId);
+					expect(result.response.result[0].summary).toEqual(summaryNew);
+					return done();
+				})
+				.error((e) => { console.log(e.message); });
+		});
+	});
+
 	describe("Delete Content test", function() {
 
 		var createdNodeId;

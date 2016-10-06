@@ -110,6 +110,36 @@ module.exports = function(Playbasis) {
 	}
 
 	/**
+	 * Update content by content id
+	 * @param  {String} nodeId  node id of content
+	 * @param  {Object} updates updates as object.  
+	 * It can include  
+	 * {  
+	 * `title`: *String* = title of content  
+	 * `summary`: *String* = summary of content  
+	 * `detail`: *String* = detail of content  
+	 * `category`: *String* = category of content to be in  
+	 * `image`: *String* = url to the content profile image  
+	 * `status`: *String* = content available status which can be "true" | "false"  
+	 * `date_start`: *String* = date start in format YYYY-MM-DD (ex.1982-09-29)  
+	 * `date_end`: *String* = date end in format YYYY-MM-DD (ex.1982-09-29)
+	 * `pin`: *String* = secret PIN given to content  
+	 * `tags: *String* = tag(s) to add to this content  
+	 * `key`: *String* = custom keys separated by comma  
+	 * `value`: *String* = custom values separated by comma  
+	 * }
+	 * @return {[type]}         [description]
+	 */
+	api.updateContent = function(nodeId, updates)
+	{
+		var obj = { token: Playbasis.env.global.token };
+		var selectedOptionsObj = helpers.createObjectFromTarget(updates, ["title", "summary", "detail", "category", "image", "status", "date_start", "date_end", "pin", "tags", "key", "value"]);
+		var combineObj = helpers.combineObjects(obj, selectedOptionsObj);
+
+		return http.postJsonAsync(helpers.createApiUrl(apiMethodUrl, nodeId, "update"), obj);
+	}
+
+	/**
 	 * Delete existing content
 	 * @param  {String} nodeId node id of content
 	 * @return {Object}        Promise object
