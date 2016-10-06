@@ -18,11 +18,15 @@ To test, run `gulp unittest`.
 
 Create a distribution of library file included a minified version by executing `gulp build`.
 It will create `Playbasis.js` and `Playbasis.min.js` in `./dist` folder.
-Include it in your source code via `<script src="dist/Playbasis.min.js"></script>`.
+Include it in your source code via
+
+```javascript
+<script src="dist/Playbasis.min.js"></script>
+```
 
 Create Playbasis's environment first before calling APIs via the following call
 
-```
+```javascript
 Playbasis.builder
 		.setApiKey("<YOUR-API-KEY-HERE>")
 		.setApiSecret("<YOUR-API-SECRET-HERE>")
@@ -33,7 +37,7 @@ Then you're free to call other apis.
 
 Get player's public information.
 
-```
+```javascript
 Playbasis.playerApi.playerPublicInfo("jon")
 	.then((result) => {
 		console.log(result);
@@ -45,7 +49,7 @@ Playbasis.playerApi.playerPublicInfo("jon")
 Execute rule engine `click` action for player id `jon`. This rule is set up via Playbasis Dashboard to give dynamic reward upon executing the call.
 By specify `reward`, and `quantity` we can customize reward and its amount to give to player.
 
-```
+```javascript
 Playbasis.engineApi.rule("click", "jon", {reward: "point", quantity: 20})
 	.then((result) => {
 		console.log(result);
