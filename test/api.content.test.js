@@ -126,9 +126,8 @@ describe("Content API Tests", function() {
 					expect(result.response.result.length == 1).toBe(true);
 					expect(result.response.result[0].node_id).toEqual(nodeId);
 					expect(result.response.result[0].summary).toEqual(summaryNew);
-					return done();
-				})
-				.error((e) => { console.log(e.message); });
+					done();
+				}, (e) => { console.log(e.message);});
 		});
 	});
 

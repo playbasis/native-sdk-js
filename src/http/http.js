@@ -73,8 +73,8 @@ module.exports = function(Playbasis) {
 						reject(error);
 					}
 				});
+				response.on('error', (e) => reject(e));
 			});
-			request.on('error', (e) => reject(e));
 		});
 	}
 
@@ -196,8 +196,8 @@ module.exports = function(Playbasis) {
 						reject(error);
 					}
 				});
+				response.on('error', (e) => reject(e));
 			});
-			request.on('error', (e) => reject(e));
 
 			// write post data
 			request.write(encodedDataParams);

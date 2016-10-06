@@ -28,5 +28,6 @@ require('./api/api.livefeed.js')(Playbasis);
 require('./api/api.service.js')(Playbasis);
 require('./api/api.storeOrganize.js')(Playbasis);
 require('./api/api.content.js')(Playbasis);
+require('./api/api.quiz.js')(Playbasis);
 
 window.Playbasis = module.exports = Playbasis;
