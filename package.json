@@ -19,9 +19,11 @@
     "sdk",
     "native",
     "javascript",
-    "pb"
+    "pb",
+    "playbasisapi",
+    "api"
   ],
-  "author": "Wasin Thonkaew",
+  "author": "Playbasis Co.,Ltd",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/playbasis/native-sdk-js/issues"
