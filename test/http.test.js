@@ -92,10 +92,10 @@ describe("Http tests", function() {
 			var postObj = { api_key : mock.env.apiKey, api_secret : mock.env.apiSecret };
 			var check = 0;
 			http.postJsonAsync(paramUrl, postObj)
-				.then((result) => { console.log("success1:"); check = 1; return http.postJsonAsync(paramUrl, postObj); })
-				.then((result) => { console.log("success2:"); check = 2; return http.postJsonAsync(paramUrl, postWrongObj); })
-				.then((result) => { console.log("success3:"); check = 3; return http.postJsonAsync(paramUrl, postObj); })
-				.then((result) => { console.log("success4:"); check = 4; return done(); })
+				.then((result) => { check = 1; return http.postJsonAsync(paramUrl, postObj); })
+				.then((result) => { check = 2; return http.postJsonAsync(paramUrl, postWrongObj); })
+				.then((result) => { check = 3; return http.postJsonAsync(paramUrl, postObj); })
+				.then((result) => { check = 4; return done(); })
 				.error((e) => { console.log("error from check[" + check + "], " + e.code + ", " + e.message); expect(check).toBe(2); done(); });
 		});
 
@@ -104,7 +104,7 @@ describe("Http tests", function() {
 				.then((result) => {
 				})
 				.error((e) => {
-					console.log("*focus* error: " + e.code + ", " + e.message);
+					console.log("error: " + e.code + ", " + e.message);
 					done();
 				});
 		});

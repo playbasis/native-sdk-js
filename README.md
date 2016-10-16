@@ -41,7 +41,8 @@ Get player's public information.
 Playbasis.playerApi.playerPublicInfo("jon")
 	.then((result) => {
 		console.log(result);
-	}, (e) => {
+	})
+	.error((e) => {
 		console.log(e.code + ": " + e.message);
 	});
 ```
@@ -53,7 +54,8 @@ By specify `reward`, and `quantity` we can customize reward and its amount to gi
 Playbasis.engineApi.rule("click", "jon", {reward: "point", quantity: 20})
 	.then((result) => {
 		console.log(result);
-	}, (e) => {
+	})
+	.error((e) => {
 		console.log(e.code + ": " + e.message);
 	});
 ```
