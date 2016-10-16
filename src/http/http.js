@@ -12,6 +12,9 @@ module.exports = function(Playbasis) {
 	// Global Playbasis's helpers object for utility methods and classes
 	var http = Playbasis.http = {};
 
+	// .error() will catch only OperationalError of Bluebird
+	var OperationalError = Playbasis.Promise.OperationalError;
+
 	/**
 	 * Make a GET request
 	 * @param  {string} url target url to send request to
@@ -30,12 +33,11 @@ module.exports = function(Playbasis) {
 				// handle http errors
 				if (response.statusCode != 200) {
 					// create error object
-					var error = new Error("Failed to load page, status code: " + response.statusCode)
+					var error = new OperationalError("Failed to load page, status code: " + response.statusCode)
 					// piggy back error code
 					error.code = response.statusCode;
 					error.isApiLevel = false;
-					reject(error);
-					return;	// execution ends, return it now
+					return reject(error);
 				}
 
 				// on every content chunk, push it to the data array
@@ -43,8 +45,7 @@ module.exports = function(Playbasis) {
 
 					// check if data is null
 					if (d == null) {
-						reject(new Error("Failed on api response. Response is null"));
-						return; // execution ends, return it now
+						return reject(new OperationalError("Failed on api response. Response is null"));
 					}
 
 					// parse into json, and validate for error-free
@@ -54,26 +55,25 @@ module.exports = function(Playbasis) {
 						json = JSON.parse(d);
 					}
 					catch(e) {
-						reject(new Error("Failed on parsing JSON response message. Error: " + e.message));
-						return; // execution ends, return it now
+						return reject(new OperationalError("Failed on parsing JSON response message. Error: " + e.message));
 					}
 
 					// check api level error
 					let errorCode = parseInt(json.error_code);
 					if (errorCode == 0) {
 						// all ok
-						resolve(json);
+						return resolve(json);
 					}
 					else {
 						// reject with error code as error
-						var error = new Error("Failed on response message. Error code: " + errorCode + " with " + json.message);
+						var error = new OperationalError("Failed on response message. Error code: " + errorCode + " with " + json.message);
 						// piggy back error code
 						error.code = errorCode;
 						error.isApiLevel = true;
-						reject(error);
+						return reject(error);
 					}
 				});
-				response.on('error', (e) => reject(e));
+				response.on('error', (e) => { return reject(new OperationalError(e.message)); });
 			});
 		});
 	}
@@ -151,12 +151,11 @@ module.exports = function(Playbasis) {
 				// handle http errors
 				if (response.statusCode != 200) {
 					// create error object
-					var error = new Error("Failed to load page, status code: " + response.statusCode)
+					var error = new OperationalError("Failed to load page, status code: " + response.statusCode)
 					// piggy back error code
 					error.code = response.statusCode;
 					error.isApiLevel = false;
-					reject(error);
-					return;	// execution ends, return it now
+					return reject(error);
 				}
 
 				response.setEncoding('utf8');
@@ -166,8 +165,7 @@ module.exports = function(Playbasis) {
 
 					// check if data is null
 					if (d == null) {
-						reject(new Error("Failed on api response. Response is null"));
-						return; // execution ends, return it now
+						return reject(new OperationalError("Failed on api response. Response is null"));
 					}
 
 					// parse into json, and validate for error-free
@@ -177,26 +175,25 @@ module.exports = function(Playbasis) {
 						json = JSON.parse(d);
 					}
 					catch(e) {
-						reject(new Error("Failed on parsing JSON response message. Error: " + e.message));
-						return; // execution ends, return it now
+						return reject(new OperationalError("Failed on parsing JSON response message. Error: " + e.message));
 					}
 
 					// check api level error
 					let errorCode = parseInt(json.error_code);
 					if (errorCode == 0) {
 						// all ok
-						resolve(json);
+						return resolve(json);
 					}
 					else {
 						// reject with error code as error
-						var error = new Error("Failed on response message. Error code: " + errorCode + " with " + json.message);
+						var error = new OperationalError("Failed on response message. Error code: " + errorCode + " with " + json.message);
 						// piggy back error code
 						error.code = errorCode;
 						error.isApiLevel = true;
-						reject(error);
+						return reject(error);
 					}
 				});
-				response.on('error', (e) => reject(e));
+				response.on('error', (e) => { return reject(new OperationalError(e.message)); });
 			});
 
 			// write post data

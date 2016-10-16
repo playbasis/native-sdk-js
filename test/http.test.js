@@ -75,6 +75,39 @@ describe("Http tests", function() {
 				done();
 			});
 		});
+
+		it("should chain successfully promise call", function(done) {
+			var paramUrl = "https://api.pbapp.net/Auth?api_key=" + mock.env.apiKey;
+			var postObj = { api_key : mock.env.apiKey, api_secret : mock.env.apiSecret };
+			http.postJsonAsync(paramUrl, postObj)
+				.then((result) => { return http.postJsonAsync(paramUrl, postObj); })
+				.then((result) => { return http.postJsonAsync(paramUrl, postObj); })
+				.then((result) => { return done(); })
+				.error((e) => { console.log("error " + e.code + ", " + e.message); });
+		});
+
+		it("should chain successfully promise call and catch error in 3rd promise call", function(done) {
+			var paramUrl = "https://api.pbapp.net/Auth?api_key=" + mock.env.apiKey;
+			var postWrongObj = { api_key : mock.env.apiKey };
+			var postObj = { api_key : mock.env.apiKey, api_secret : mock.env.apiSecret };
+			var check = 0;
+			http.postJsonAsync(paramUrl, postObj)
+				.then((result) => { console.log("success1:"); check = 1; return http.postJsonAsync(paramUrl, postObj); })
+				.then((result) => { console.log("success2:"); check = 2; return http.postJsonAsync(paramUrl, postWrongObj); })
+				.then((result) => { console.log("success3:"); check = 3; return http.postJsonAsync(paramUrl, postObj); })
+				.then((result) => { console.log("success4:"); check = 4; return done(); })
+				.error((e) => { console.log("error from check[" + check + "], " + e.code + ", " + e.message); expect(check).toBe(2); done(); });
+		});
+
+		it("should catch error()", function(done) {
+			http.postJsonAsync("https://api.pbapp.net/Auth?api_key=" + mock.env.apiKey, { api_key : mock.env.apiKey })
+				.then((result) => {
+				})
+				.error((e) => {
+					console.log("*focus* error: " + e.code + ", " + e.message);
+					done();
+				});
+		});
 	});
 
 	describe("error code, and error type", function() {
