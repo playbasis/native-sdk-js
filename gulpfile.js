@@ -7,12 +7,14 @@ var insert = require('gulp-insert');
 var streamify = require('gulp-streamify');
 var replace = require('gulp-replace');
 var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
+var uglify = require('uglify-js');
+var minifier = require('gulp-uglify/minifier');
 var collapse = require('bundle-collapser/plugin');
 var package = require('./package.json');
 var karma = require('gulp-karma');
 var argv = require('yargs').argv;
 var jsdoc = require('gulp-jsdoc3');
+var babel = require('gulp-babel');
 
 var srcDir = './src/';
 var outDir = './dist/';
@@ -37,7 +39,9 @@ var testFiles = [
 /**
  * Tasks
  */
-gulp.task('build', buildTask);
+gulp.task('build', ['buildNormal'], buildMinifiedTask);
+gulp.task('buildNormal', buildNormalTask);
+gulp.task('buildMinified', buildMinifiedTask);
 gulp.task('unittest', unittestTask);
 gulp.task('unittestFull', unittestFullTask);
 gulp.task('doc', docTask);
@@ -69,24 +73,39 @@ function unittestFullTask() {
 		}));
 }
 
-function buildTask() {
+function buildNormalTask() {
+	// build normal version
 	var bundled = browserify('./src/playbasis.js', { standalone: 'Playbasis' })
 		.plugin(collapse)
 		.bundle()
 		.pipe(source('Playbasis.js'))
 		.pipe(insert.prepend(header))
 		.pipe(streamify(replace('{{ version }}', package.version)))
-		.pipe(gulp.dest(outDir))
-		.pipe(streamify(uglify()))
-		.pipe(insert.prepend(header))
-		.pipe(streamify(replace('{{ version }}', package.version)))
-		.pipe(streamify(concat('Playbasis.min.js')))
 		.pipe(gulp.dest(outDir));
 
 	return bundled;
 }
 
+function buildMinifiedTask() {
+	// build minified version
+	var options = {
+		preserveComments: 'license'
+	};
+
+	// TODO: Whenever gulp-uglify support es6, then we update this to just chain (pipe) and use uglify directly from gulp-uglify
+	// but for this instance we need to convert it to es2015 first before minify and uglify
+	return gulp.src('dist/Playbasis.js')
+		.pipe(babel({
+			presets: ['es2015']
+		}))
+		.pipe(minifier(options, uglify))
+		.pipe(insert.prepend(header))
+		.pipe(streamify(replace('{{ version }}', package.version)))
+		.pipe(streamify(concat('Playbasis.min.js')))
+		.pipe(gulp.dest(outDir));
+}
+
 function docTask(cb) {
-	gulp.src(['README.md', './src/**/*.js'], {read: false})
+	return gulp.src(['README.md', './src/**/*.js'], {read: false})
 		.pipe(jsdoc(cb));
 }

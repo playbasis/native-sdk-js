@@ -96,7 +96,7 @@ describe("Http tests", function() {
 				.then((result) => { check = 2; return http.postJsonAsync(paramUrl, postWrongObj); })
 				.then((result) => { check = 3; return http.postJsonAsync(paramUrl, postObj); })
 				.then((result) => { check = 4; return done(); })
-				.error((e) => { console.log("error from check[" + check + "], " + e.code + ", " + e.message); expect(check).toBe(2); done(); });
+				.error((e) => { expect(check).toBe(2); done(); });
 		});
 
 		it("should catch error()", function(done) {
@@ -104,7 +104,6 @@ describe("Http tests", function() {
 				.then((result) => {
 				})
 				.error((e) => {
-					console.log("error: " + e.code + ", " + e.message);
 					done();
 				});
 		});
