@@ -16,6 +16,16 @@ To test, run `gulp unittest`.
 
 ## How to Use
 
+### Get it via `npm`
+Execute `npm install playbasis.js` or `npm install --save playbasis.js`.
+
+Import it in your source file as follows.
+
+```javascript
+var Playbasis = require('playbasis.js');
+```
+
+### Get it via manual build
 Create a distribution of library file included a minified version by executing `gulp build`.
 It will create `Playbasis.js` and `Playbasis.min.js` in `./dist` folder.
 Include it in your source code via
@@ -24,7 +34,9 @@ Include it in your source code via
 <script src="dist/Playbasis.min.js"></script>
 ```
 
-Create Playbasis's environment first before calling APIs via the following call
+### Usage
+Create Playbasis's environment first before calling APIs via the following call.
+Get your apikey, and apisecret by registering a new account, and creating a new application at [Playbasis Dashboard](https://www.pbapp.net/login).
 
 ```javascript
 Playbasis.builder
