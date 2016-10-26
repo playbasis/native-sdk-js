@@ -2,6 +2,7 @@
 /dist
 /karma_html
 /docs
+/lib
 
 .DS_Store
 

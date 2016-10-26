@@ -24,7 +24,7 @@ var header = "/*!\n" +
 	" * https://www.playbasis.com/\n" +
 	" * Version: {{ version }}\n" +
 	" *\n" +
-	" * Copyright 2016 Wasin Thonkaew\n" +
+	" * Copyright 2016 Playbasis Co.,Ltd\n" +
 	" * Released under the MIT license\n" +
 	" * https://github.com/playbasis/native-sdk-js/blob/master/LICENSE.md\n" +
 	" */\n";
@@ -39,7 +39,8 @@ var testFiles = [
 /**
  * Tasks
  */
-gulp.task('build', ['buildNormal'], buildMinifiedTask);
+gulp.task('build', ['buildInitial'], buildCombinedTask);
+gulp.task('buildInitial', buildInitialTask);
 gulp.task('buildNormal', buildNormalTask);
 gulp.task('buildMinified', buildMinifiedTask);
 gulp.task('unittest', unittestTask);
@@ -73,17 +74,39 @@ function unittestFullTask() {
 		}));
 }
 
-function buildNormalTask() {
+function buildInitialTask() {
 	// build normal version
 	var bundled = browserify('./src/playbasis.js', { standalone: 'Playbasis' })
 		.plugin(collapse)
 		.bundle()
-		.pipe(source('Playbasis.js'))
+		.pipe(source('Playbasis-es6.js'))
 		.pipe(insert.prepend(header))
 		.pipe(streamify(replace('{{ version }}', package.version)))
 		.pipe(gulp.dest(outDir));
 
 	return bundled;
+}
+
+function buildCombinedTask() {
+	buildNormalTask();
+	buildMinifiedTask();
+}
+
+function buildNormalTask() {
+	// build minified version
+	var options = {
+		preserveComments: 'license'
+	};
+
+	// TODO: Whenever gulp-uglify support es6, then we update this to just chain (pipe) and use uglify directly from gulp-uglify
+	// but for this instance we need to convert it to es2015 first before minify and uglify
+	return gulp.src('dist/Playbasis-es6.js')
+		.pipe(babel({
+			presets: ['es2015']
+		}))
+		.pipe(streamify(replace('{{ version }}', package.version)))
+		.pipe(streamify(concat('Playbasis.js')))
+		.pipe(gulp.dest(outDir));
 }
 
 function buildMinifiedTask() {
@@ -94,12 +117,11 @@ function buildMinifiedTask() {
 
 	// TODO: Whenever gulp-uglify support es6, then we update this to just chain (pipe) and use uglify directly from gulp-uglify
 	// but for this instance we need to convert it to es2015 first before minify and uglify
-	return gulp.src('dist/Playbasis.js')
+	return gulp.src('dist/Playbasis-es6.js')
 		.pipe(babel({
 			presets: ['es2015']
 		}))
 		.pipe(minifier(options, uglify))
-		.pipe(insert.prepend(header))
 		.pipe(streamify(replace('{{ version }}', package.version)))
 		.pipe(streamify(concat('Playbasis.min.js')))
 		.pipe(gulp.dest(outDir));

@@ -1,13 +1,14 @@
 {
   "name": "playbasis.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Playbasis Javascript SDK",
-  "main": "src/playbasis.js",
+  "main": "lib/playbasis.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "./node_modules/.bin/babel src -d lib"
   },
   "repository": {
     "type": "git",
@@ -26,10 +27,12 @@
   "author": "Playbasis Co.,Ltd",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/playbasis/native-sdk-js/issues"
+    "url": "https://github.com/playbasis/native-sdk-js/issues",
+    "email": "devteam@playbasis.com"
   },
   "homepage": "https://github.com/playbasis/native-sdk-js#readme",
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.16.0",
     "browserify": "^13.1.0",
     "browserify-istanbul": "^0.2.1",
