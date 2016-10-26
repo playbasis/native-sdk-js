@@ -1,6 +1,6 @@
 {
   "name": "playbasis.js",
-  "version": "1.0.3",
+  "version": "1.0.3.1",
   "description": "Playbasis Javascript SDK",
   "main": "lib/playbasis.js",
   "directories": {
@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "./node_modules/.bin/babel src -d lib"
+    "compile": "./node_modules/.bin/rimraf lib/* && ./node_modules/.bin/babel src -d lib",
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -60,6 +61,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-spec-reporter": "0.0.26",
     "remove": "^0.1.5",
+    "rimraf": "^2.5.4",
     "source-map": "^0.5.6",
     "uglify-js": "^2.7.3",
     "vinyl-source-stream": "^1.1.0",
