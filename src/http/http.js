@@ -27,7 +27,7 @@ module.exports = function(Playbasis) {
 		return new Playbasis.Promise( (resolve, reject) => {
 			// load proper library
 			// load from reference if it's already loaded
-			const lib = url.startsWith('https') ? require('https') : require('http');
+			const lib = url.search('https') != -1 ? require('https') : require('http');
 			// make a GET request
 			const request = lib.get(url, (response) => {
 				// handle http errors
@@ -92,7 +92,7 @@ module.exports = function(Playbasis) {
 			// load from reference if it's already loaded
 			var lib = null;
 			var isHttps = true;
-			if (url.startsWith('https')) {
+			if (url.search('https') != -1) {
 				lib = require('https');
 				isHttps = true;
 			}
