@@ -211,4 +211,31 @@ describe("Communication API Tests", function() {
 				}, (e) => { console.log(e.message); });
 		});
 	});
+
+	// declaration section for device registration/deregistration
+	// as long as we register with dummy, and delete it too, it's totally ok
+	var deviceToken = "dummyDeviceToken";
+	var deviceDescription = "dummyDeviceDescription";
+	var deviceName = "dummyDeviceName";
+	var osType = "IOS";
+
+	describe("Register dummy device id test", function() {
+		it("should register device token", function(done) {
+			api.registerDevice(mock.env.playerId2, deviceToken, deviceDescription, deviceName, osType)
+				.then((result) => {
+					expect(result.message).toBe("Success");
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
+	describe("Deregister dummy device id test", function() {
+		it("should de-register device token", function(done) {
+			api.deregisterDevice(mock.env.playerId2, deviceToken)
+				.then((result) => {
+					expect(result.message).toBe("Success");
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
 });

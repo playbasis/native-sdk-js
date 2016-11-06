@@ -187,6 +187,7 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Register device for push notification
+	 * @param  {String} playerId 					player id
 	 * @param  {String} deviceToken       device token
 	 * @param  {String} deviceDescription device model description
 	 * @param  {String} deviceName        device model name
@@ -195,9 +196,9 @@ module.exports = function(Playbasis) {
 	 * @method  registerDevice
 	 * @memberOf Playbasis.communicationApi
 	 */
-	api.registerDevice = function(deviceToken, deviceDescription, deviceName, osType)
+	api.registerDevice = function(playerId, deviceToken, deviceDescription, deviceName, osType)
 	{
-		var obj = { token: Playbasis.env.global.token, device_token: deviceToken, device_description: deviceDescription, device_name: deviceName, os_type: osType };
+		var obj = { token: Playbasis.env.global.token, player_id: playerId, device_token: deviceToken, device_description: deviceDescription, device_name: deviceName, os_type: osType };
 
 		return http.postJsonAsync(helpers.createApiUrl("Push/deviceRegistration"), obj);
 	}
