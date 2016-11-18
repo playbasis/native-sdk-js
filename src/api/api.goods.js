@@ -22,6 +22,10 @@ module.exports = function(Playbasis) {
 	 * It can include  
 	 * {  
 	 * `player_id`: *String* = player id,  
+	 * `date_start`: *String* = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range  
+	 * `date_end`: *String* = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range  
+	 * `offset`: *String* = paging offset. Default is 0.  
+	 * `limit`: *Number* = paging limit. Default is unlimited.  
 	 * `tags`: *String* = delimit by comma  
 	 * }.
 	 * @return {Object}         Promise object
@@ -30,10 +34,35 @@ module.exports = function(Playbasis) {
 	 */
 	api.goodsListInfo = function(options)
 	{
-		var keys = ["player_id", "tags"];
-		var defaultValues = [null, null];
+		var keys = ["player_id", "date_start", "date_end", "offset", "limit", "tags"];
+		var defaultValues = [null, null, null, null, null, null];
 
 		return http.getJsonAsync(helpers.createApiUrl(apiMethod) + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, defaultValues, options));
+	}
+
+	/**
+	 * Return information about all available goods for the current site.
+	 * @param  {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `player_id`: *String* = player id  
+	 * `selected_field`: *String* = fields that will be included result payload, delimited with comma and with no space i.e. field1,field2,field3. 
+	 * `date_start`: *String* = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range  
+	 * `date_end`: *String* = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range  
+	 * `offset`: *String* = paging offset. Default is 0.  
+	 * `limit`: *Number* = paging limit. Default is unlimited.  
+	 * `tags`: *String* = delimit by comma  
+	 * }
+	 * @return {Object}         Promise object
+	 * @method  goodsListInfoWithSelectedFields
+	 * @memberOf Playbasis.goodsApi
+	 */
+	api.goodsListInfoWithSelectedFields = function(options)
+	{
+		var keys = ["player_id", "selected_field", "date_start", "date_end", "offset", "limit", "tags"];
+		var defaultValues = [null, null, null, null, null, null, null];
+
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "field") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, defaultValues, options));
 	}
 
 	/**

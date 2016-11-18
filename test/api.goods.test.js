@@ -29,11 +29,38 @@ describe("Goods API Tests", function() {
 				}, (e) => { console.log(e.message); });
 		});
 
-		it("should return success. Requested with options object (included all options).", function(done) {
+		it("should return success. Requested with options object (included player_id and tags options).", function(done) {
 			api.goodsListInfo({player_id: mock.env.playerId, tags: "goods"})
 				.then((result) => {
 					done();
 				}, (e) => { console.log(e.message); });
+		});
+
+		it("should return success. Requested with options object (included all options).", function(done) {
+			api.goodsListInfo({player_id: mock.env.playerId, tags: "goods", date_start: "2016-11-06", date_end: "2016_12-31", limit: 5})
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
+	describe("Goods List Info With Selected Fields Test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return only selected fields", function(done) {
+			api.goodsListInfoWithSelectedFields({selected_field: "name,date_start"})
+				.then((result) => {
+					expect(result.response.goods_list).not.toBe(null);
+					expect(result.response.goods_list.length > 0).toBeTruthy();
+					// selected fields should exist
+					expect(result.response.goods_list[0].name).not.toBe(null);
+					expect(result.response.goods_list[0].date_start).not.toBe(null);
+					// filtered out fields should not exist
+					expect(result.response.goods_list[0].date_end).toBe(undefined);
+					done();
+				}, (e) => { console.log(e); });
 		});
 	});
 
