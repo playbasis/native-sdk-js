@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Namespace: authApi</title>
+	<title>Documentation Namespace: builder</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,7 +65,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: authApi</h1>
+	<h1 class="page-title">Namespace: builder</h1>
 <section>
 
 <header>
@@ -73,7 +73,7 @@
         <h2>
             <span class="ancestors"><a href="Playbasis.html">Playbasis</a>.</span>
         
-        authApi
+        builder
         </h2>
         
     
@@ -84,7 +84,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Playbasis Auth API</p></div>
+            <div class="description"><p>Playbasis Builder</p></div>
         
 
         
@@ -150,7 +150,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".auth"><span class="type-signature">&lt;static> </span>auth()</h4>
+    <h4 class="name" id=".build"><span class="type-signature">&lt;static> </span>build()</h4>
     
     
 </dt>
@@ -158,7 +158,7 @@
 
     
     <div class="description">
-        <p>Authenticate the application to get token</p>
+        <p>Build</p>
     </div>
     
 
@@ -220,11 +220,139 @@
     
 
     
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".setApiKey"><span class="type-signature">&lt;static> </span>setApiKey(apiKey)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Set api key</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>apiKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>api key</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
     <h5>Returns:</h5>
     
             
 <div class="param-desc">
-    <p>Promise object</p>
+    <p>Playbasis.builder object. You can chain setting other properties further.</p>
 </div>
 
 
@@ -235,7 +363,7 @@
     </dt>
     <dd>
         
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
 
@@ -252,7 +380,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".renew"><span class="type-signature">&lt;static> </span>renew()</h4>
+    <h4 class="name" id=".setApiSecret"><span class="type-signature">&lt;static> </span>setApiSecret(apiSecret)</h4>
     
     
 </dt>
@@ -260,7 +388,7 @@
 
     
     <div class="description">
-        <p>Renew token</p>
+        <p>Set api secret</p>
     </div>
     
 
@@ -269,6 +397,56 @@
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>apiSecret</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>api secret</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -326,7 +504,7 @@
     
             
 <div class="param-desc">
-    <p>Promise object</p>
+    <p>Playbasis.builder object. You can chain setting other properties further.</p>
 </div>
 
 
@@ -337,7 +515,311 @@
     </dt>
     <dd>
         
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".setBaseAsyncUrl"><span class="type-signature">&lt;static> </span>setBaseAsyncUrl(baseAsyncUrl)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Set base async url</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>baseAsyncUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>base async url</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Playbasis.builder object. You can chain setting other properties further.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".setBaseUrl"><span class="type-signature">&lt;static> </span>setBaseUrl(baseUrl)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Set base url</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>baseUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>base url</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Playbasis.builder object. You can chain setting other properties further.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
 
 
 
