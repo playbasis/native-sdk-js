@@ -30,6 +30,9 @@ require('./api/api.storeOrganize.js')(Playbasis);
 require('./api/api.content.js')(Playbasis);
 require('./api/api.quiz.js')(Playbasis);
 
+// -- vendors -- //
+require('./vendors/vendor.qrcode.generator.js')(Playbasis);
+
 module.exports = Playbasis;
 // if it's in browser environment
 var isBrowser = new Function("try {return this===window;}catch(e){ return false;}");
