@@ -2,7 +2,7 @@
 
 /**
  * Playbasis Builder
- * @namespace Playbasis.buider
+ * @namespace Playbasis.builder
  */
 module.exports = function(Playbasis) {
 
