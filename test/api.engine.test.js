@@ -74,5 +74,16 @@ describe("Engine API Tests", function() {
 					done();
 				}, (e) => { console.log(e.message); });
 		});
+
+		it("should get 3 points as reward, requested with custom parameters", function(done) {
+			var customParamsObj = { checkParamKey1: "checkParamValue1", checkParamKey2: "checkParamValue2" };
+			api.rule("compare", playerId, {post_custom_params: customParamsObj})
+				.then((result) => {
+					expect(result.response.events).not.toBe(null);
+					expect(result.response.events[0].reward_type).toBe("point");
+					expect(result.response.events[0].value).toBe("3");
+					done();
+				}, (e) => { console.log(e); });
+		});
 	});
 });

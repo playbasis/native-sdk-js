@@ -19,7 +19,7 @@ module.exports = function(Playbasis) {
 	 * {  
 	 * `size`: *String* = 'small' | 'medium' | 'large'. Default is 'medium'  
 	 * `type`: *Number* = 1-40  
-	 * `errorCorrectionLevel`: *String* = 'L', 'M', 'Q', 'H'  
+	 * `error_correction_level`: *String* = 'L', 'M', 'Q', 'H'  
 	 * }
 	 * @return {String}          img tag string containing embedded Qr Code image.
 	 * @method  generate
@@ -39,9 +39,9 @@ module.exports = function(Playbasis) {
 				}
 			}
 
-			if (options.errorCorrectionLevel != null) {
-				if (typeof options.errorCorrectionLevel === "string") {
-					errorCorrectionLevel = options.errorCorrectionLevel;
+			if (options.error_correction_level != null) {
+				if (typeof options.error_correction_level === "string") {
+					errorCorrectionLevel = options.error_correction_level;
 				}
 			}
 

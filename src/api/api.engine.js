@@ -69,6 +69,7 @@ module.exports = function(Playbasis) {
 	 * `rule_id`: *String* = if needed then you can specifiy a rule id so that rule engine will only process against that rull,  
 	 * `node_id`: *String* = if needed then you can also specify a node id so that rule engine will process with that rule,  
 	 * `session_id`: *String* = you can specify a session id to extend expire session time for player  
+	 * `post_custom_params`: *Object* = custom parameters that will be sent along side this request. It is Object with whose properties are your parameter-key, and values are parameter-value such as {currency: "rm", method: "top-up"}.
 	 * }
 	 * @return {Object}          Promise object
 	 * @method rule
@@ -79,6 +80,13 @@ module.exports = function(Playbasis) {
 		var obj = { token: Playbasis.env.global.token, action: action, player_id: playerId };
 		var selectedOptionsObj = helpers.createObjectFromTarget(options, ["url", "reward", "quantity", "rule_id", "node_id", "session_id"]);
 		var combinedObj = helpers.combineObjects(obj, selectedOptionsObj);
+
+		// if need to combine post option parameter-object too
+		if (options != null) {
+			if (options.post_custom_params != null) {
+				combinedObj = helpers.combineObjects(combinedObj, options.post_custom_params);
+			}
+		}
 
 		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "rule"), combinedObj);
 	}
