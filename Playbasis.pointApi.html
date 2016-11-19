@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Namespace: questApi</title>
+	<title>Documentation Namespace: pointApi</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,7 +65,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: questApi</h1>
+	<h1 class="page-title">Namespace: pointApi</h1>
 <section>
 
 <header>
@@ -73,7 +73,7 @@
         <h2>
             <span class="ancestors"><a href="Playbasis.html">Playbasis</a>.</span>
         
-        questApi
+        pointApi
         </h2>
         
     
@@ -84,7 +84,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Playbasis Quest API</p></div>
+            <div class="description"><p>Playbasis Point API</p></div>
         
 
         
@@ -150,7 +150,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".cancelQuest"><span class="type-signature">&lt;static> </span>cancelQuest(questId, playerId)</h4>
+    <h4 class="name" id=".approveTransactionCustomPoint"><span class="type-signature">&lt;static> </span>approveTransactionCustomPoint(txnList, options)</h4>
     
     
 </dt>
@@ -158,7 +158,7 @@
 
     
     <div class="description">
-        <p>Cancel an already joined quest for player</p>
+        <p>Approve or reject custom point for bulk of transactions ids. If not specify <code>approve</code> in options parameter, then it will try to approve them.</p>
     </div>
     
 
@@ -193,7 +193,7 @@
 
         <tr>
             
-                <td class="name"><code>questId</code></td>
+                <td class="name"><code>txnList</code></td>
             
 
             <td class="type">
@@ -210,20 +210,20 @@
 
             
 
-            <td class="description last"><p>quest id</p></td>
+            <td class="description last"><p>list of transaction id of custom point delimited by comma i.e. xxxx,xxxx,xxxx</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>playerId</code></td>
+                <td class="name"><code>options</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
 
@@ -234,7 +234,7 @@
 
             
 
-            <td class="description last"><p>player id</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>approve</code>: <em>String</em> = approve status. It can be &quot;true&quot; | &quot;false&quot;. Default is &quot;true&quot;.<br>}</p></td>
         </tr>
 
     
@@ -326,7 +326,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".joinAllQuests"><span class="type-signature">&lt;static> </span>joinAllQuests(playerId)</h4>
+    <h4 class="name" id=".listCustomStatus"><span class="type-signature">&lt;static> </span>listCustomStatus(options)</h4>
     
     
 </dt>
@@ -334,987 +334,7 @@
 
     
     <div class="description">
-        <p>Join all quests for player</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>playerId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>player id</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Promise object</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".joinQuest"><span class="type-signature">&lt;static> </span>joinQuest(questId, playerId)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Join quest for player.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>questId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>quest id</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>playerId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>player id</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Promise object</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".missionInfo"><span class="type-signature">&lt;static> </span>missionInfo(questId, missionId)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Return information about the mission with the specified id.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>questId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>quest id</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>missionId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>mission id</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".questAvailableForPlayer"><span class="type-signature">&lt;static> </span>questAvailableForPlayer(questId, playerId)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Return information about the quest which is available for player.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>questId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>quest id</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>playerId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>player id</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Promise object</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".questInfo"><span class="type-signature">&lt;static> </span>questInfo(questId)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Return information about the quest with the specified id.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>questId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>quest id</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Promise object</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".questListAvailableForPlayer"><span class="type-signature">&lt;static> </span>questListAvailableForPlayer(playerId)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Return information about list of quest which is available for player.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>playerId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>player id</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Promise object</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".questListInfo"><span class="type-signature">&lt;static> </span>questListInfo(options)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Return information about all quest for the current site.</p>
+        <p>Return list of custom points' status. So user can review, approve or reject them later one by one.</p>
     </div>
     
 
@@ -1366,7 +386,7 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>tags</code>: <em>String</em> = tag to query separated by comma<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_list</code>: <em>String</em> = list of player delimitted by comma i.e. john,max,robert<br><code>status</code>: <em>String</em> = status of custom point to include in the returned list. It can be &quot;all&quot; | &quot;approve&quot; | &quot;pending&quot; | &quot;reject&quot;.<br><code>from</code>: <em>String</em> = starting date of custom point in format YYYY-MM-DD (i.e. 1982-09-29)<br><code>to</code>: <em>String</em> = ending date of custom point in format YYYY-MM-DD (i.e. 1982-09-29)<br><code>offset</code>: <em>String</em> = paging offset, The start of item to returned in index-based. Default is 0.<br><code>limit</code>: <em>Number</em> = paging limit. Default is 20.<br>}</p></td>
         </tr>
 
     
@@ -1458,7 +478,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".resetQuest"><span class="type-signature">&lt;static> </span>resetQuest(playerId, options)</h4>
+    <h4 class="name" id=".retrieveRemainingPoints"><span class="type-signature">&lt;static> </span>retrieveRemainingPoints(options)</h4>
     
     
 </dt>
@@ -1466,8 +486,7 @@
 
     
     <div class="description">
-        <p>Reset progress of quests for player.
-If options is null, then it will reset all progress for all quests that player has joined.</p>
+        <p>Retrieve remaining for point-based name.</p>
     </div>
     
 
@@ -1502,30 +521,6 @@ If options is null, then it will reset all progress for all quests that player h
 
         <tr>
             
-                <td class="name"><code>playerId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>player id</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>options</code></td>
             
 
@@ -1543,7 +538,159 @@ If options is null, then it will reset all progress for all quests that player h
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>quest_id</code>: <em>String</em> = quest id to reset progress<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>name</code>: <em>String</em> = name of point-based to get remaining from<br>}</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".retrieveTransactionCustomPoint"><span class="type-signature">&lt;static> </span>retrieveTransactionCustomPoint(txnId)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Retrieve transaction information of custom point.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>txnId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>transaction id</p></td>
         </tr>
 
     
