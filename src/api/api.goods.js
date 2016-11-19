@@ -21,7 +21,7 @@ module.exports = function(Playbasis) {
 	 * @param  {Object} options (**optional**) options as object.  
 	 * It can include  
 	 * {  
-	 * `player_id`: *String* = player id,  
+	 * `player_id`: *String* = player id  
 	 * `date_start`: *String* = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range  
 	 * `date_end`: *String* = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range  
 	 * `offset`: *String* = paging offset. Default is 0.  
