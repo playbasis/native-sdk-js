@@ -459,9 +459,19 @@ describe("Player API Tests", function() {
 					done();
 				}, (e) => { console.log(e.message); });
 		});
+
+		it("should return badge information - via tags", function(done) {
+			api.badge(window.mock.env.playerId, {tags: "like"})
+				.then((result) => {
+					expect(result.response).not.toBe(null);
+					expect(result.response.length > 0).toBeTruthy();
+					expect(result.response[0].tags.indexOf("like")).not.toBe(-1);
+					done();
+				}, (e) => { console.log(e); });
+		});
 	});
 
-	describe("Badges test", function() {
+	describe("AllBadges test", function() {
 		beforeAll(function(done) {
 			done();
 		});
@@ -477,6 +487,16 @@ describe("Player API Tests", function() {
 					expect(result.response[4].name).toEqual("badge_pro");
 					done();
 				}, (e) => { console.log(e.message); });
+		});
+
+		it("should return badge information - via tags", function(done) {
+			api.allBadges(window.mock.env.playerId, { tags: "like" })
+				.then((result) => { 
+					expect(result.response).not.toBe(null);
+					expect(result.response.length > 0).toBeTruthy();
+					expect(result.response[0].tags.indexOf("like")).not.toBe(-1);
+					done();
+				}, (e) => { console.log(e); });
 		});
 	});	
 

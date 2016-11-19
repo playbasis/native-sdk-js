@@ -426,25 +426,41 @@ module.exports = function(Playbasis) {
 	/**
 	 * Return information about all the badges that a player has earned.
 	 * @param  {String} playerId player id
+	 * @param {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `tags`: *String* = specific tags to find, each tag delimited by comma i.e. foo,bar  
+	 * }
 	 * @return {Object}          Promise Object
 	 * @method  badge
 	 * @memberof Playbasis.playerApi
 	 */
-	_api.badge = function(playerId)
+	_api.badge = function(playerId, options)
 	{
-		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "badge"));
+		var keys = ["tags"];
+		var defaultValues = [null];
+
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "badge") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, defaultValues, options));
 	};
 
 	/**
 	 * Return information about all the badges of the client as well as the amount that a player may earn.
 	 * @param  {String} playerId player id
+	 * @param {Object} options (**optional**) options as object.  
+	 * It can include.  
+	 * {
+	 * `tags`: *String* = specific tags to find, each tag delimited by comma i.e. foo,bar    
+	 * }
 	 * @return {Object}          Promise Object
 	 * @method allBadges
 	 * @memberof Playbasis.playerApi
 	 */
-	_api.allBadges = function(playerId)
+	_api.allBadges = function(playerId, options)
 	{
-		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "badgeAll"));
+		var keys = ["tags"];
+		var defaultValues = [null];
+
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "badgeAll") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, defaultValues, options));
 	};
 
 	/* Return the list of players sorted by the specified point type. */
