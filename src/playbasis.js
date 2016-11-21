@@ -33,6 +33,7 @@ require('./api/api.point.js')(Playbasis);
 
 // -- vendors -- //
 require('./vendors/vendor.qrcode.generator.js')(Playbasis);
+require('./vendors/vendor.barcode.generator.js')(Playbasis);
 
 module.exports = Playbasis;
 // if it's in browser environment
