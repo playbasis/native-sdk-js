@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Namespace: builder</title>
+	<title>Documentation Namespace: barCode</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,7 +65,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: builder</h1>
+	<h1 class="page-title">Namespace: barCode</h1>
 <section>
 
 <header>
@@ -73,7 +73,7 @@
         <h2>
             <span class="ancestors"><a href="Playbasis.html">Playbasis</a>.</span>
         
-        builder
+        barCode
         </h2>
         
     
@@ -84,7 +84,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Playbasis Builder</p></div>
+            <div class="description"><p>Playbasis Vendors - Barcode Generator</p></div>
         
 
         
@@ -150,7 +150,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".build"><span class="type-signature">&lt;static> </span>build()</h4>
+    <h4 class="name" id=".generate"><span class="type-signature">&lt;static> </span>generate(targetElement, text, options)</h4>
     
     
 </dt>
@@ -158,85 +158,8 @@
 
     
     <div class="description">
-        <p>Build</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".setApiKey"><span class="type-signature">&lt;static> </span>setApiKey(apiKey)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Set api key</p>
+        <p>Generate barcode and attach result to target element.
+Result from this call, target element will have barcode rendered.</p>
     </div>
     
 
@@ -271,7 +194,7 @@
 
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+                <td class="name"><code>targetElement</code></td>
             
 
             <td class="type">
@@ -288,7 +211,55 @@
 
             
 
-            <td class="description last"><p>api key</p></td>
+            <td class="description last"><p>Target element can either be &quot;#elementname&quot; or &quot;.classname&quot;. Use the former to render barcode to specific element. Otherwise use the latter, so you can use that class name to apply to multiple of elements.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Text data to add into generated qrcode</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) option as Object.<br>It can include<br>{<br><code>format</code>: <em>String</em> = select which format to use to render barcode. It can be &quot;UPC&quot; | &quot;EAN2&quot; | &quot;EAN5&quot; | &quot;EAN8&quot; | &quot;EAN13&quot; | &quot;CODE39&quot; | &quot;ITF14&quot; | &quot;MSI&quot; | &quot;PHARMACODE&quot;. Otherwise if not specify, it will be default to use code-128 style.<br><code>width</code>: <em>Number</em> = width of single bar. Default is 2.<br><code>height</code>: <em>Number</em> = height of the barcode. Default is 100.<br><code>text</code>: <em>String</em> = override text that is displayed. Default is undefined.<br><code>fontOptions</code>: <em>String</em> = you can add bold, and italic style to text. It can be &quot;bold&quot; | &quot;italic&quot; | &quot;bold italic&quot;. Default is &quot;&quot;.<br><code>font</code>: <em>String</em> = define the font family used to display text. This can be any default font or a font defined by a @font-face rule. Default is &quot;monospace&quot;.<br><code>textAlign</code>: <em>String</em> = set horizontal alignment of text. It can be &quot;left&quot; | &quot;center&quot; | &quot;right&quot;. Default is &quot;center&quot;.<br><code>textPosition</code>: <em>String</em> = set vertical position of text. It can be &quot;bottom&quot; | &quot;top&quot;. Default is &quot;bottom&quot;.<br><code>textMargin</code>: <em>Number</em> = set the space between the barcode and text. Default is 2.<br><code>fontSize</code>: <em>Number</em> = set size of text. Default is 20.<br><code>background</code>: <em>String</em> = set background color of barcode. Default is &quot;#ffffff&quot;.<br><code>lineColor</code>: <em>String</em> = set line color of barcode. Default is &quot;#000000&quot;.<br><code>margin</code>: <em>Number</em> = set space margin around barcode. If nothing else is set, all side will inherit the margins property but can be replaced it you want to set them separately. Default is 10.<br><code>marginLeft</code>: <em>Number</em> = set space margin left of barcode. Default is 10.<br><code>marginRight</code>: <em>Number</em> = set space margin right of barcode. Default is 10.<br><code>marginTop</code>: <em>Number</em> = set space margin top of barcode. Default is 10.<br><code>marginBottom</code>: <em>Number</em> = set space margin bottom of barcode. Default is 10.<br>}</p></td>
         </tr>
 
     
@@ -348,486 +319,6 @@
     
 
     
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Playbasis.builder object. You can chain setting other properties further.</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".setApiSecret"><span class="type-signature">&lt;static> </span>setApiSecret(apiSecret)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Set api secret</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>apiSecret</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>api secret</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Playbasis.builder object. You can chain setting other properties further.</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".setBaseAsyncUrl"><span class="type-signature">&lt;static> </span>setBaseAsyncUrl(baseAsyncUrl)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Set base async url</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>baseAsyncUrl</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>base async url</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Playbasis.builder object. You can chain setting other properties further.</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".setBaseUrl"><span class="type-signature">&lt;static> </span>setBaseUrl(baseUrl)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Set base url</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>baseUrl</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>base url</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Playbasis.builder object. You can chain setting other properties further.</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
 
     
 </dd>
