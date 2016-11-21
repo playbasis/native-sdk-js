@@ -17,9 +17,9 @@ module.exports = function(Playbasis) {
 	 * @param {Object} options (**optional**) option as Object.  
 	 * It can include  
 	 * {  
-	 * `size`: *String* = 'small' | 'medium' | 'large'. Default is 'medium'  
-	 * `type`: *Number* = 1-40  
-	 * `error_correction_level`: *String* = 'L', 'M', 'Q', 'H'  
+	 * `size`: *String* = 'small' | 'medium' | 'large'. Default is 'medium'.  
+	 * `type`: *Number* = 1-40  It affects the pattern of QR code. Default is 4.  
+	 * `error_correction_level`: *String* = 'L', 'M', 'Q', 'H'. Error correction level relates to how well QR code can restore data in case of damaged or dirty. Please refer [here](http://www.qrcode.com/en/about/error_correction.html) for more information. In most case, you don't need to modify this value. Default is 'L'.  
 	 * }
 	 * @return {String}          img tag string containing embedded Qr Code image.
 	 * @method  generate
