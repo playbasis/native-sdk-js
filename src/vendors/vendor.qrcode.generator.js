@@ -13,6 +13,7 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Generate QRcode from specified text, and return it as img HTML tag string.
+	 * @param {String} targetContainer Target container as element id name i.e. "container" to add a result generated QR code as a child img> HTML element.
 	 * @param  {Object} text 			Text data to add into generated qrcode
 	 * @param {Object} options (**optional**) option as Object.  
 	 * It can include  
@@ -25,7 +26,7 @@ module.exports = function(Playbasis) {
 	 * @method  generate
 	 * @memberOf Playbasis.qrCode
 	 */
-	qr.generate = function(text, options)
+	qr.generate = function(targetContainer, text, options)
 	{
 		var typeNumber = 4;	// default of type number, fall back to this if not set in options
 		var errorCorrectionLevel = 'L';		// default of type number, fall back to this if not set in options
@@ -63,6 +64,9 @@ module.exports = function(Playbasis) {
 		var qr = _vendorQrCode(typeNumber, errorCorrectionLevel);
 		qr.addData(text);
 		qr.make();
-		return qr.createImgTag(sizeNum);
+		var imgTagStr = qr.createImgTag(sizeNum);
+
+		// append as child to target container
+		document.getElementById(targetContainer).innerHTML = imgTagStr;
 	}
 }

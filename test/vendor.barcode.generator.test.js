@@ -8,14 +8,14 @@ describe("Wrapped Barcode Generator Test", function() {
 	});
 
 	describe("Generating Test", function() {
-		beforeAll(function() {
+		beforeEach(function() {
 			// create a new svg element before each test
 			var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 			svg.setAttribute("id", "testbarcode");
 			document.body.appendChild(svg);
 		});
 
-		afterAll(function() {
+		afterEach(function() {
 			// remove created svg element after we're done with it
 			var svg = document.getElementById("testbarcode");
 			document.body.removeChild(svg);
@@ -56,7 +56,7 @@ describe("Wrapped Barcode Generator Test", function() {
 	});
 
 	describe("Generating Test - class as target element", function() {
-		beforeAll(function() {
+		beforeEach(function() {
 			// create a new svg element before each test
 			var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 			svg.setAttribute("id", "testbarcode");
@@ -64,7 +64,7 @@ describe("Wrapped Barcode Generator Test", function() {
 			document.body.appendChild(svg);
 		});
 
-		afterAll(function() {
+		afterEach(function() {
 			// remove created svg element after we're done with it
 			var svg = document.getElementById("testbarcode");
 			document.body.removeChild(svg);
