@@ -31,6 +31,9 @@ require('./api/api.content.js')(Playbasis);
 require('./api/api.quiz.js')(Playbasis);
 require('./api/api.point.js')(Playbasis);
 
+// -- util -- //
+require('./util/util.js')(Playbasis);
+
 // -- vendors -- //
 require('./vendors/vendor.qrcode.generator.js')(Playbasis);
 require('./vendors/vendor.barcode.generator.js')(Playbasis);
