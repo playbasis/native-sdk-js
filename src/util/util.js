@@ -28,7 +28,7 @@ module.exports = function(Playbasis) {
 	 * @param {String} imageUrl original image url
 	 * @param {String} favored size of image to get is url from. It can be "80x80" | "240x240".
 	 * @return {Object}            Promise object
-	 * @method auth
+	 * @method getThumbnailURL
 	 * @memberOf Playbasis.util
 	 */
 	util.getThumbnailURL = function(imageUrl, favored) 
