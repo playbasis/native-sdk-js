@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="Playbasis.html">Playbasis</a></li><li><a href="Playbasis.authApi.html">Playbasis.authApi</a></li><li><a href="Playbasis.badgeApi.html">Playbasis.badgeApi</a></li><li><a href="Playbasis.barCode.html">Playbasis.barCode</a></li><li><a href="Playbasis.builder.html">Playbasis.builder</a></li><li><a href="Playbasis.communicationApi.html">Playbasis.communicationApi</a></li><li><a href="Playbasis.contentApi.html">Playbasis.contentApi</a></li><li><a href="Playbasis.engineApi.html">Playbasis.engineApi</a></li><li><a href="Playbasis.goodsApi.html">Playbasis.goodsApi</a></li><li><a href="Playbasis.helpers.html">Playbasis.helpers</a></li><li><a href="Playbasis.http.html">Playbasis.http</a></li><li><a href="Playbasis.livefeedApi.html">Playbasis.livefeedApi</a></li><li><a href="Playbasis.merchantApi.html">Playbasis.merchantApi</a></li><li><a href="Playbasis.playerApi.html">Playbasis.playerApi</a></li><li><a href="Playbasis.pointApi.html">Playbasis.pointApi</a></li><li><a href="Playbasis.qrCode.html">Playbasis.qrCode</a></li><li><a href="Playbasis.questApi.html">Playbasis.questApi</a></li><li><a href="Playbasis.quizApi.html">Playbasis.quizApi</a></li><li><a href="Playbasis.redeemApi.html">Playbasis.redeemApi</a></li><li><a href="Playbasis.serviceApi.html">Playbasis.serviceApi</a></li><li><a href="Playbasis.storeOrganizeApi.html">Playbasis.storeOrganizeApi</a></li>
+					<li><a href="Playbasis.html">Playbasis</a></li><li><a href="Playbasis.authApi.html">Playbasis.authApi</a></li><li><a href="Playbasis.badgeApi.html">Playbasis.badgeApi</a></li><li><a href="Playbasis.barCode.html">Playbasis.barCode</a></li><li><a href="Playbasis.builder.html">Playbasis.builder</a></li><li><a href="Playbasis.communicationApi.html">Playbasis.communicationApi</a></li><li><a href="Playbasis.contentApi.html">Playbasis.contentApi</a></li><li><a href="Playbasis.engineApi.html">Playbasis.engineApi</a></li><li><a href="Playbasis.goodsApi.html">Playbasis.goodsApi</a></li><li><a href="Playbasis.helpers.html">Playbasis.helpers</a></li><li><a href="Playbasis.http.html">Playbasis.http</a></li><li><a href="Playbasis.livefeedApi.html">Playbasis.livefeedApi</a></li><li><a href="Playbasis.merchantApi.html">Playbasis.merchantApi</a></li><li><a href="Playbasis.playerApi.html">Playbasis.playerApi</a></li><li><a href="Playbasis.pointApi.html">Playbasis.pointApi</a></li><li><a href="Playbasis.qrCode.html">Playbasis.qrCode</a></li><li><a href="Playbasis.questApi.html">Playbasis.questApi</a></li><li><a href="Playbasis.quizApi.html">Playbasis.quizApi</a></li><li><a href="Playbasis.redeemApi.html">Playbasis.redeemApi</a></li><li><a href="Playbasis.serviceApi.html">Playbasis.serviceApi</a></li><li><a href="Playbasis.storeOrganizeApi.html">Playbasis.storeOrganizeApi</a></li><li><a href="Playbasis.util.html">Playbasis.util</a></li>
 				</ul>
 			</li>
 			
@@ -298,6 +298,406 @@
     
 </dd>
 
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".redeemCoupon"><span class="type-signature">&lt;static> </span>redeemCoupon(goodsGroup, couponCode, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Merchant redeems couple from player.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>goodsGroup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>goods group name.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>couponCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>coupon code of goods to redeem</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include.<br>{<br><code>pin_code</code>: <em>String</em> = merchant PIN code generated from admin dashboard<br><code>player_id</code>: <em>String</em> = player id<br>}</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".verifyCoupon"><span class="type-signature">&lt;static> </span>verifyCoupon(goodsGroup, couponCode, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Verify coupon code available to be redeemed.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>goodsGroup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>goods group name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>couponCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>coupon code of goods to verify</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>pin_code</code>: <em>String</em> = merchant PIN code generated from admin dashboard<br><code>player_id</code>: <em>String</em> = player id<br>}</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
         </dl>
     
 
@@ -348,7 +748,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on November 22nd 2016, 7:50:21 am
+		on November 22nd 2016, 9:52:27 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
