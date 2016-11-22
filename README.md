@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/playbasis.js.svg)](https://badge.fury.io/js/playbasis.js) [![npm version](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/playbasis/native-sdk-js/blob/master/LICENSE.md)
+
 ## Playbasis Native JS SDK
 
 Playbasis.js allows developers to connect and utilize [Playbasis API](http://doc.playbasis.com/pbapp) with Javascript with Promise support.
