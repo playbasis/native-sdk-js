@@ -27,4 +27,49 @@ module.exports = function(Playbasis) {
 	{
 		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "availableBranchGoodsGroup") + helpers.appendAndJoinIfNotNullAsUrlParam("goods_group", goodsGroup));
 	}
+
+	/**
+	 * Verify coupon code available to be redeemed.
+	 * @param  {String} goodsGroup goods group name
+	 * @param  {String} couponCode coupon code of goods to verify
+	 * @param {Object} options (**optional**) options as object.  
+	 * It can include  
+	 * {  
+	 * `pin_code`: *String* = merchant PIN code generated from admin dashboard  
+	 * `player_id`: *String* = player id  
+	 * }
+	 * @return {Object}            Promise object
+	 * @method  verifyCoupon
+	 * @memberOf Playbasis.merchantApi
+	 */
+	_api.verifyCoupon = function(goodsGroup, couponCode, options)
+	{
+		var keys = ["goods_group", "coupon_code", "pin_code", "player_id"];
+		var dvalues = [goodsGroup, couponCode, null, null];
+
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "goodsGroup", "verify") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
+	}
+
+	/**
+	 * Merchant redeems couple from player.
+	 * @param  {String} goodsGroup goods group name.
+	 * @param  {String} couponCode coupon code of goods to redeem
+	 * @param  {Object} options    (**optional**) options as object.  
+	 * It can include.  
+	 * {  
+	 * `pin_code`: *String* = merchant PIN code generated from admin dashboard  
+	 * `player_id`: *String* = player id  
+	 * }
+	 * @return {Object}            Promise object
+	 * @method redeemCoupon
+	 * @memberOf Playbasis.merchantApi
+	 */
+	_api.redeemCoupon = function(goodsGroup, couponCode, options)
+	{
+		var postObj = { token: Playbasis.env.global.token, goods_group: goodsGroup, coupon_code: couponCode };
+		var optionObj = helpers.createObjectFromTarget(options, ["pin_code", "player_id"]);
+		var combinedObj = helpers.combineObjects(postObj, optionObj);
+
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "goodsGroup", "redeem"), combinedObj);
+	}
 }

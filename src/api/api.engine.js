@@ -69,7 +69,7 @@ module.exports = function(Playbasis) {
 	 * `rule_id`: *String* = if needed then you can specifiy a rule id so that rule engine will only process against that rull,  
 	 * `node_id`: *String* = if needed then you can also specify a node id so that rule engine will process with that rule,  
 	 * `session_id`: *String* = you can specify a session id to extend expire session time for player  
-	 * `post_custom_params`: *Object* = custom parameters that will be sent along side this request. It is Object with whose properties are your parameter-key, and values are parameter-value such as {currency: "rm", method: "top-up"}.
+	 * `post_custom_params`: *Object* = custom parameters that will be sent along side this request. It is Object with whose properties are your parameter-key, and values are parameter-value such as {currency: "rm", method: "top-up"}.  
 	 * }
 	 * @return {Object}          Promise object
 	 * @method rule
