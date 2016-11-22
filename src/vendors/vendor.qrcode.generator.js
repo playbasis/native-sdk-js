@@ -13,7 +13,7 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Generate QRcode from specified text, and return it as img HTML tag string.
-	 * @param {String} targetContainer Target container as element id name i.e. "container" to add a result generated QR code as a child img> HTML element.
+	 * @param {String} targetContainer Target container as element id name i.e. "container" to add a result generated QR code as a child img HTML element.
 	 * @param  {Object} text 			Text data to add into generated qrcode
 	 * @param {Object} options (**optional**) option as Object.  
 	 * It can include  

@@ -72,8 +72,13 @@ Playbasis.engineApi.rule("click", "jon", {reward: "point", quantity: 20})
 	});
 ```
 
+## Document
+
 There's many more apis you can call.
-Better, you can generate SDK document via `gulp doc`. It will generate SDK document (.html) inside `./docs/gen`.
+There're 2 options for you.
+
+* Generate it manually via `gulp doc`. Document will be generated at `docs/gen` thus you can look at it offline.
+* Go to [API Doc](https://playbasis.github.io/native-sdk-js/). We update it against every release. Thus it's always latest.
 
 ## License
 
