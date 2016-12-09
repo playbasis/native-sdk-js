@@ -610,6 +610,29 @@ module.exports = function(Playbasis) {
 	}
 
 	/**
+	 * Deduct a badge from a given player.
+	 * @param  {String} playerId player id
+	 * @param  {String} badge    name of badge to deduct
+	 * @param  {Number} amount   amount to deduct
+	 * @param  {Object} options  (**optional**) options as Object.  
+	 * It can include  
+	 * {  
+	 * `force`: *Number* = 0 for not force if player has not enough badge to deduct | 1 = force to do the deduct (and player's badge becomes zero)  
+	 * }
+	 * @return {Object}          Promise Object
+	 * @method deductBadge
+	 * @memberOf  Playbasis.playerApi
+	 */
+	_api.deductBadge = function(playerId, badge, amount, options)
+	{
+		var postObj = { token: Playbasis.env.global.token, badge: badge, amount: amount };
+		var optionObj = helpers.createObjectFromTarget(options, ["force"]);
+		var combinedObj = helpers.combineObjects(postObj, optionObj);
+
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "deduct", "badge"), combinedObj);
+	}
+
+	/**
 	 * Return generated referral code of player.
 	 * @param  {String} playerId player id
 	 * @return {Object}          Promise Object

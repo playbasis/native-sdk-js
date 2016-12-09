@@ -484,7 +484,7 @@ describe("Player API Tests", function() {
 					expect(result.response[1].name).toEqual("badge_like");
 					expect(result.response[2].name).toEqual("badge_master");
 					expect(result.response[3].name).toEqual("badge_explorer");
-					expect(result.response[4].name).toEqual("badge_pro");
+					expect(result.response[4].name).toEqual("badge_master");
 					done();
 				}, (e) => { console.log(e.message); });
 		});
@@ -677,6 +677,24 @@ describe("Player API Tests", function() {
 
 		it("should return success on deduct with amount 0, its 'old_value' and 'new_value' should equal, and 'value_deducted' is 0", function(done) {
 			api.deductReward(playerId, "point", 0)
+				.then((result) => {
+					expect(result.response.old_value).toEqual(result.response.new_value);
+					expect(result.response.value_deducted).toEqual(0);
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
+	describe("Deduct Badge test", function() {
+
+		var playerId = window.mock.env.playerId;
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success on deduct with amount 0, its 'old_value' and 'new_value' should equal, and 'value_deducted' is 0", function(done) {
+			api.deductBadge(playerId, "badge_like", 0)
 				.then((result) => {
 					expect(result.response.old_value).toEqual(result.response.new_value);
 					expect(result.response.value_deducted).toEqual(0);
