@@ -42,6 +42,27 @@ describe("Goods API Tests", function() {
 					done();
 				}, (e) => { console.log(e.message); });
 		});
+
+		// this test case requires setting future goods item in dashboard to really be in the future date
+		it("should not return 'Future Goods' as utilized active_filter parameter.", function(done) {
+			api.goodsListInfo({player_id: mock.env.playerId, active_filter: true})
+				.then((result) => {
+					
+					let goodsItems = result.response.goods_list;
+					var isValid = true;
+					for (let item in goodsItems) {
+						if (item.name === "Future Goods") {
+							isValid = false;
+							break;
+						}
+					}
+
+					if (isValid) {
+						done();
+					}
+				}, (e) => { console.log(e.message); });
+		});
+
 	});
 
 	describe("Goods List Info With Selected Fields Test", function() {
@@ -62,6 +83,28 @@ describe("Goods API Tests", function() {
 					done();
 				}, (e) => { console.log(e); });
 		});
+
+		// this test case requires setting future goods item in dashboard to really be in the future date
+		it("should not return 'Future Goods' as utilized active_filter parameter.", function(done) {
+			api.goodsListInfoWithSelectedFields({selected_field: "name,date_start,date_expire", player_id: mock.env.playerId, active_filter: true})
+				.then((result) => {
+
+					let goodsItems = result.response.goods_list;
+					var isValid = true;
+					for (let item in goodsItems) {
+						if (item.name === "Future Goods") {
+							isValid = false;
+							break;
+						}
+					}
+
+					if (isValid) {
+						done();
+					}
+
+				}, (e) => { console.log(e.message); });
+		});
+
 	});
 
 	describe("Goods Info test", function() {
