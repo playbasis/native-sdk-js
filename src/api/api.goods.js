@@ -22,6 +22,7 @@ module.exports = function(Playbasis) {
 	 * It can include  
 	 * {  
 	 * `player_id`: *String* = player id  
+	 * `active_filter`: *Boolean* = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.  
 	 * `date_start`: *String* = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range  
 	 * `date_end`: *String* = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range  
 	 * `offset`: *String* = paging offset. Default is 0.  
@@ -34,8 +35,8 @@ module.exports = function(Playbasis) {
 	 */
 	api.goodsListInfo = function(options)
 	{
-		var keys = ["player_id", "date_start", "date_end", "offset", "limit", "tags"];
-		var defaultValues = [null, null, null, null, null, null];
+		var keys = ["player_id", "active_filter", "date_start", "date_end", "offset", "limit", "tags"];
+		var defaultValues = [null, null, null, null, null, null, null];
 
 		return http.getJsonAsync(helpers.createApiUrl(apiMethod) + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, defaultValues, options));
 	}
@@ -46,7 +47,8 @@ module.exports = function(Playbasis) {
 	 * It can include  
 	 * {  
 	 * `player_id`: *String* = player id  
-	 * `selected_field`: *String* = fields that will be included result payload, delimited with comma and with no space i.e. field1,field2,field3. 
+	 * `selected_field`: *String* = fields that will be included result payload, delimited with comma and with no space i.e. field1,field2,field3.  
+	 * `active_filter`: *Boolean* = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.  
 	 * `date_start`: *String* = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range  
 	 * `date_end`: *String* = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range  
 	 * `offset`: *String* = paging offset. Default is 0.  
@@ -59,8 +61,8 @@ module.exports = function(Playbasis) {
 	 */
 	api.goodsListInfoWithSelectedFields = function(options)
 	{
-		var keys = ["player_id", "selected_field", "date_start", "date_end", "offset", "limit", "tags"];
-		var defaultValues = [null, null, null, null, null, null, null];
+		var keys = ["player_id", "selected_field", "active_filter", "date_start", "date_end", "offset", "limit", "tags"];
+		var defaultValues = [null, null, null, null, null, null, null, null];
 
 		return http.getJsonAsync(helpers.createApiUrl(apiMethod, "field") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, defaultValues, options));
 	}
