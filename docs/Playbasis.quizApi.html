@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Namespace: redeemApi</title>
+	<title>Documentation Namespace: quizApi</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,7 +65,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: redeemApi</h1>
+	<h1 class="page-title">Namespace: quizApi</h1>
 <section>
 
 <header>
@@ -73,7 +73,7 @@
         <h2>
             <span class="ancestors"><a href="Playbasis.html">Playbasis</a>.</span>
         
-        redeemApi
+        quizApi
         </h2>
         
     
@@ -84,7 +84,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Playbasis Redeem API</p></div>
+            <div class="description"><p>Playbasis Quiz Organize API</p></div>
         
 
         
@@ -150,7 +150,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".redeem"><span class="type-signature">&lt;static> </span>redeem(goodsId, playerId, options)</h4>
+    <h4 class="name" id=".answerQuestion"><span class="type-signature">&lt;static> </span>answerQuestion(quizId, playerId, questionId, optionId)</h4>
     
     
 </dt>
@@ -158,7 +158,7 @@
 
     
     <div class="description">
-        <p>Redeem goods for player.</p>
+        <p>Answer question with option for quiz.</p>
     </div>
     
 
@@ -193,7 +193,7 @@
 
         <tr>
             
-                <td class="name"><code>goodsId</code></td>
+                <td class="name"><code>quizId</code></td>
             
 
             <td class="type">
@@ -210,7 +210,7 @@
 
             
 
-            <td class="description last"><p>goods id</p></td>
+            <td class="description last"><p>quiz id to answer to question</p></td>
         </tr>
 
     
@@ -241,13 +241,13 @@
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>questionId</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">String</span>
 
 
 
@@ -258,7 +258,31 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>amount</code>: <em>Number</em> = amount of goods to give to player<br>}</p></td>
+            <td class="description last"><p>question id to answer</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>optionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>option id of question selected as answer</p></td>
         </tr>
 
     
@@ -350,7 +374,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".redeemGoodsGroup"><span class="type-signature">&lt;static> </span>redeemGoodsGroup(playerId, group, options)</h4>
+    <h4 class="name" id=".detailOfQuiz"><span class="type-signature">&lt;static> </span>detailOfQuiz(quizId, options)</h4>
     
     
 </dt>
@@ -358,7 +382,7 @@
 
     
     <div class="description">
-        <p>Redeem Goods from given group.</p>
+        <p>Get detail of quiz.</p>
     </div>
     
 
@@ -393,7 +417,7 @@
 
         <tr>
             
-                <td class="name"><code>playerId</code></td>
+                <td class="name"><code>quizId</code></td>
             
 
             <td class="type">
@@ -410,31 +434,7 @@
 
             
 
-            <td class="description last"><p>player id</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>group</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>goods group</p></td>
+            <td class="description last"><p>quiz id to get detail from</p></td>
         </tr>
 
     
@@ -458,7 +458,7 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>amount</code>: <em>Number</em> = amount of goods to give to player<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em> = player id as used in client's website<br>}</p></td>
         </tr>
 
     
@@ -550,7 +550,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".redeemSponsor"><span class="type-signature">&lt;static> </span>redeemSponsor(goodsId, playerId, options)</h4>
+    <h4 class="name" id=".getQuestionFromQuiz"><span class="type-signature">&lt;static> </span>getQuestionFromQuiz(quizId, playerId, options)</h4>
     
     
 </dt>
@@ -558,7 +558,7 @@
 
     
     <div class="description">
-        <p>Redeem sponsored Goods for player.</p>
+        <p>Get a question with a list of options from a given quiz, but with a reset timestamp of question that has timeout to answer.</p>
     </div>
     
 
@@ -593,7 +593,7 @@
 
         <tr>
             
-                <td class="name"><code>goodsId</code></td>
+                <td class="name"><code>quizId</code></td>
             
 
             <td class="type">
@@ -610,7 +610,7 @@
 
             
 
-            <td class="description last"><p>goods id</p></td>
+            <td class="description last"><p>quiz id to get a question from</p></td>
         </tr>
 
     
@@ -658,7 +658,7 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>amount</code>: <em>Number</em> = amount of goods to give to player<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>question_id</code>: <em>String</em> = question id in quiz, if you need to get a specific question<br><code>random</code>: <em>Number</em> = 1 for Random | 2 for Not Random<br>}</p></td>
         </tr>
 
     
@@ -750,7 +750,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".redeemSponsoredGoodsGroup"><span class="type-signature">&lt;static> </span>redeemSponsoredGoodsGroup(playerId, group, options)</h4>
+    <h4 class="name" id=".getQuestionFromQuiz"><span class="type-signature">&lt;static> </span>getQuestionFromQuiz(quizId, playerId, options)</h4>
     
     
 </dt>
@@ -758,7 +758,7 @@
 
     
     <div class="description">
-        <p>Redeem sponsored goods given goods group.</p>
+        <p>Get a question with a list of options from a given quiz.</p>
     </div>
     
 
@@ -793,6 +793,30 @@
 
         <tr>
             
+                <td class="name"><code>quizId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>quiz id to get a question from</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>playerId</code></td>
             
 
@@ -817,30 +841,6 @@
 
         <tr>
             
-                <td class="name"><code>group</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>goods group</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>options</code></td>
             
 
@@ -858,7 +858,7 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>amount</code>: <em>Number</em> = amount of goods to give to player<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>question_id</code>: <em>String</em> = question id in quiz, if you need to get a specific question<br><code>random</code>: <em>Number</em> = 1 for Random | 2 for Not Random<br>}</p></td>
         </tr>
 
     
@@ -950,7 +950,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".redeemVerify"><span class="type-signature">&lt;static> </span>redeemVerify(goodsGroup, couponCode, pinCode)</h4>
+    <h4 class="name" id=".listOfActiveQuizzes"><span class="type-signature">&lt;static> </span>listOfActiveQuizzes(options)</h4>
     
     
 </dt>
@@ -958,7 +958,7 @@
 
     
     <div class="description">
-        <p>Redeem verification for merchant using PIN code.</p>
+        <p>Return list of active quizzes</p>
     </div>
     
 
@@ -993,7 +993,159 @@
 
         <tr>
             
-                <td class="name"><code>goodsGroup</code></td>
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em> = player id as used in client's website<br><code>type</code>: <em>String</em> = type of quiz which can be &quot;quiz&quot; | &quot;poll&quot;<br><code>tags</code>: <em>String</em> = tag(s) to find i.e. &quot;foo,bar&quot;<br>}</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".listPendingQuiz"><span class="type-signature">&lt;static> </span>listPendingQuiz(playerId, limit)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>List pending quiz by player</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>playerId</code></td>
             
 
             <td class="type">
@@ -1010,14 +1162,166 @@
 
             
 
-            <td class="description last"><p>goods group</p></td>
+            <td class="description last"><p>player id</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>couponCode</code></td>
+                <td class="name"><code>limit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>number of returned result</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".listQuizDone"><span class="type-signature">&lt;static> </span>listQuizDone(playerId, limit)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>List quiz done by player</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>playerId</code></td>
             
 
             <td class="type">
@@ -1034,14 +1338,166 @@
 
             
 
-            <td class="description last"><p>coupon code</p></td>
+            <td class="description last"><p>player id</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>pinCode</code></td>
+                <td class="name"><code>limit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>number of returned result</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".quizStatistics"><span class="type-signature">&lt;static> </span>quizStatistics(quizId)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Query a statistics of quiz done by all players</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>quizId</code></td>
             
 
             <td class="type">
@@ -1058,7 +1514,535 @@
 
             
 
-            <td class="description last"><p>pin code</p></td>
+            <td class="description last"><p>quiz id to query statistics from</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".randomQuizForPlayer"><span class="type-signature">&lt;static> </span>randomQuizForPlayer(playerId, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Randomly get one quiz from a list of active quizzes for player.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>playerId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>player id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>type</code>: <em>String</em> = type of quiz. It can be &quot;quiz&quot; | &quot;poll&quot;<br><code>tags</code>: <em>String</em> = tag(s) to find i.e. &quot;foo,bar&quot;<br>}</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".rankPlayersByScore"><span class="type-signature">&lt;static> </span>rankPlayersByScore(quizId, limit)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Rank players by their score for given quiz.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>quizId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>quiz id to rank score for players</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>limit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>number of returned result</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".resetQuiz"><span class="type-signature">&lt;static> </span>resetQuiz(playerId, quizId)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Reset a quiz done by player.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>playerId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>player id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>quizId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>quiz id to reset</p></td>
         </tr>
 
     
@@ -1196,7 +2180,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on December 20th 2016, 3:23:00 pm
+		on December 20th 2016, 3:41:46 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Namespace: goodsApi</title>
+	<title>Documentation Namespace: pointApi</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,7 +65,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: goodsApi</h1>
+	<h1 class="page-title">Namespace: pointApi</h1>
 <section>
 
 <header>
@@ -73,7 +73,7 @@
         <h2>
             <span class="ancestors"><a href="Playbasis.html">Playbasis</a>.</span>
         
-        goodsApi
+        pointApi
         </h2>
         
     
@@ -84,7 +84,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Playbasis Goods API</p></div>
+            <div class="description"><p>Playbasis Point API</p></div>
         
 
         
@@ -150,7 +150,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".goodsGroupAvailable"><span class="type-signature">&lt;static> </span>goodsGroupAvailable(playerId, group, options)</h4>
+    <h4 class="name" id=".approveTransactionCustomPoint"><span class="type-signature">&lt;static> </span>approveTransactionCustomPoint(txnList, options)</h4>
     
     
 </dt>
@@ -158,7 +158,7 @@
 
     
     <div class="description">
-        <p>Find number of available Goods given group.</p>
+        <p>Approve or reject custom point for bulk of transactions ids. If not specify <code>approve</code> in options parameter, then it will try to approve them.</p>
     </div>
     
 
@@ -193,7 +193,7 @@
 
         <tr>
             
-                <td class="name"><code>playerId</code></td>
+                <td class="name"><code>txnList</code></td>
             
 
             <td class="type">
@@ -210,31 +210,7 @@
 
             
 
-            <td class="description last"><p>player id</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>group</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>goods group</p></td>
+            <td class="description last"><p>list of transaction id of custom point delimited by comma i.e. xxxx,xxxx,xxxx</p></td>
         </tr>
 
     
@@ -258,7 +234,7 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>amount</code>: <em>Number</em> = amount of the goods to redeem<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>approve</code>: <em>String</em> = approve status. It can be &quot;true&quot; | &quot;false&quot;. Default is &quot;true&quot;.<br>}</p></td>
         </tr>
 
     
@@ -350,7 +326,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".goodsInfo"><span class="type-signature">&lt;static> </span>goodsInfo(goodsId, options)</h4>
+    <h4 class="name" id=".listCustomStatus"><span class="type-signature">&lt;static> </span>listCustomStatus(options)</h4>
     
     
 </dt>
@@ -358,7 +334,7 @@
 
     
     <div class="description">
-        <p>Returns information about the goods with the specified id.</p>
+        <p>Return list of custom points' status. So user can review, approve or reject them later one by one.</p>
     </div>
     
 
@@ -393,7 +369,311 @@
 
         <tr>
             
-                <td class="name"><code>goodsId</code></td>
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_list</code>: <em>String</em> = list of player delimitted by comma i.e. john,max,robert<br><code>status</code>: <em>String</em> = status of custom point to include in the returned list. It can be &quot;all&quot; | &quot;approve&quot; | &quot;pending&quot; | &quot;reject&quot;.<br><code>from</code>: <em>String</em> = starting date of custom point in format YYYY-MM-DD (i.e. 1982-09-29)<br><code>to</code>: <em>String</em> = ending date of custom point in format YYYY-MM-DD (i.e. 1982-09-29)<br><code>offset</code>: <em>String</em> = paging offset, The start of item to returned in index-based. Default is 0.<br><code>limit</code>: <em>Number</em> = paging limit. Default is 20.<br>}</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".retrieveRemainingPoints"><span class="type-signature">&lt;static> </span>retrieveRemainingPoints(options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Retrieve remaining for point-based name.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>name</code>: <em>String</em> = name of point-based to get remaining from<br>}</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".retrieveTransactionCustomPoint"><span class="type-signature">&lt;static> </span>retrieveTransactionCustomPoint(txnId)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Retrieve transaction information of custom point.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>txnId</code></td>
             
 
             <td class="type">
@@ -410,335 +690,7 @@
 
             
 
-            <td class="description last"><p>goods id</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em><br>}</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Promise object</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".goodsListInfo"><span class="type-signature">&lt;static> </span>goodsListInfo(options)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Returns information about all available goods for the current site.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em> = player id<br><code>active_filter</code>: <em>Boolean</em> = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.<br><code>date_start</code>: <em>String</em> = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range<br><code>date_end</code>: <em>String</em> = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range<br><code>offset</code>: <em>String</em> = paging offset. Default is 0.<br><code>limit</code>: <em>Number</em> = paging limit. Default is unlimited.<br><code>tags</code>: <em>String</em> = delimit by comma<br>}.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Promise object</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".goodsListInfoWithSelectedFields"><span class="type-signature">&lt;static> </span>goodsListInfoWithSelectedFields(options)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Return information about all available goods for the current site.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em> = player id<br><code>selected_field</code>: <em>String</em> = fields that will be included result payload, delimited with comma and with no space i.e. field1,field2,field3.<br><code>active_filter</code>: <em>Boolean</em> = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.<br><code>date_start</code>: <em>String</em> = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range<br><code>date_end</code>: <em>String</em> = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range<br><code>offset</code>: <em>String</em> = paging offset. Default is 0.<br><code>limit</code>: <em>Number</em> = paging limit. Default is unlimited.<br><code>tags</code>: <em>String</em> = delimit by comma<br>}</p></td>
+            <td class="description last"><p>transaction id</p></td>
         </tr>
 
     
@@ -876,7 +828,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on December 20th 2016, 3:23:00 pm
+		on December 20th 2016, 3:41:46 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

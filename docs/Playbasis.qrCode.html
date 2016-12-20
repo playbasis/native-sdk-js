@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Namespace: barCode</title>
+	<title>Documentation Namespace: qrCode</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,7 +65,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: barCode</h1>
+	<h1 class="page-title">Namespace: qrCode</h1>
 <section>
 
 <header>
@@ -73,7 +73,7 @@
         <h2>
             <span class="ancestors"><a href="Playbasis.html">Playbasis</a>.</span>
         
-        barCode
+        qrCode
         </h2>
         
     
@@ -84,7 +84,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Playbasis Vendors - Barcode Generator</p></div>
+            <div class="description"><p>Playbasis Vendors - QRCode Generator</p></div>
         
 
         
@@ -150,7 +150,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".generate"><span class="type-signature">&lt;static> </span>generate(targetElement, text, options)</h4>
+    <h4 class="name" id=".generate"><span class="type-signature">&lt;static> </span>generate(targetContainer, text, options)</h4>
     
     
 </dt>
@@ -158,8 +158,7 @@
 
     
     <div class="description">
-        <p>Generate barcode and attach result to target element.
-Result from this call, target element will have barcode rendered.</p>
+        <p>Generate QRcode from specified text, and return it as img HTML tag string.</p>
     </div>
     
 
@@ -194,7 +193,7 @@ Result from this call, target element will have barcode rendered.</p>
 
         <tr>
             
-                <td class="name"><code>targetElement</code></td>
+                <td class="name"><code>targetContainer</code></td>
             
 
             <td class="type">
@@ -211,7 +210,7 @@ Result from this call, target element will have barcode rendered.</p>
 
             
 
-            <td class="description last"><p>Target element can either be &quot;#elementname&quot; or &quot;.classname&quot;. Use the former to render barcode to specific element. Otherwise use the latter, so you can use that class name to apply to multiple of elements.</p></td>
+            <td class="description last"><p>Target container as element id name i.e. &quot;container&quot; to add a result generated QR code as a child img HTML element.</p></td>
         </tr>
 
     
@@ -259,7 +258,7 @@ Result from this call, target element will have barcode rendered.</p>
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) option as Object.<br>It can include<br>{<br><code>format</code>: <em>String</em> = select which format to use to render barcode. It can be &quot;UPC&quot; | &quot;EAN2&quot; | &quot;EAN5&quot; | &quot;EAN8&quot; | &quot;EAN13&quot; | &quot;CODE39&quot; | &quot;ITF14&quot; | &quot;MSI&quot; | &quot;PHARMACODE&quot;. Otherwise if not specify, it will be default to use code-128 style.<br><code>width</code>: <em>Number</em> = width of single bar. Default is 2.<br><code>height</code>: <em>Number</em> = height of the barcode. Default is 100.<br><code>text</code>: <em>String</em> = override text that is displayed. Default is undefined.<br><code>fontOptions</code>: <em>String</em> = you can add bold, and italic style to text. It can be &quot;bold&quot; | &quot;italic&quot; | &quot;bold italic&quot;. Default is &quot;&quot;.<br><code>font</code>: <em>String</em> = define the font family used to display text. This can be any default font or a font defined by a @font-face rule. Default is &quot;monospace&quot;.<br><code>textAlign</code>: <em>String</em> = set horizontal alignment of text. It can be &quot;left&quot; | &quot;center&quot; | &quot;right&quot;. Default is &quot;center&quot;.<br><code>textPosition</code>: <em>String</em> = set vertical position of text. It can be &quot;bottom&quot; | &quot;top&quot;. Default is &quot;bottom&quot;.<br><code>textMargin</code>: <em>Number</em> = set the space between the barcode and text. Default is 2.<br><code>fontSize</code>: <em>Number</em> = set size of text. Default is 20.<br><code>background</code>: <em>String</em> = set background color of barcode. Default is &quot;#ffffff&quot;.<br><code>lineColor</code>: <em>String</em> = set line color of barcode. Default is &quot;#000000&quot;.<br><code>margin</code>: <em>Number</em> = set space margin around barcode. If nothing else is set, all side will inherit the margins property but can be replaced it you want to set them separately. Default is 10.<br><code>marginLeft</code>: <em>Number</em> = set space margin left of barcode. Default is 10.<br><code>marginRight</code>: <em>Number</em> = set space margin right of barcode. Default is 10.<br><code>marginTop</code>: <em>Number</em> = set space margin top of barcode. Default is 10.<br><code>marginBottom</code>: <em>Number</em> = set space margin bottom of barcode. Default is 10.<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) option as Object.<br>It can include<br>{<br><code>size</code>: <em>String</em> = 'small' | 'medium' | 'large'. Default is 'medium'.<br><code>type</code>: <em>Number</em> = 1-40  It affects the pattern of QR code. Default is 4.<br><code>error_correction_level</code>: <em>String</em> = 'L', 'M', 'Q', 'H'. Error correction level relates to how well QR code can restore data in case of damaged or dirty. Please refer <a href="http://www.qrcode.com/en/about/error_correction.html">here</a> for more information. In most case, you don't need to modify this value. Default is 'L'.<br>}</p></td>
         </tr>
 
     
@@ -373,7 +372,7 @@ Result from this call, target element will have barcode rendered.</p>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on December 20th 2016, 3:23:00 pm
+		on December 20th 2016, 3:41:46 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

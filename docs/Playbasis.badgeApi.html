@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Index</title>
+	<title>Documentation Namespace: badgeApi</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,71 +65,400 @@
 		<div id="main">
 			
 
+	<h1 class="page-title">Namespace: badgeApi</h1>
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="Playbasis.html">Playbasis</a>.</span>
+        
+        badgeApi
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Playbasis Badge API</p></div>
+        
+
+        
+<dl class="details">
+    
+
 	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
 	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id=".badgeInfo"><span class="type-signature">&lt;static> </span>badgeInfo(badgeId)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Returns information about the badge with the specified badge id.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>badgeId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
 
 
 
+            
+            </td>
 
+            
 
+            
+
+            <td class="description last"><p>badge id to get information from</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
 	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".badgesInfo"><span class="type-signature">&lt;static> </span>badgesInfo(options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Returns information about all available badges from the current site.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>tags</code>: <em>String</em> = tag string which can be multiple items joined via comma<br>}</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
 	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
-    <section class="readme-section">
-        <article><p><a href="https://badge.fury.io/js/playbasis.js"><img src="https://badge.fury.io/js/playbasis.js.svg" alt="npm version"></a> <a href="https://github.com/playbasis/native-sdk-js/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="npm version"></a></p>
-<h2>Playbasis Native JS SDK</h2><p>Playbasis.js allows developers to connect and utilize <a href="http://doc.playbasis.com/pbapp">Playbasis API</a> with Javascript with Promise support.</p>
-<h2>Development Environment</h2><p>Run <code>npm install</code> to install all development dependencies.
-Then you can run <code>gulp unittest</code> to see the result of testing.</p>
-<h2>Building and Testing</h2><p>To build, run <code>gulp build</code>.
-It will produce Playbasis.js, and Playbasis.min.js to use with your own project.</p>
-<p>To test, run <code>gulp unittest</code>.</p>
-<h2>How to Use</h2><h3>Get it via <code>npm</code></h3><p>Execute <code>npm install playbasis.js</code> or <code>npm install --save playbasis.js</code>.</p>
-<p>Import it in your source file as follows.</p>
-<pre class="prettyprint source lang-javascript"><code>var Playbasis = require('playbasis.js');</code></pre><h3>Get it via manual build</h3><p>Create a distribution of library file included a minified version by executing <code>gulp build</code>.
-It will create <code>Playbasis.js</code> and <code>Playbasis.min.js</code> in <code>./dist</code> folder.
-Include it in your source code via</p>
-<pre class="prettyprint source lang-javascript"><code>&lt;script src=&quot;dist/Playbasis.min.js&quot;>&lt;/script></code></pre><h3>Usage</h3><p>Create Playbasis's environment first before calling APIs via the following call.
-Get your apikey, and apisecret by registering a new account, and creating a new application at <a href="https://www.pbapp.net/login">Playbasis Dashboard</a>.</p>
-<pre class="prettyprint source lang-javascript"><code>Playbasis.builder
-        .setApiKey(&quot;&lt;YOUR-API-KEY-HERE>&quot;)
-        .setApiSecret(&quot;&lt;YOUR-API-SECRET-HERE>&quot;)
-        .build();</code></pre><p>Then you're free to call other apis.</p>
-<p>Get player's public information.</p>
-<pre class="prettyprint source lang-javascript"><code>Playbasis.playerApi.playerPublicInfo(&quot;jon&quot;)
-    .then((result) => {
-        console.log(result);
-    })
-    .error((e) => {
-        console.log(e.code + &quot;: &quot; + e.message);
-    });</code></pre><p>Execute rule engine <code>click</code> action for player id <code>jon</code>. This rule is set up via Playbasis Dashboard to give dynamic reward upon executing the call.
-By specify <code>reward</code>, and <code>quantity</code> we can customize reward and its amount to give to player.</p>
-<pre class="prettyprint source lang-javascript"><code>Playbasis.engineApi.rule(&quot;click&quot;, &quot;jon&quot;, {reward: &quot;point&quot;, quantity: 20})
-    .then((result) => {
-        console.log(result);
-    })
-    .error((e) => {
-        console.log(e.code + &quot;: &quot; + e.message);
-    });</code></pre><h2>Document</h2><p>There's many more apis you can call.
-There're 2 options for you.</p>
-<ul>
-<li>Generate it manually via <code>gulp doc</code>. Document will be generated at <code>docs/gen</code> thus you can look at it offline.</li>
-<li>Go to <a href="https://playbasis.github.io/native-sdk-js/">API Doc</a>. We update it against every release. Thus it's always latest.</li>
-</ul>
-<h2>License</h2><p>Playbasis.js is available under the <a href="https://github.com/playbasis/native-sdk-js/blob/master/LICENSE.md">MIT license</a>.</p></article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
 
 
 
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -171,7 +500,7 @@ There're 2 options for you.</p>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on December 20th 2016, 3:23:00 pm
+		on December 20th 2016, 3:41:46 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

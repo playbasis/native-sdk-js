@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Namespace: http</title>
+	<title>Documentation Namespace: goodsApi</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,7 +65,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: http</h1>
+	<h1 class="page-title">Namespace: goodsApi</h1>
 <section>
 
 <header>
@@ -73,7 +73,7 @@
         <h2>
             <span class="ancestors"><a href="Playbasis.html">Playbasis</a>.</span>
         
-        http
+        goodsApi
         </h2>
         
     
@@ -84,7 +84,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Playbasis Http Module</p></div>
+            <div class="description"><p>Playbasis Goods API</p></div>
         
 
         
@@ -150,7 +150,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".getJsonAsync"><span class="type-signature">&lt;static> </span>getJsonAsync(url)</h4>
+    <h4 class="name" id=".goodsGroupAvailable"><span class="type-signature">&lt;static> </span>goodsGroupAvailable(playerId, group, options)</h4>
     
     
 </dt>
@@ -158,7 +158,7 @@
 
     
     <div class="description">
-        <p>Make a GET request</p>
+        <p>Find number of available Goods given group.</p>
     </div>
     
 
@@ -193,13 +193,13 @@
 
         <tr>
             
-                <td class="name"><code>url</code></td>
+                <td class="name"><code>playerId</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
 
@@ -210,7 +210,55 @@
 
             
 
-            <td class="description last"><p>target url to send request to</p></td>
+            <td class="description last"><p>player id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>group</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>goods group</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>amount</code>: <em>Number</em> = amount of the goods to redeem<br>}</p></td>
         </tr>
 
     
@@ -285,7 +333,7 @@
     </dt>
     <dd>
         
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
 
 
 
@@ -302,7 +350,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".postJsonAsync"><span class="type-signature">&lt;static> </span>postJsonAsync(urlPath)</h4>
+    <h4 class="name" id=".goodsInfo"><span class="type-signature">&lt;static> </span>goodsInfo(goodsId, options)</h4>
     
     
 </dt>
@@ -310,7 +358,7 @@
 
     
     <div class="description">
-        <p>Make a POST request</p>
+        <p>Returns information about the goods with the specified id.</p>
     </div>
     
 
@@ -345,13 +393,13 @@
 
         <tr>
             
-                <td class="name"><code>urlPath</code></td>
+                <td class="name"><code>goodsId</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
 
@@ -362,7 +410,31 @@
 
             
 
-            <td class="description last"><p>url target to send request to</p></td>
+            <td class="description last"><p>goods id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em><br>}</p></td>
         </tr>
 
     
@@ -437,7 +509,311 @@
     </dt>
     <dd>
         
-<span class="param-type">object</span>
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".goodsListInfo"><span class="type-signature">&lt;static> </span>goodsListInfo(options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Returns information about all available goods for the current site.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em> = player id<br><code>active_filter</code>: <em>Boolean</em> = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.<br><code>date_start</code>: <em>String</em> = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range<br><code>date_end</code>: <em>String</em> = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range<br><code>offset</code>: <em>String</em> = paging offset. Default is 0.<br><code>limit</code>: <em>Number</em> = paging limit. Default is unlimited.<br><code>tags</code>: <em>String</em> = delimit by comma<br>}.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".goodsListInfoWithSelectedFields"><span class="type-signature">&lt;static> </span>goodsListInfoWithSelectedFields(options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Return information about all available goods for the current site.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em> = player id<br><code>selected_field</code>: <em>String</em> = fields that will be included result payload, delimited with comma and with no space i.e. field1,field2,field3.<br><code>active_filter</code>: <em>Boolean</em> = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.<br><code>date_start</code>: <em>String</em> = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range<br><code>date_end</code>: <em>String</em> = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range<br><code>offset</code>: <em>String</em> = paging offset. Default is 0.<br><code>limit</code>: <em>Number</em> = paging limit. Default is unlimited.<br><code>tags</code>: <em>String</em> = delimit by comma<br>}</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
 
 
 
@@ -500,7 +876,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on December 20th 2016, 3:23:00 pm
+		on December 20th 2016, 3:41:46 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Namespace: pointApi</title>
+	<title>Documentation Namespace: engineApi</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,7 +65,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: pointApi</h1>
+	<h1 class="page-title">Namespace: engineApi</h1>
 <section>
 
 <header>
@@ -73,7 +73,7 @@
         <h2>
             <span class="ancestors"><a href="Playbasis.html">Playbasis</a>.</span>
         
-        pointApi
+        engineApi
         </h2>
         
     
@@ -84,7 +84,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Playbasis Point API</p></div>
+            <div class="description"><p>Playbasis Engine API</p></div>
         
 
         
@@ -150,7 +150,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".approveTransactionCustomPoint"><span class="type-signature">&lt;static> </span>approveTransactionCustomPoint(txnList, options)</h4>
+    <h4 class="name" id=".listRules"><span class="type-signature">&lt;static> </span>listRules(ruleId, options)</h4>
     
     
 </dt>
@@ -158,7 +158,7 @@
 
     
     <div class="description">
-        <p>Approve or reject custom point for bulk of transactions ids. If not specify <code>approve</code> in options parameter, then it will try to approve them.</p>
+        <p>Get the detail of rule.</p>
     </div>
     
 
@@ -193,7 +193,7 @@
 
         <tr>
             
-                <td class="name"><code>txnList</code></td>
+                <td class="name"><code>ruleId</code></td>
             
 
             <td class="type">
@@ -210,7 +210,7 @@
 
             
 
-            <td class="description last"><p>list of transaction id of custom point delimited by comma i.e. xxxx,xxxx,xxxx</p></td>
+            <td class="description last"><p>rule id</p></td>
         </tr>
 
     
@@ -234,7 +234,7 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>approve</code>: <em>String</em> = approve status. It can be &quot;true&quot; | &quot;false&quot;. Default is &quot;true&quot;.<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em> = player id as used in client's website<br>}</p></td>
         </tr>
 
     
@@ -326,7 +326,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".listCustomStatus"><span class="type-signature">&lt;static> </span>listCustomStatus(options)</h4>
+    <h4 class="name" id=".listRules"><span class="type-signature">&lt;static> </span>listRules(options)</h4>
     
     
 </dt>
@@ -334,7 +334,7 @@
 
     
     <div class="description">
-        <p>Return list of custom points' status. So user can review, approve or reject them later one by one.</p>
+        <p>Return list of active game rules defined for client's website.</p>
     </div>
     
 
@@ -386,7 +386,7 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_list</code>: <em>String</em> = list of player delimitted by comma i.e. john,max,robert<br><code>status</code>: <em>String</em> = status of custom point to include in the returned list. It can be &quot;all&quot; | &quot;approve&quot; | &quot;pending&quot; | &quot;reject&quot;.<br><code>from</code>: <em>String</em> = starting date of custom point in format YYYY-MM-DD (i.e. 1982-09-29)<br><code>to</code>: <em>String</em> = ending date of custom point in format YYYY-MM-DD (i.e. 1982-09-29)<br><code>offset</code>: <em>String</em> = paging offset, The start of item to returned in index-based. Default is 0.<br><code>limit</code>: <em>Number</em> = paging limit. Default is 20.<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>action</code>: <em>String</em> = name of action performed,<br><code>player_id</code>: <em>String</em> = player id as used in client's website<br>}</p></td>
         </tr>
 
     
@@ -478,7 +478,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".retrieveRemainingPoints"><span class="type-signature">&lt;static> </span>retrieveRemainingPoints(options)</h4>
+    <h4 class="name" id=".rule"><span class="type-signature">&lt;static> </span>rule(action, playerId, options)</h4>
     
     
 </dt>
@@ -486,7 +486,7 @@
 
     
     <div class="description">
-        <p>Retrieve remaining for point-based name.</p>
+        <p>Process an action through all the game rules defined for a client's website.</p>
     </div>
     
 
@@ -521,159 +521,7 @@
 
         <tr>
             
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>name</code>: <em>String</em> = name of point-based to get remaining from<br>}</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Promise object</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".retrieveTransactionCustomPoint"><span class="type-signature">&lt;static> </span>retrieveTransactionCustomPoint(txnId)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Retrieve transaction information of custom point.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>txnId</code></td>
+                <td class="name"><code>action</code></td>
             
 
             <td class="type">
@@ -690,7 +538,55 @@
 
             
 
-            <td class="description last"><p>transaction id</p></td>
+            <td class="description last"><p>name of action performed</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>playerId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>player id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>url</code>: <em>String</em> = URL of the page that trigger the action or any identifier string - Used for logging or URL specific rules and rules that trigger only when a specific identifier string is supplied,<br><code>reward</code>: <em>String</em> = name of point-based reward to give to player - if the action trigger custom-point reward that doesn't specify reward name,<br><code>quantity</code>: <em>Number</em> = amount of point-based reward to give to player,<br><code>rule_id</code>: <em>String</em> = if needed then you can specifiy a rule id so that rule engine will only process against that rull,<br><code>node_id</code>: <em>String</em> = if needed then you can also specify a node id so that rule engine will process with that rule,<br><code>session_id</code>: <em>String</em> = you can specify a session id to extend expire session time for player<br><code>post_custom_params</code>: <em>Object</em> = custom parameters that will be sent along side this request. It is Object with whose properties are your parameter-key, and values are parameter-value such as {currency: &quot;rm&quot;, method: &quot;top-up&quot;}.<br>}</p></td>
         </tr>
 
     
@@ -828,7 +724,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on December 20th 2016, 3:23:00 pm
+		on December 20th 2016, 3:41:46 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
