@@ -15,6 +15,20 @@ module.exports = function(Playbasis) {
 	// .error() will catch only OperationalError of Bluebird
 	var OperationalError = Playbasis.Promise.OperationalError;
 
+	// private object holds private variables, and functions
+	var _priv = {};
+
+	// private function to check if 
+	_priv.isRelateToInternetConnectionIssue = function(errorMsg) {
+		// as tested on Safari, Chrome, and Firefox we got 2 possible messages to check
+		if (errorMsg.search("XHR error") > -1 || errorMsg.search("Failed to fetch") > -1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	/**
 	 * Make a GET request
 	 * @param  {string} url target url to send request to
@@ -74,6 +88,18 @@ module.exports = function(Playbasis) {
 					}
 				});
 				response.on('error', (e) => { return reject(new OperationalError(e.message)); });
+			});
+
+			request.on('error', (e) => {
+				// if it relates to internet connection issue, then mark its code
+				if (_priv.isRelateToInternetConnectionIssue(e.message)) {
+					var error = new OperationalError("Request error. " + e.message);
+					error.code = Playbasis.const.errorCode.internetConnectionIssue;
+					return reject(error);
+				}
+				else {
+					return reject(new OperationalError("Request error. " + e.message));
+				}
 			});
 		});
 	}
@@ -194,6 +220,19 @@ module.exports = function(Playbasis) {
 					}
 				});
 				response.on('error', (e) => { return reject(new OperationalError(e.message)); });
+			});
+
+			request.on('error', (e) => {
+
+				// if it relates to internet connection issue, then mark its code
+				if (_priv.isRelateToInternetConnectionIssue(e.message)) {
+					var error = new OperationalError("Request error. " + e.message);
+					error.code = Playbasis.const.errorCode.internetConnectionIssue;
+					return reject(error);
+				}
+				else {
+					return reject(new OperationalError("Request error. " + e.message));
+				}
 			});
 
 			// write post data
