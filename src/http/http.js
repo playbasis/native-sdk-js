@@ -106,7 +106,8 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Make a POST request
-	 * @param {string} urlPath url target to send request to
+	 * @param {String} url url target to send request to
+	 * @param {Object} postDataKvp Post data as object key-value pair.
 	 * @return {object}     Promise object
 	 * @method  postJsonAsync
 	 * @memberOf Playbasis.http
@@ -211,12 +212,41 @@ module.exports = function(Playbasis) {
 						return resolve(json);
 					}
 					else {
-						// reject with error code as error
-						var error = new OperationalError("Failed on response message. Error code: " + errorCode + " with " + json.message);
-						// piggy back error code
-						error.code = errorCode;
-						error.isApiLevel = true;
-						return reject(error);
+						// check if it's token-related error
+						// either it's error code 900 (INVALID_TOKEN) or 902 (TOKEN_REQUEST)
+						// then it's safe for us to help developers ease the need to manually get a token via either auth() or renew()
+						// by automatically send a request
+						if (errorCode == 900 || errorCode == 902) {
+							// make an auth() request automatically
+							// it's not totally clean at this case, at the code is duplicated from api.auth.js's auth() function
+							// this solution is applied to avoid cyclic dependency
+							http.postJsonAsync(helpers.createApiUrl("Auth"), {api_key : Playbasis.env.global.apiKey, api_secret : Playbasis.env.global.apiSecret})
+								.then((result) => {
+									// intercept token first, then return promise object back to user
+									Playbasis.env.global.token = result.response.token;
+
+									// make an original request, but update its "token" key
+									postDataKvp.token = Playbasis.env.global.token;
+									http.postJsonAsync(url, postDataKvp)
+										.then((_r) => {
+											return resolve(_r);
+										}, (_e) => {
+											return reject(_e);
+										});
+								}, (e) => { 
+									// just propagate the error object
+									return reject(e);
+								});
+						}
+						// or else just reject it as normal operational error
+						else {
+							// reject with error code as error
+							var error = new OperationalError("Failed on response message. Error code: " + errorCode + " with " + json.message);
+							// piggy back error code
+							error.code = errorCode;
+							error.isApiLevel = true;
+							return reject(error);
+						}
 					}
 				});
 				response.on('error', (e) => { return reject(new OperationalError(e.message)); });
