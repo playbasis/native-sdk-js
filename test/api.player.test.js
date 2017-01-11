@@ -159,8 +159,8 @@ describe("Player API Tests", function() {
 
 	describe("Update test", function() {
 		var playerId = window.mock.env.playerId;
-		var email = "test-updated-copy@gmail.com";
-		var emailOriginal = "test-original-copy@gmail.com";
+		var email = "qa1+sdkupdated@playbasis.com";
+		var emailOriginal = "qa1+sdk@playbasis.com";
 
 		beforeAll(function(done) {
 			done();
@@ -199,7 +199,7 @@ describe("Player API Tests", function() {
 
 	describe("Reset Player Password test", function() {
 		var playerId = window.mock.env.playerId;
-		var existingEmail = "test-original-copy@gmail.com";
+		var existingEmail = "qa1+sdk@playbasis.com";
 
 		beforeAll(function(done) {
 			done();
