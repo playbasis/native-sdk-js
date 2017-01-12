@@ -509,7 +509,7 @@ module.exports = function(Playbasis) {
 	 * It can include  
 	 * {  
 	 * `tags`: *String* = tag to query separated by comma,  
-	 * `status`: *String* = "all" | "active" | "expired" | "used"  
+	 * `status`: *String* = "all" | "active" | "expired" | "used". Default is "active".  
 	 * }.
 	 * @method goods
 	 * @memberof Playbasis.playerApi
@@ -642,5 +642,25 @@ module.exports = function(Playbasis) {
 	_api.playerReferralCode = function(playerId)
 	{
 		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "code"));
+	}
+
+	/**
+	 * Returns information about number of goods that player has
+	 * @param  {String}   playerId player id
+	 * @param  {Object}   options  (**optional**) options as Object.  
+	 * It can include  
+	 * {  
+	 * `tags`: *String* = goods tag to query separated by comma,  
+	 * `status`: *String* = "all" | "active" | "expired" | "used". Default is "active".  
+	 * }.
+	 * @method goodsCount
+	 * @memberof Playbasis.playerApi
+	 */
+	_api.goodsCount = function(playerId, options)
+	{
+		var keys = ["tags", "status"];
+		var dvalues = [null, "active"];
+
+		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "goods/count") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
 	}
 }

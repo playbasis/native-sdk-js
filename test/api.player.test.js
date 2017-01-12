@@ -542,6 +542,37 @@ describe("Player API Tests", function() {
 		});
 	});
 
+	describe("Goods Count test", function() {
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return result with 'n' as existing key", function(done) {
+			api.goodsCount(window.mock.env.playerId)
+				.then((result) => {
+					expect(result.response.n).not.toBe(null);
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+
+		it("should return result with expired goods more than 100 count", function(done) {
+			api.goodsCount(window.mock.env.playerId, { status: "expired" })
+				.then((result) => {
+					expect(result.response.n).not.toBe(null);
+					expect(result.response.n > 100).toBeTruthy();
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+
+		it("should return any value of 'n' querying to 'test' tag of goods", function(done) {
+			api.goodsCount(window.mock.env.playerId, { tags: "test", status: "active" })
+				.then((result) => {
+					expect(result.response.n).not.toBe(null);
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
+
 	describe("Quest of Player test", function() {
 
 		var questId = "57ee78dbb350cf03048c1ea9";
