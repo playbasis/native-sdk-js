@@ -1,6 +1,6 @@
 module.exports = function(config) {
 	config.set({
-		browsers: ['Firefox'],
+		browsers: ['Chrome'],
 		frameworks: ['browserify', 'jasmine'],
 		reporters: ['spec'],
 
