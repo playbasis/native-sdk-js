@@ -7,6 +7,7 @@ describe("Http tests", function() {
 	beforeAll(function(done) {
 		http = window.Playbasis.http;
 		mock = window.mock;
+
 		spy = {
 			probe: function() {
 				// do nothing
@@ -32,6 +33,16 @@ describe("Http tests", function() {
 				.then((result) => { 
 					spy.probe(result);
 					expect(spy.probe).toHaveBeenCalled();
+					done();
+				}, (e) => { console.log("error caught: " + e.message); });
+		});
+	});
+
+	describe("http.getJsonAsync big json response test", function() {
+		it("should not get any error about json parsing", function(done) {
+			// application that we're testing aginst, its engine's listRules has large data to return
+			http.getJsonAsync("https://api.pbapp.net/Engine/rules?api_key=" + mock.env.apiKey)
+				.then((result) => {
 					done();
 				}, (e) => { console.log("error caught: " + e.message); });
 		});

@@ -42,6 +42,10 @@ module.exports = function(Playbasis) {
 			// load proper library
 			// load from reference if it's already loaded
 			const lib = url.search('https') != -1 ? require('https') : require('http');
+
+			// collect all data chunks into array
+			var dataChunks = [];
+
 			// make a GET request
 			const request = lib.get(url, (response) => {
 				// handle http errors
@@ -54,8 +58,16 @@ module.exports = function(Playbasis) {
 					return reject(error);
 				}
 
-				// on every content chunk, push it to the data array
-				response.on('data', (d) => {
+				// listen to event 'data' for each indivdiual chunk of data
+				response.on('data', (chunk) => {
+					dataChunks.push(chunk);
+				});
+
+				// listen to event 'end' when all chunks of data are transmitted
+				response.on('end', () => {
+
+					// combine all data chunks together
+					let d = dataChunks.join('');
 
 					// check if data is null
 					if (d == null) {
@@ -87,6 +99,8 @@ module.exports = function(Playbasis) {
 						return reject(error);
 					}
 				});
+
+				// listen to event 'error'
 				response.on('error', (e) => { return reject(new OperationalError(e.message)); });
 			});
 
@@ -173,6 +187,9 @@ module.exports = function(Playbasis) {
 				}
 			};
 
+			// data chunk array to collect each individual chunk
+			var dataChunks = [];
+
 			// make a POST request
 			const request = lib.request(postOptions, (response) => {
 				// handle http errors
@@ -187,8 +204,16 @@ module.exports = function(Playbasis) {
 
 				response.setEncoding('utf8');
 
-				// on every content chunk, push it to the data array
-				response.on('data', (d) => {
+				// liten to event 'data', each individual chunk will be sent
+				response.on('data', (chunk) => {
+					dataChunks.push(chunk);
+				});
+
+				// listen to event 'end' to combine all individual chunks together as data
+				response.on('end', () => {
+
+					// combine all data chunks together
+					let d = dataChunks.join('');
 
 					// check if data is null
 					if (d == null) {
@@ -249,6 +274,8 @@ module.exports = function(Playbasis) {
 						}
 					}
 				});
+
+				// listen to event 'error'
 				response.on('error', (e) => { return reject(new OperationalError(e.message)); });
 			});
 
