@@ -1,6 +1,6 @@
 {
   "name": "playbasis.js",
-  "version": "1.3.10",
+  "version": "1.3.11",
   "description": "Playbasis Javascript SDK",
   "main": "lib/playbasis.js",
   "directories": {
