@@ -102,7 +102,7 @@ function buildNormalTask() {
 	// but for this instance we need to convert it to es2015 first before minify and uglify
 	return gulp.src('dist/Playbasis-es6.js')
 		.pipe(babel({
-			presets: ['es2015']
+			presets: ['es2015', 'react-native']
 		}))
 		.pipe(streamify(replace('{{ version }}', package.version)))
 		.pipe(streamify(concat('Playbasis.js')))
@@ -119,7 +119,7 @@ function buildMinifiedTask() {
 	// but for this instance we need to convert it to es2015 first before minify and uglify
 	return gulp.src('dist/Playbasis-es6.js')
 		.pipe(babel({
-			presets: ['es2015']
+			presets: ['es2015', 'react-native']
 		}))
 		.pipe(minifier(options, uglify))
 		.pipe(streamify(replace('{{ version }}', package.version)))
