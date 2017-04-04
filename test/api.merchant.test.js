@@ -59,7 +59,17 @@ describe("Merchant API Tests", function() {
 					expect(result.response).not.toBe(null);
 					expect(result.response.success).toBe(true);
 					done();
+				}, (e) => { console.log(e); });
+		});
+	});
 
+	describe("Redeem Goods", function() {
+		it("should be able to redeem (default amount to 1, increased 'Goods B' to be enough to redeem)", function(done) {
+			api.redeemGoods("Goods B", mock.env.playerId)
+				.then((result) => {
+					expect(result.response).not.toBe(null);
+					expect(result.response.success).toBe(true);
+					done();
 				}, (e) => { console.log(e); });
 		});
 	});
