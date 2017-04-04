@@ -72,4 +72,23 @@ module.exports = function(Playbasis) {
 
 		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "goodsGroup", "redeem"), combinedObj);
 	}
+
+	/**
+	 * Merchant redeems normal goods from player
+	 * @param  {String} goodsName goods name
+	 * @param  {String} playerId  player id
+	 * @param  {Object} options   options as object. It can include  
+	 * `amount`: *Number* = amount of goods to redeem from player (default = 1)  
+	 * @return {Object}           Promise object
+	 * @method  redeemGoods
+	 * @memberOf  Playbasis.merchantApi
+	 */
+	_api.redeemGoods = function(goodsName, playerId, options)
+	{
+		var postObj = { token: Playbasis.env.global.token, goods_name: goodsName, player_id: playerId };
+		var optionObj = helpers.createObjectFromTarget(options, ["amount"]);
+		var combinedObj = helpers.combineObjects(postObj, optionObj);
+
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "goods", "redeem"), combinedObj);
+	}
 }
