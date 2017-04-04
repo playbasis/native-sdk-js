@@ -130,5 +130,5 @@ function buildMinifiedTask() {
 function docTask(cb) {
     var config = require('./jsdocConfig.json');
 	return gulp.src(['README.md', './src/**/*.js'], {read: false})
-		.pipe(jsdoc(config, cb));
+		.pipe(jsdoc(config));
 }
