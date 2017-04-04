@@ -22,6 +22,13 @@ describe("Goods API Tests", function() {
 				}, (e) => { console.log(e.message); });
 		});
 
+		it("should return success. Requested with options object (name).", function(done) {
+			api.goodsListInfo({name: "Goods Group B"})
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+
 		it("should return success. Requested with options object (no 'tags' option).", function(done) {
 			api.goodsListInfo({player_id: mock.env.playerId})
 				.then((result) => {
