@@ -653,6 +653,7 @@ module.exports = function(Playbasis) {
 	 * `tags`: *String* = goods tag to query separated by comma,  
 	 * `status`: *String* = "all" | "active" | "expired" | "used". Default is "active".  
 	 * }.
+	 * @return {Object} Promise object
 	 * @method goodsCount
 	 * @memberof Playbasis.playerApi
 	 */
@@ -662,5 +663,21 @@ module.exports = function(Playbasis) {
 		var dvalues = [null, "active"];
 
 		return http.getJsonAsync(helpers.createApiUrl(apiMethod, playerId, "goods/count") + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, dvalues, options));
+	}
+
+	/**
+	 * Set specific goods in player's inventory as favorite
+	 * @param  {String} playerId player id
+	 * @param  {String} goodsId  goods id to set favorite status
+	 * @param  {Boolean} status   status to set. It can be either `true` or `false` 
+	 * @return {Object}          Promise object
+	 * @method  favoriteGoods
+	 * @memberOf  Playbasis.playerApi
+	 */
+	_api.favoriteGoods = function(playerId, goodsId, status)
+	{
+		var postObj = { token: Playbasis.env.global.token, goods_id: goodsId, status: status ? "true" : "false" };
+
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, playerId, "goods", "favorite"), postObj);
 	}
 }

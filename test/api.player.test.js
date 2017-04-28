@@ -749,4 +749,16 @@ describe("Player API Tests", function() {
 				}, (e) => { console.log(e.message); });
 		});
 	});
+
+	describe("Player Favorite Goods", function() {
+		var playerId = window.mock.env.playerId;
+		var goodsId = "57f1ed4bb350cf4f328b5a9f";
+
+		it("should return success", function(done) {
+			api.favoriteGoods(playerId, goodsId, true)
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+	});
 });
