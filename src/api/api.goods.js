@@ -29,6 +29,7 @@ module.exports = function(Playbasis) {
 	 * `offset`: *String* = paging offset. Default is 0.  
 	 * `limit`: *Number* = paging limit. Default is unlimited.  
 	 * `tags`: *String* = delimit by comma  
+	 * `custom_param`: *String* = specific custom param(s) to filter for results. It needs to be in format `key` or `key|operator|value` in which operator can be "<", "<=", ">", ">=", "=", "!=". Such key needs to be set prior on dashboard first.  
 	 * }.
 	 * @return {Object}         Promise object
 	 * @method  goodsListInfo
@@ -36,8 +37,8 @@ module.exports = function(Playbasis) {
 	 */
 	api.goodsListInfo = function(options)
 	{
-		var keys = ["player_id", "active_filter", "name", "date_start", "date_end", "offset", "limit", "tags"];
-		var defaultValues = [null, null, null, null, null, null, null, null];
+		var keys = ["player_id", "active_filter", "name", "date_start", "date_end", "offset", "limit", "tags", "custom_param"];
+		var defaultValues = [null, null, null, null, null, null, null, null, null];
 
 		return http.getJsonAsync(helpers.createApiUrl(apiMethod) + helpers.appendAndJoinIfNotNullAsUrlParam2(keys, defaultValues, options));
 	}
