@@ -121,6 +121,16 @@ describe("Goods API Tests", function() {
 				}, (e) => { console.log(e.message); });
 		});
 
+		it("should return a goods item according to input custom_param.", function(done) {
+			api.goodsListInfoWithSelectedFields({player_id: mock.env.playerId, selected_field: "name,goods_id", custom_param: "testKey|=|testValue"})
+				.then((result) => {
+					expect(result.response.goods_list.length == 1).toBeTruthy();
+					expect(result.response.goods_list[0].name).toBe("Goods B");
+					expect(result.response.goods_list[0].goods_id).toBe("57f1ed4bb350cf4f328b5a9f");
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+
 	});
 
 	describe("Goods Info test", function() {
