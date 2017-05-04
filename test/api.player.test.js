@@ -764,7 +764,7 @@ describe("Player API Tests", function() {
 				return api.giveGift(sentPlayerId, receivedPlayerId, result.response.events[0].reward_data.goods_id, "goods", 1);
 			}, (e) => { console.log(e.message); })
 			.then((result) => {
-					done();
+				done();
 			}, (e) => { console.log(e.message); });
 		});
 
@@ -776,7 +776,7 @@ describe("Player API Tests", function() {
 				return api.giveGift(sentPlayerId, receivedPlayerId, result.response.events[0].reward_data.goods_id, "goods", 1);
 			}, (e) => { console.log(e.message); })
 			.then((result) => {
-					done();
+				done();
 			}, (e) => { console.log(e.message); });
 		});
 
@@ -790,7 +790,7 @@ describe("Player API Tests", function() {
 				return api.giveGift(sentPlayerId, receivedPlayerId, result.response.point[0].reward_id, "custom_point", 1);
 			}, (e) => { console.log(e.message); })
 			.then((result) => {
-					done();
+				done();
 			}, (e) => { console.log(e.message); });
 		});
 	});
