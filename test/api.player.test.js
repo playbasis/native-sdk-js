@@ -734,6 +734,67 @@ describe("Player API Tests", function() {
 		});
 	});
 
+	describe("Give Gift test", function() {
+
+		var sentPlayerId = window.mock.env.playerId;
+		var receivedPlayerId = window.mock.env.playerId2;
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("Test give badge", function(done) {
+			Playbasis.engineApi.rule("fbcomment", sentPlayerId, {post_custom_params: {type: "badge"}})
+				.then((result) => {
+					console.log(result);
+					expect(result.response.events.length == 1).toBeTruthy();
+					expect(result.response.events[0].reward_data.badge_id).not.toBe(null);
+					return api.giveGift(sentPlayerId, receivedPlayerId, result.response.events[0].reward_data.badge_id, "badge", 1);
+				}, (e) => { console.log(e.message); })
+				.then((result) => {
+					done();
+				}, (e) => { console.log(e.message); });
+		});
+
+		it("Test give goods", function(done) {
+			Playbasis.engineApi.rule("fbcomment", sentPlayerId, {post_custom_params: {type: "goods"}})
+				.then((result) => {
+				expect(result.response.events.length == 1).toBeTruthy();
+				expect(result.response.events[0].reward_data.goods_id).not.toBe(null);
+				return api.giveGift(sentPlayerId, receivedPlayerId, result.response.events[0].reward_data.goods_id, "goods", 1);
+			}, (e) => { console.log(e.message); })
+				.then((result) => {
+					done();
+			}, (e) => { console.log(e.message); });
+		});
+
+		it("Test give goods group", function(done) {
+			Playbasis.engineApi.rule("fbcomment", sentPlayerId, {post_custom_params: {type: "goods_group"}})
+				.then((result) => {
+				expect(result.response.events.length == 1).toBeTruthy();
+				expect(result.response.events[0].reward_data.goods_id).not.toBe(null);
+				return api.giveGift(sentPlayerId, receivedPlayerId, result.response.events[0].reward_data.goods_id, "goods", 1);
+			}, (e) => { console.log(e.message); })
+				.then((result) => {
+					done();
+			}, (e) => { console.log(e.message); });
+		});
+
+		it("Test give custom point", function(done) {
+			Playbasis.engineApi.rule("fbcomment", sentPlayerId, {post_custom_params: {type: "custom"}})
+				.then((result) => {
+				expect(result.response.events[0].event_type == "REWARD_RECEIVED").toBeTruthy();
+				return api.point(sentPlayerId, "testcustom")
+			}, (e) => { console.log(e.message); })
+				.then((result) => {
+				return api.giveGift(sentPlayerId, receivedPlayerId, result.response.point[0].reward_id, "custom_point", 1);
+			}, (e) => { console.log(e.message); })
+				.then((result) => {
+					done();
+			}, (e) => { console.log(e.message); });
+		});
+	});
+
 	describe("Player Referral Code test", function() {
 
 		var playerId = window.mock.env.playerId;

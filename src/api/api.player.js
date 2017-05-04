@@ -633,6 +633,24 @@ module.exports = function(Playbasis) {
 	}
 
 	/**
+	 * Give gift item from player to player.
+	 * @param  {String} sentPlayerId       player id that send the gift
+	 * @param  {String} receivedPlayerId   player id that received the gift
+	 * @param  {String} giftId             gift id can be badge id, goods id , custom point id
+	 * @param  {String} type               type of gift, the value can be "badge" | "custom_point" | "goods"
+	 * @param  {Number} amount             amount of gift to be sent to received player
+	 * @return {Object}          Promise Object
+	 * @method giveGift
+	 * @memberOf  Playbasis.playerApi
+	 */
+	_api.giveGift = function(sentPlayerId, receivedPlayerId, giftId, type, amount)
+	{
+		var postObj = { token: Playbasis.env.global.token, sent_player_id: sentPlayerId, received_player_id: receivedPlayerId, gift_id: giftId, type: type, amount: amount};
+
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, sentPlayerId, "giveGift", type), postObj);
+	}
+
+	/**
 	 * Return generated referral code of player.
 	 * @param  {String} playerId player id
 	 * @return {Object}          Promise Object
