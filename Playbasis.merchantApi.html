@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="Playbasis.html">Playbasis</a></li><li><a href="Playbasis.authApi.html">Playbasis.authApi</a></li><li><a href="Playbasis.badgeApi.html">Playbasis.badgeApi</a></li><li><a href="Playbasis.barCode.html">Playbasis.barCode</a></li><li><a href="Playbasis.builder.html">Playbasis.builder</a></li><li><a href="Playbasis.communicationApi.html">Playbasis.communicationApi</a></li><li><a href="Playbasis.contentApi.html">Playbasis.contentApi</a></li><li><a href="Playbasis.engineApi.html">Playbasis.engineApi</a></li><li><a href="Playbasis.goodsApi.html">Playbasis.goodsApi</a></li><li><a href="Playbasis.helpers.html">Playbasis.helpers</a></li><li><a href="Playbasis.http.html">Playbasis.http</a></li><li><a href="Playbasis.livefeedApi.html">Playbasis.livefeedApi</a></li><li><a href="Playbasis.merchantApi.html">Playbasis.merchantApi</a></li><li><a href="Playbasis.playerApi.html">Playbasis.playerApi</a></li><li><a href="Playbasis.pointApi.html">Playbasis.pointApi</a></li><li><a href="Playbasis.qrCode.html">Playbasis.qrCode</a></li><li><a href="Playbasis.questApi.html">Playbasis.questApi</a></li><li><a href="Playbasis.quizApi.html">Playbasis.quizApi</a></li><li><a href="Playbasis.redeemApi.html">Playbasis.redeemApi</a></li><li><a href="Playbasis.serviceApi.html">Playbasis.serviceApi</a></li><li><a href="Playbasis.storeOrganizeApi.html">Playbasis.storeOrganizeApi</a></li><li><a href="Playbasis.util.html">Playbasis.util</a></li>
+					<li><a href="Playbasis.html">Playbasis</a></li><li><a href="Playbasis.authApi.html">Playbasis.authApi</a></li><li><a href="Playbasis.badgeApi.html">Playbasis.badgeApi</a></li><li><a href="Playbasis.barCode.html">Playbasis.barCode</a></li><li><a href="Playbasis.builder.html">Playbasis.builder</a></li><li><a href="Playbasis.communicationApi.html">Playbasis.communicationApi</a></li><li><a href="Playbasis.const.html">Playbasis.const</a></li><li><a href="Playbasis.contentApi.html">Playbasis.contentApi</a></li><li><a href="Playbasis.engineApi.html">Playbasis.engineApi</a></li><li><a href="Playbasis.goodsApi.html">Playbasis.goodsApi</a></li><li><a href="Playbasis.helpers.html">Playbasis.helpers</a></li><li><a href="Playbasis.http.html">Playbasis.http</a></li><li><a href="Playbasis.livefeedApi.html">Playbasis.livefeedApi</a></li><li><a href="Playbasis.merchantApi.html">Playbasis.merchantApi</a></li><li><a href="Playbasis.playerApi.html">Playbasis.playerApi</a></li><li><a href="Playbasis.pointApi.html">Playbasis.pointApi</a></li><li><a href="Playbasis.qrCode.html">Playbasis.qrCode</a></li><li><a href="Playbasis.questApi.html">Playbasis.questApi</a></li><li><a href="Playbasis.quizApi.html">Playbasis.quizApi</a></li><li><a href="Playbasis.redeemApi.html">Playbasis.redeemApi</a></li><li><a href="Playbasis.serviceApi.html">Playbasis.serviceApi</a></li><li><a href="Playbasis.storeOrganizeApi.html">Playbasis.storeOrganizeApi</a></li><li><a href="Playbasis.util.html">Playbasis.util</a></li>
 				</ul>
 			</li>
 			
@@ -502,6 +502,206 @@
             
 <hr>
 <dt>
+    <h4 class="name" id=".redeemGoods"><span class="type-signature">&lt;static> </span>redeemGoods(goodsName, playerId, options)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Merchant redeems normal goods from player</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>goodsName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>goods name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>playerId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>player id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>options as object. It can include<br><code>amount</code>: <em>Number</em> = amount of goods to redeem from player (default = 1)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Promise object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
     <h4 class="name" id=".verifyCoupon"><span class="type-signature">&lt;static> </span>verifyCoupon(goodsGroup, couponCode, options)</h4>
     
     
@@ -748,7 +948,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on December 10th 2016, 4:11:19 am
+		on May 5th 2017, 3:15:19 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
