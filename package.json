@@ -1,17 +1,19 @@
 {
   "name": "playbasis.js",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Playbasis Javascript SDK",
   "main": "lib/playbasis.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "./node_modules/.bin/rimraf lib/* && ./node_modules/.bin/babel src -d lib && gulp build && gulp doc",
-    "prepublish": "npm run compile",
+    "test": "npm run unittest",
+    "compile": "./node_modules/.bin/rimraf lib/* && ./node_modules/.bin/babel src -d lib && ./node_modules/.bin/gulp build && npm run doc",
+    "prepublish": "npm run compile && npm run gh-deploy",
+    "deploy": "ghp-import -m 'Deployed with ghp-import' -p ./docs",
     "build": "npm run compile",
-    "unittest": "./node_modules/.bin/gulp unittest"
+    "unittest": "./node_modules/.bin/gulp unittest",
+    "doc": "./node_modules/.bin/gulp doc"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react-native": "^1.9.1",
     "browserify": "^13.1.0",
     "browserify-istanbul": "^0.2.1",
     "bundle-collapser": "^1.2.1",
