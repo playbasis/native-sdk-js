@@ -149,6 +149,19 @@ module.exports = function(Playbasis) {
 	};
 
 	/**
+	 * Register player
+	 * @param  {String} playerId      player id
+	 * @param  {String} referralCode  referral code of another player for invitation system
+	 * @return {Object}               Promise Object
+	 * @method  referral
+	 * @memberof Playbasis.playerApi
+	 */
+	_api.referral = function(playerId, referralCode)
+	{
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "referral"), {token : Playbasis.env.global.token, player_id : playerId, referral_code : referralCode});
+	};
+
+	/**
 	 * Update player information
 	 * @param  {String} playerId player id
 	 * @param  {Object} updates  update values as Object.  
