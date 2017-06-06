@@ -157,6 +157,46 @@ describe("Player API Tests", function() {
 		});
 	});
 
+	describe("Referral", function() {
+
+		var referralPlayerId = window.mock.env.playerId;
+		var playerId = "testuser";
+		var email = "test@gmail.com";
+		var phoneNumber = "+66861111111";
+		var firstName = "Test User";
+		var lastName = "Userke";
+
+		beforeAll(function(done) {
+			done();
+		});
+
+		it("should return success, be able to register playerId, check its values, and remove it.", function(done) {
+			api.register(playerId, email, {phone_number : phoneNumber, first_name : firstName, last_name : lastName})
+				.then((result) => {
+				done();
+		}, (e) => { console.log(e.message); });
+		});
+
+		it("should return success, get referral code and use it to referral for the registered playerId", function(done) {
+			api.playerReferralCode(referralPlayerId)
+				.then((result) => {
+				console.log(result.response.code);
+				return api.referral(playerId, result.response.code)
+			}, (e) => { console.log(e.message); })
+				.then((result) => {
+				expect(result.response.referrer_id).toEqual(referralPlayerId);
+				done();
+			}, (e) => { console.log(e.message); });
+		});
+
+		it("should be able to remove registered player", function(done) {
+			api.delete(playerId)
+				.then((result) => {
+				done();
+			}, (e) => { console.log(e.message); });
+		});
+	});
+
 	describe("Update test", function() {
 		var playerId = window.mock.env.playerId;
 		var email = "qa1+sdkupdated@playbasis.com";
