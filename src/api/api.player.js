@@ -149,7 +149,7 @@ module.exports = function(Playbasis) {
 	};
 
 	/**
-	 * Register player
+	 * Referral player
 	 * @param  {String} playerId      player id
 	 * @param  {String} referralCode  referral code of another player for invitation system
 	 * @return {Object}               Promise Object
