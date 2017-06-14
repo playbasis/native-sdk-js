@@ -152,13 +152,32 @@ module.exports = function(Playbasis) {
 	 * Referral player
 	 * @param  {String} playerId      player id
 	 * @param  {String} referralCode  referral code of another player for invitation system
+	 * @param  {String} options  (**optional**) option as Object.
+	 * It can include
+	 * {
+	 * `key`: *String* = It can be any key and value,
+	 * }
 	 * @return {Object}               Promise Object
 	 * @method  referral
 	 * @memberof Playbasis.playerApi
 	 */
-	_api.referral = function(playerId, referralCode)
+	_api.referral = function(playerId, referralCode, options)
 	{
-		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "referral"), {token : Playbasis.env.global.token, player_id : playerId, referral_code : referralCode});
+		var obj = {token : Playbasis.env.global.token, player_id : playerId, referral_code : referralCode};
+
+		// add more info from options
+		if (options != null) {
+			for (var k in options) {
+				// avoid override required values
+				if (k != "token" &&
+					k != "player_id" &&
+					k != "referral_code") {
+					obj[k] = options[k];
+				}
+			}
+		}
+
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "referral"), obj);
 	};
 
 	/**
