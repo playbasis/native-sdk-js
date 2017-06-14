@@ -181,10 +181,11 @@ describe("Player API Tests", function() {
 			api.playerReferralCode(referralPlayerId)
 				.then((result) => {
 				console.log(result.response.code);
-				return api.referral(playerId, result.response.code)
+				return api.referral(playerId, result.response.code, {test : 'test'})
 			}, (e) => { console.log(e.message); })
 				.then((result) => {
-				expect(result.response.referrer_id).toEqual(referralPlayerId);
+				expect(result.response.inviter_response.player_id).toEqual(referralPlayerId);
+				expect(result.response.invitee_response.player_id).toEqual(playerId);
 				done();
 			}, (e) => { console.log(e.message); });
 		});
