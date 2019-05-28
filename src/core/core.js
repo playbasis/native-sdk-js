@@ -21,16 +21,10 @@ module.exports = function() {
 		alert('cfg_apiSecret cannot be empty');
 	}
 
-	if (!window.cfg_playerId) {
-		console.error('cfg_playerId cannot be empty');
-		alert('cfg_playerId cannot be empty');
-	}
-
 	console.log('cfg_baseUrl', window.cfg_baseUrl);
 	console.log('cfg_baseAsyncUrl', window.cfg_baseAsyncUrl);
 	console.log('cfg_apiKey', window.cfg_apiKey);
 	console.log('cfg_apiSecret', window.cfg_apiSecret);
-	console.log('cfg_playerId', window.cfg_playerId);
 
 	// occupy the global variable of Playbasis, then create a simple base class
 	var Playbasis = function() {
