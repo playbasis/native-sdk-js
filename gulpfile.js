@@ -79,7 +79,7 @@ function buildInitialTask() {
 	var bundled = browserify('./src/playbasis.js', { standalone: 'Playbasis' })
 		.plugin(collapse)
 		.bundle()
-		.pipe(source('Playbasis-es6.js'))
+		.pipe(source('Playbasis-es6-' +  package.version + '.js'))
 		.pipe(insert.prepend(header))
 		.pipe(streamify(replace('{{ version }}', package.version)))
 		.pipe(gulp.dest(outDir));
@@ -100,12 +100,12 @@ function buildNormalTask() {
 
 	// TODO: Whenever gulp-uglify support es6, then we update this to just chain (pipe) and use uglify directly from gulp-uglify
 	// but for this instance we need to convert it to es2015 first before minify and uglify
-	return gulp.src('dist/Playbasis-es6.js')
+	return gulp.src('dist/Playbasis-es6-' +  package.version + '.js')
 		.pipe(babel({
 			presets: ['es2015', 'react-native']
 		}))
 		.pipe(streamify(replace('{{ version }}', package.version)))
-		.pipe(streamify(concat('Playbasis.js')))
+		.pipe(streamify(concat('Playbasis-' + package.version + '.js')))
 		.pipe(gulp.dest(outDir));
 }
 
@@ -117,13 +117,13 @@ function buildMinifiedTask() {
 
 	// TODO: Whenever gulp-uglify support es6, then we update this to just chain (pipe) and use uglify directly from gulp-uglify
 	// but for this instance we need to convert it to es2015 first before minify and uglify
-	return gulp.src('dist/Playbasis-es6.js')
+	return gulp.src('dist/Playbasis-es6-' +  package.version + '.js')
 		.pipe(babel({
 			presets: ['es2015', 'react-native']
 		}))
 		.pipe(minifier(options, uglify))
 		.pipe(streamify(replace('{{ version }}', package.version)))
-		.pipe(streamify(concat('Playbasis.min.js')))
+		.pipe(streamify(concat('Playbasis.min-' + package.version + '.js')))
 		.pipe(gulp.dest(outDir));
 }
 
