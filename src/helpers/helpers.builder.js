@@ -17,6 +17,20 @@ module.exports = function(Playbasis) {
 	}
 
 	/**
+	 * Set endpoint
+	 * @param {String} endpoint API endpoint
+	 * @return {Object} Playbasis.builder object. You can chain setting other properties further.
+	 * @method  setEndpoint
+	 * @memberOf Playbasis.builder
+	 */
+	builder.setEndpoint = function(endpoint)
+	{
+		finalSettingObj.baseUrl = endpoint;
+		return builder;
+	}
+
+
+	/**
 	 * Set api key
 	 * @param {String} apiKey api key
 	 * @return {Object} Playbasis.builder object. You can chain setting other properties further.
