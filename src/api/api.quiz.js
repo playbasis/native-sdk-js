@@ -18,12 +18,12 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Return list of active quizzes
-	 * @param  {Object} options (**optional**) options as object.  
-	 * It can include  
-	 * {  
-	 * `player_id`: *String* = player id as used in client's website  
-	 * `type`: *String* = type of quiz which can be "quiz" | "poll"  
-	 * `tags`: *String* = tag(s) to find i.e. "foo,bar"  
+	 * @param  {Object} options (**optional**) options as object.
+	 * It can include
+	 * {
+	 * `player_id`: *String* = player id as used in client's website
+	 * `type`: *String* = type of quiz which can be "quiz" | "poll"
+	 * `tags`: *String* = tag(s) to find i.e. "foo,bar"
 	 * }
 	 * @return {Object}         Promise object
 	 * @method  listOfActiveQuizzes
@@ -40,10 +40,10 @@ module.exports = function(Playbasis) {
 	/**
 	 * Get detail of quiz.
 	 * @param  {String} quizId  quiz id to get detail from
-	 * @param  {Object} options (**optional**) options as object.  
-	 * It can include  
-	 * {  
-	 * `player_id`: *String* = player id as used in client's website  
+	 * @param  {Object} options (**optional**) options as object.
+	 * It can include
+	 * {
+	 * `player_id`: *String* = player id as used in client's website
 	 * }
 	 * @return {Object}         Promise object
 	 * @method  detailOfQuiz
@@ -60,11 +60,11 @@ module.exports = function(Playbasis) {
 	/**
 	 * Randomly get one quiz from a list of active quizzes for player.
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (**optional**) options as object.  
-	 * It can include  
-	 * {  
-	 * `type`: *String* = type of quiz. It can be "quiz" | "poll"  
-	 * `tags`: *String* = tag(s) to find i.e. "foo,bar"  
+	 * @param  {Object} options  (**optional**) options as object.
+	 * It can include
+	 * {
+	 * `type`: *String* = type of quiz. It can be "quiz" | "poll"
+	 * `tags`: *String* = tag(s) to find i.e. "foo,bar"
 	 * }
 	 * @return {Object}          Promise object
 	 * @method  randomQuizForPlayer
@@ -108,11 +108,11 @@ module.exports = function(Playbasis) {
 	 * Get a question with a list of options from a given quiz.
 	 * @param  {String} quizId   quiz id to get a question from
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (**optional**) options as object.  
-	 * It can include  
-	 * {  
-	 * `question_id`: *String* = question id in quiz, if you need to get a specific question  
-	 * `random`: *Number* = 1 for Random | 2 for Not Random  
+	 * @param  {Object} options  (**optional**) options as object.
+	 * It can include
+	 * {
+	 * `question_id`: *String* = question id in quiz, if you need to get a specific question
+	 * `random`: *Number* = 1 for Random | 2 for Not Random
 	 * }
 	 * @return {Object}          Promise object
 	 * @method  getQuestionFromQuiz
@@ -130,11 +130,11 @@ module.exports = function(Playbasis) {
 	 * Get a question with a list of options from a given quiz, but with a reset timestamp of question that has timeout to answer.
 	 * @param  {String} quizId   quiz id to get a question from
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (**optional**) options as object.  
-	 * It can include  
-	 * {  
-	 * `question_id`: *String* = question id in quiz, if you need to get a specific question  
-	 * `random`: *Number* = 1 for Random | 2 for Not Random  
+	 * @param  {Object} options  (**optional**) options as object.
+	 * It can include
+	 * {
+	 * `question_id`: *String* = question id in quiz, if you need to get a specific question
+	 * `random`: *Number* = 1 for Random | 2 for Not Random
 	 * }
 	 * @return {Object}          Promise object
 	 * @method  getQuestionFromQuiz
@@ -155,13 +155,14 @@ module.exports = function(Playbasis) {
 	 * @param  {String} playerId   player id
 	 * @param  {String} questionId question id to answer
 	 * @param  {String} optionId   option id of question selected as answer
+	 * @param  {String} answer   answer text
 	 * @return {Object}            Promise object
 	 * @method answerQuestion
 	 * @memberOf Playbasis.quizApi
 	 */
-	api.answerQuestion = function(quizId, playerId, questionId, optionId)
+	api.answerQuestion = function(quizId, playerId, questionId, optionId, answer)
 	{
-		var obj = { token: Playbasis.env.global.token, player_id: playerId, question_id: questionId, option_id: optionId };
+		var obj = { token: Playbasis.env.global.token, player_id: playerId, question_id: questionId, option_id: optionId, answer: answer};
 
 		return http.postJsonAsync(helpers.createApiUrl(apiMethodUrl, quizId, "answer"), obj);
 	}
