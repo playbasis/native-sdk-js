@@ -18,10 +18,10 @@ module.exports = function(Playbasis) {
 
 	/**
 	 * Return information about all quest for the current site.
-	 * @param  {Object} options (**optional**) options as object.  
-	 * It can include  
-	 * {  
-	 * `tags`: *String* = tag to query separated by comma  
+	 * @param  {Object} options (**optional**) options as object.
+	 * It can include
+	 * {
+	 * `tags`: *String* = tag to query separated by comma
 	 * }
 	 * @return {Object}         Promise object
 	 * @method  questListInfo
@@ -51,9 +51,9 @@ module.exports = function(Playbasis) {
 	 * Return information about the mission with the specified id.
 	 * @param  {String} questId   quest id
 	 * @param  {String} missionId mission id
-	 * @return {Object}    
+	 * @return {Object}
 	 * @method  missionInfo
-	 * @memberOf Playbasis.questApi       
+	 * @memberOf Playbasis.questApi
 	 */
 	api.missionInfo = function(questId, missionId)
 	{
@@ -65,7 +65,7 @@ module.exports = function(Playbasis) {
 	 * @param  {String} playerId player id
 	 * @return {Object}          Promise object
 	 * @method  questListAvailableForPlayer
-	 * @memberOf Playbasis.questApi  
+	 * @memberOf Playbasis.questApi
 	 */
 	api.questListAvailableForPlayer = function(playerId)
 	{
@@ -78,7 +78,7 @@ module.exports = function(Playbasis) {
 	 * @param  {String} playerId player id
 	 * @return {Object}          Promise object
 	 * @method  questAvailableForPlayer
-	 * @memberOf Playbasis.questApi  
+	 * @memberOf Playbasis.questApi
 	 */
 	api.questAvailableForPlayer = function(questId, playerId)
 	{
@@ -133,10 +133,10 @@ module.exports = function(Playbasis) {
 	 * Reset progress of quests for player.
 	 * If options is null, then it will reset all progress for all quests that player has joined.
 	 * @param  {String} playerId player id
-	 * @param  {Object} options  (**optional**) options as object.  
-	 * It can include  
-	 * {  
-	 * `quest_id`: *String* = quest id to reset progress  
+	 * @param  {Object} options  (**optional**) options as object.
+	 * It can include
+	 * {
+	 * `quest_id`: *String* = quest id to reset progress
 	 * }
 	 * @return {Object}          Promise object
 	 * @method  resetQuest
@@ -148,20 +148,20 @@ module.exports = function(Playbasis) {
 		var selectedOptionsObj = helpers.createObjectFromTarget(options, ["quest_id"]);
 		var combinedObj = helpers.combineObjects(obj, selectedOptionsObj);
 
-		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "reset"), combineObj);
+		return http.postJsonAsync(helpers.createApiUrl(apiMethod, "reset"), combinedObj);
 	}
 
 	/**
 	 * Return quest leaderboard
 	 * @param  {String} questId quest id
-	 * @param  {Object} options (**optional**) options as object.  
-	 * It can include  
-	 * {  
-	 * `completion_element_id`: *String* = quest complete element id,  
-	 * `player_id`: *String* = player id,  
-	 * `offset`: *Number* = number of records starting,  
-	 * `limit`: *Number* = amount of results to return,  
-	 * `status`: *String* = status of quest which can be "finish" | "join", default is "all"  
+	 * @param  {Object} options (**optional**) options as object.
+	 * It can include
+	 * {
+	 * `completion_element_id`: *String* = quest complete element id,
+	 * `player_id`: *String* = player id,
+	 * `offset`: *Number* = number of records starting,
+	 * `limit`: *Number* = amount of results to return,
+	 * `status`: *String* = status of quest which can be "finish" | "join", default is "all"
 	 * }
 	 * @return {Object}         Promise object
 	 * @method  questLeaderboard
