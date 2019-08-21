@@ -38,8 +38,8 @@ Example code using retrieveGameSetting()
 
     <script>
         const API_ENDPOINT = 'https://drgn-api.pbapp.net'
-        const API_KEY = '3167969483'
-        const API_SECRET = 'ee9156cd936c40f441644bb92b8fdd68'
+        const API_KEY = 'KEY'
+        const API_SECRET = 'SECRET'
         const NODE_ID = 'ExampleGameSetting'
         Playbasis.builder
             .setEndpoint(API_ENDPOINT)
