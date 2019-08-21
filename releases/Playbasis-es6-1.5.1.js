@@ -19580,13 +19580,14 @@ module.exports = function(Playbasis) {
 						csvText.forEach((cell) => {
 								const kv = cell.split('>')
 								const varName = kv[0].trim()
-								if (kv[1] == 'true' || kv[1] == 'false') {
-										obj[varName] = (kv[1] == 'true' ? true : false)
+								const varValue = kv[1].trim()
+								if (varValue == 'true' || varValue == 'false') {
+										obj[varName] = (varValue == 'true' ? true : false)
 								} else {
-										if (isNaN(kv[1])) {
-												obj[varName] = kv[1].trim()
+										if (isNaN(varValue)) {
+												obj[varName] = varValue
 										} else {
-												obj[varName] = Number(kv[1])
+												obj[varName] = Number(varValue)
 										}
 								}
 						})
