@@ -258,7 +258,11 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>amount</code>: <em>Number</em> = amount of the goods to redeem<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>amount</code>: <em>Number</em> = amount of the goods to redeem<br>
+}</p></td>
         </tr>
 
     
@@ -434,7 +438,11 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em><br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>player_id</code>: <em>String</em><br>
+}</p></td>
         </tr>
 
     
@@ -586,7 +594,18 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em> = player id<br><code>active_filter</code>: <em>Boolean</em> = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.<br><code>name</code>: <em>String</em> = name or group name of goods to search<br><code>date_start</code>: <em>String</em> = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range<br><code>date_end</code>: <em>String</em> = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range<br><code>offset</code>: <em>String</em> = paging offset. Default is 0.<br><code>limit</code>: <em>Number</em> = paging limit. Default is unlimited.<br><code>tags</code>: <em>String</em> = delimit by comma<br><code>custom_param</code>: <em>String</em> = specific custom param(s) to filter for results. It needs to be in format <code>key</code> or <code>key|operator|value</code> in which operator can be &quot;&lt;&quot;, &quot;&lt;=&quot;, &quot;&gt;&quot;, &quot;&gt;=&quot;, &quot;=&quot;, &quot;!=&quot;. Such key needs to be set prior on dashboard first.
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>player_id</code>: <em>String</em> = player id<br>
+<code>active_filter</code>: <em>Boolean</em> = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.<br>
+<code>name</code>: <em>String</em> = name or group name of goods to search<br>
+<code>date_start</code>: <em>String</em> = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range<br>
+<code>date_end</code>: <em>String</em> = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range<br>
+<code>offset</code>: <em>String</em> = paging offset. Default is 0.<br>
+<code>limit</code>: <em>Number</em> = paging limit. Default is unlimited.<br>
+<code>tags</code>: <em>String</em> = delimit by comma<br>
+<code>custom_param</code>: <em>String</em> = specific custom param(s) to filter for results. It needs to be in format <code>key</code> or <code>key|operator|value</code> in which operator can be &quot;&lt;&quot;, &quot;&lt;=&quot;, &quot;&gt;&quot;, &quot;&gt;=&quot;, &quot;=&quot;, &quot;!=&quot;. Such key needs to be set prior on dashboard first.
 <code>not_custom_param</code>: <em>String</em> = specific custom param(s) to filter for results. It needs to be in format <code>key</code> or <code>key|operator|value</code> in which operator can be &quot;&lt;&quot;, &quot;&lt;=&quot;, &quot;&gt;&quot;, &quot;&gt;=&quot;, &quot;=&quot;, &quot;!=&quot;. Such key needs to be set prior on dashboard first.
 }.</p></td>
         </tr>
@@ -740,7 +759,19 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>player_id</code>: <em>String</em> = player id<br><code>selected_field</code>: <em>String</em> = fields that will be included result payload, delimited with comma and with no space i.e. field1,field2,field3.<br><code>active_filter</code>: <em>Boolean</em> = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.<br><code>date_start</code>: <em>String</em> = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range<br><code>date_end</code>: <em>String</em> = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range<br><code>offset</code>: <em>String</em> = paging offset. Default is 0.<br><code>limit</code>: <em>Number</em> = paging limit. Default is unlimited.<br><code>tags</code>: <em>String</em> = delimit by comma<br><code>custom_param</code>: <em>String</em> = specific custom param(s) to filter for results. It needs to be in format <code>key</code> or <code>key|operator|value</code> in which operator can be &quot;&lt;&quot;, &quot;&lt;=&quot;, &quot;&gt;&quot;, &quot;&gt;=&quot;, &quot;=&quot;, &quot;!=&quot;. Such key needs to be set prior on dashboard first.<br><code>not_custom_param</code>: <em>String</em> = specific custom param(s) to filter for results. It needs to be in format <code>key</code> or <code>key|operator|value</code> in which operator can be &quot;&lt;&quot;, &quot;&lt;=&quot;, &quot;&gt;&quot;, &quot;&gt;=&quot;, &quot;=&quot;, &quot;!=&quot;. Such key needs to be set prior on dashboard first.
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>player_id</code>: <em>String</em> = player id<br>
+<code>selected_field</code>: <em>String</em> = fields that will be included result payload, delimited with comma and with no space i.e. field1,field2,field3.<br>
+<code>active_filter</code>: <em>Boolean</em> = filter only active goods items based on today. It will include only item that has been started but not yet expired, but not include items that has not yet started or have a start date in the future. It can be set to true | false.<br>
+<code>date_start</code>: <em>String</em> = date start in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid start date is in specified range<br>
+<code>date_end</code>: <em>String</em> = date expire in the format YYYY-MM-DD (i.e. 1982-09-29) to filter goods whose valid end date is in specified range<br>
+<code>offset</code>: <em>String</em> = paging offset. Default is 0.<br>
+<code>limit</code>: <em>Number</em> = paging limit. Default is unlimited.<br>
+<code>tags</code>: <em>String</em> = delimit by comma<br>
+<code>custom_param</code>: <em>String</em> = specific custom param(s) to filter for results. It needs to be in format <code>key</code> or <code>key|operator|value</code> in which operator can be &quot;&lt;&quot;, &quot;&lt;=&quot;, &quot;&gt;&quot;, &quot;&gt;=&quot;, &quot;=&quot;, &quot;!=&quot;. Such key needs to be set prior on dashboard first.<br>
+<code>not_custom_param</code>: <em>String</em> = specific custom param(s) to filter for results. It needs to be in format <code>key</code> or <code>key|operator|value</code> in which operator can be &quot;&lt;&quot;, &quot;&lt;=&quot;, &quot;&gt;&quot;, &quot;&gt;=&quot;, &quot;=&quot;, &quot;!=&quot;. Such key needs to be set prior on dashboard first.
 }</p></td>
         </tr>
 
@@ -877,9 +908,9 @@
 
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on September 6th 2017, 3:37:41 pm
+		on August 23rd 2019, 1:46:27 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

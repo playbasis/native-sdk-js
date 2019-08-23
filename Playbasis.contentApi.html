@@ -210,7 +210,15 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>title</code>: <em>String</em> = filter title of content<br><code>category</code>: <em>String</em> = filter by category of content<br><code>date_check</code>: <em>String = &quot;true&quot; | &quot;false&quot; whether or not to return content that is available in this range<br><code>pin</code>: </em>String<em> = secret PIN given to content<br>`tags: </em>String<em> = tags to filter content<br><code>status</code>: </em>String<em> = filter by status of content to find. Possible values are &quot;true&quot; | &quot;false&quot; | &quot;all&quot;. Default value is &quot;true&quot;.<br><code>player_id</code>: </em>String<em> = filter by player id associated with content<br><code>only_new_content</code>: </em>String<em> = &quot;true&quot; to display content which player does not provide any action (like/dislike) yet | &quot;false&quot; to display content which player has already provided an action (like/dislike)<br><code>only_new_feedback</code>: </em>String* = &quot;true&quot; to display content which player does not give feedback yet | &quot;false&quot; to display content which player has given the feedback<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>title</code>: <em>String</em> = filter title of content<br>
+<code>category</code>: <em>String</em> = filter by category of content<br>
+<code>date_check</code>: *String = &quot;true&quot; | &quot;false&quot; whether or not to return content that is available in this range<br>
+<code>pin</code>: <em>String</em> = secret PIN given to content<br>
+<code>tags: *String* = tags to filter content</code>status<code>: *String* = filter by status of content to find. Possible values are &quot;true&quot; | &quot;false&quot; | &quot;all&quot;. Default value is &quot;true&quot;.</code>player_id<code>: *String* = filter by player id associated with content</code>only_new_content<code>: *String* = &quot;true&quot; to display content which player does not provide any action (like/dislike) yet | &quot;false&quot; to display content which player has already provided an action (like/dislike)</code>only_new_feedback`: <em>String</em> = &quot;true&quot; to display content which player does not give feedback yet | &quot;false&quot; to display content which player has given the feedback<br>
+}</p></td>
         </tr>
 
     
@@ -586,8 +594,19 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>node_id</code>: <em>String</em> = node id of content<br><code>category</code>: <em>String</em> = category of content to be in<br><code>image</code>: <em>String</em> = url to the content profile image<br><code>status</code>: <em>String</em> = content available status which can be &quot;true&quot; | &quot;false&quot;<br><code>date_start</code>: <em>String</em> = date start in format YYYY-MM-DD (ex.1982-09-29)<br><code>date_end</code>: <em>String</em> = date end in format YYYY-MM-DD (ex.1982-09-29)
-<code>player_id</code>: <em>String</em> = player id who generated this content<br><code>pin</code>: <em>String</em> = secret PIN given to content<br><code>tags: *String* = tag(s) to add to this content</code>key<code>: *String* = custom keys separated by comma</code>value`: <em>String</em> = custom values separated by comma<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>node_id</code>: <em>String</em> = node id of content<br>
+<code>category</code>: <em>String</em> = category of content to be in<br>
+<code>image</code>: <em>String</em> = url to the content profile image<br>
+<code>status</code>: <em>String</em> = content available status which can be &quot;true&quot; | &quot;false&quot;<br>
+<code>date_start</code>: <em>String</em> = date start in format YYYY-MM-DD (ex.1982-09-29)<br>
+<code>date_end</code>: <em>String</em> = date end in format YYYY-MM-DD (ex.1982-09-29)
+<code>player_id</code>: <em>String</em> = player id who generated this content<br>
+<code>pin</code>: <em>String</em> = secret PIN given to content<br>
+<code>tags: *String* = tag(s) to add to this content</code>key<code>: *String* = custom keys separated by comma</code>value`: <em>String</em> = custom values separated by comma<br>
+}</p></td>
         </tr>
 
     
@@ -1091,7 +1110,12 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>key</code>: <em>String</em> = custom keys separated by comma<br><code>value</code>: <em>String</em> = custom values separated by comma<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>key</code>: <em>String</em> = custom keys separated by comma<br>
+<code>value</code>: <em>String</em> = custom values separated by comma<br>
+}</p></td>
         </tr>
 
     
@@ -1315,7 +1339,12 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>key</code>: <em>String</em> = custom keys separated by comma<br><code>value</code>: <em>String</em> = custom values separated by comma<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>key</code>: <em>String</em> = custom keys separated by comma<br>
+<code>value</code>: <em>String</em> = custom values separated by comma<br>
+}</p></td>
         </tr>
 
     
@@ -1515,7 +1544,12 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>key</code>: <em>String</em> = custom keys separated by comma<br><code>value</code>: <em>String</em> = custom values separated by comma<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>key</code>: <em>String</em> = custom keys separated by comma<br>
+<code>value</code>: <em>String</em> = custom values separated by comma<br>
+}</p></td>
         </tr>
 
     
@@ -1667,9 +1701,16 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>id</code>: <em>String</em> = specific id of category<br><code>name</code>: <em>String</em> = specific name of category<br><code>sort</code>: <em>String</em> = specific field to sort &quot;_id&quot; | &quot;name&quot; | &quot;date_added&quot; | &quot;date_modified&quot; 
-<code>order</code>: <em>String</em> = direction of order &quot;asc&quot; | &quot;desc&quot;<br><code>offset</code>: <em>Number</em> = number of starting records
-<code>limit</code>: <em>Number</em> = number of results to return<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>id</code>: <em>String</em> = specific id of category<br>
+<code>name</code>: <em>String</em> = specific name of category<br>
+<code>sort</code>: <em>String</em> = specific field to sort &quot;_id&quot; | &quot;name&quot; | &quot;date_added&quot; | &quot;date_modified&quot;
+<code>order</code>: <em>String</em> = direction of order &quot;asc&quot; | &quot;desc&quot;<br>
+<code>offset</code>: <em>Number</em> = number of starting records
+<code>limit</code>: <em>Number</em> = number of results to return<br>
+}</p></td>
         </tr>
 
     
@@ -1821,7 +1862,21 @@
 
             
 
-            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>It can include<br>{<br><code>node_id</code>: <em>String</em> = filter by node id of content<br><code>title</code>: <em>String</em> = filter title of content<br><code>category</code>: <em>String</em> = filter by category of content<br><code>date_check</code>: <em>String = &quot;true&quot; | &quot;false&quot; whether or not to return content that is available in this range<br><code>sort</code>: </em>String<em> = field to sort. It can be &quot;title&quot; | &quot;date_start&quot; | &quot;date_end&quot; | &quot;date_added&quot; | &quot;date_modified&quot; | &quot;random&quot; | &quot;followup&quot; | &quot;action&quot;<br><code>order</code>: </em>String<em> = direction of order results which can be &quot;asc&quot; | &quot;desc&quot;. If sort is &quot;random&quot;, then this field will be seed number.<br><code>offset</code>: </em>Number<em> = offset of starting returned records. Default is 0.<br><code>limit</code>: </em>Number<em> = Number of results to return. Default is 20.<br><code>full_html</code>: </em>String<em> = &quot;true&quot; | &quot;false&quot; whether or not to return full html<br><code>pin</code>: </em>String<em> = secret PIN given to content<br>`tags: </em>String<em> = tags to filter content<br><code>status</code>: </em>String<em> = filter by status of content to find. Possible values are &quot;true&quot; | &quot;false&quot; | &quot;all&quot;. Default value is &quot;true&quot;.<br><code>player_id</code>: </em>String<em> = filter by player id associated with content<br><code>only_new_content</code>: </em>String<em> = &quot;true&quot; to display content which player does not provide any action (like/dislike) yet | &quot;false&quot; to display content which player has already provided an action (like/dislike)<br><code>only_new_feedback</code>: </em>String* = &quot;true&quot; to display content which player does not give feedback yet | &quot;false&quot; to display content which player has given the feedback<br>}</p></td>
+            <td class="description last"><p>(<strong>optional</strong>) options as object.<br>
+It can include<br>
+{<br>
+<code>node_id</code>: <em>String</em> = filter by node id of content<br>
+<code>title</code>: <em>String</em> = filter title of content<br>
+<code>category</code>: <em>String</em> = filter by category of content<br>
+<code>date_check</code>: *String = &quot;true&quot; | &quot;false&quot; whether or not to return content that is available in this range<br>
+<code>sort</code>: <em>String</em> = field to sort. It can be &quot;title&quot; | &quot;date_start&quot; | &quot;date_end&quot; | &quot;date_added&quot; | &quot;date_modified&quot; | &quot;random&quot; | &quot;followup&quot; | &quot;action&quot;<br>
+<code>order</code>: <em>String</em> = direction of order results which can be &quot;asc&quot; | &quot;desc&quot;. If sort is &quot;random&quot;, then this field will be seed number.<br>
+<code>offset</code>: <em>Number</em> = offset of starting returned records. Default is 0.<br>
+<code>limit</code>: <em>Number</em> = Number of results to return. Default is 20.<br>
+<code>full_html</code>: <em>String</em> = &quot;true&quot; | &quot;false&quot; whether or not to return full html<br>
+<code>pin</code>: <em>String</em> = secret PIN given to content<br>
+<code>tags: *String* = tags to filter content</code>status<code>: *String* = filter by status of content to find. Possible values are &quot;true&quot; | &quot;false&quot; | &quot;all&quot;. Default value is &quot;true&quot;.</code>player_id<code>: *String* = filter by player id associated with content</code>only_new_content<code>: *String* = &quot;true&quot; to display content which player does not provide any action (like/dislike) yet | &quot;false&quot; to display content which player has already provided an action (like/dislike)</code>only_new_feedback`: <em>String</em> = &quot;true&quot; to display content which player does not give feedback yet | &quot;false&quot; to display content which player has given the feedback<br>
+}</p></td>
         </tr>
 
     
@@ -2173,8 +2228,20 @@
 
             
 
-            <td class="description last"><p>updates as object.<br>It can include<br>{<br><code>title</code>: <em>String</em> = title of content<br><code>summary</code>: <em>String</em> = summary of content<br><code>detail</code>: <em>String</em> = detail of content<br><code>category</code>: <em>String</em> = category of content to be in<br><code>image</code>: <em>String</em> = url to the content profile image<br><code>status</code>: <em>String</em> = content available status which can be &quot;true&quot; | &quot;false&quot;<br><code>date_start</code>: <em>String</em> = date start in format YYYY-MM-DD (ex.1982-09-29)<br><code>date_end</code>: <em>String</em> = date end in format YYYY-MM-DD (ex.1982-09-29)
-<code>pin</code>: <em>String</em> = secret PIN given to content<br><code>tags: *String* = tag(s) to add to this content</code>key<code>: *String* = custom keys separated by comma</code>value`: <em>String</em> = custom values separated by comma<br>}</p></td>
+            <td class="description last"><p>updates as object.<br>
+It can include<br>
+{<br>
+<code>title</code>: <em>String</em> = title of content<br>
+<code>summary</code>: <em>String</em> = summary of content<br>
+<code>detail</code>: <em>String</em> = detail of content<br>
+<code>category</code>: <em>String</em> = category of content to be in<br>
+<code>image</code>: <em>String</em> = url to the content profile image<br>
+<code>status</code>: <em>String</em> = content available status which can be &quot;true&quot; | &quot;false&quot;<br>
+<code>date_start</code>: <em>String</em> = date start in format YYYY-MM-DD (ex.1982-09-29)<br>
+<code>date_end</code>: <em>String</em> = date end in format YYYY-MM-DD (ex.1982-09-29)
+<code>pin</code>: <em>String</em> = secret PIN given to content<br>
+<code>tags: *String* = tag(s) to add to this content</code>key<code>: *String* = custom keys separated by comma</code>value`: <em>String</em> = custom values separated by comma<br>
+}</p></td>
         </tr>
 
     
@@ -2310,9 +2377,9 @@
 
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
 	
-		on September 6th 2017, 3:37:41 pm
+		on August 23rd 2019, 1:46:27 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
