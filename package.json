@@ -1,5 +1,5 @@
 {
-  "name": "playbasis.js",
+  "name": "@playbasis1/playbasis",
   "version": "1.5.1",
   "description": "Playbasis Javascript SDK",
   "main": "lib/playbasis.js",
@@ -9,8 +9,7 @@
   "scripts": {
     "test": "npm run unittest",
     "compile": "./node_modules/.bin/rimraf lib/* && ./node_modules/.bin/babel src -d lib && ./node_modules/.bin/gulp build && npm run doc",
-    "prepublish": "npm run compile && npm run deploy",
-    "deploy": "ghp-import -m 'Deployed with ghp-import' -p ./docs",
+    "prepublish": "npm run compile",
     "build": "npm run compile",
     "unittest": "./node_modules/.bin/gulp unittest",
     "doc": "./node_modules/.bin/gulp doc"
